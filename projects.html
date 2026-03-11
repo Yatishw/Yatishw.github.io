@@ -3,16 +3,54 @@
 <head>
 
 <meta charset="utf-8">
-
 <title>Projects | Yatish W</title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link rel="stylesheet" type="text/css" href="css/main.css">
 <link rel="stylesheet" type="text/css" href="css/materialize.min.css">
+<link rel="stylesheet" type="text/css" href="css/main.css">
 <link rel="stylesheet" href="css/all.css">
 
 <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700" rel="stylesheet">
+
+<style>
+
+.project-card {
+padding:30px;
+margin-top:30px;
+border-radius:8px;
+background:#ffffff;
+box-shadow:0 4px 12px rgba(0,0,0,0.08);
+}
+
+.project-title {
+font-size:28px;
+font-weight:600;
+margin-bottom:10px;
+}
+
+.project-section {
+margin-top:20px;
+}
+
+.project-section h5{
+font-weight:600;
+color:#0d47a1;
+}
+
+.project-section ul{
+padding-left:20px;
+}
+
+.project-section li{
+margin-bottom:6px;
+}
+
+.project-btn{
+margin-top:20px;
+}
+
+</style>
 
 </head>
 
@@ -36,88 +74,108 @@
 
 <div class="container">
 
-<h3>Projects</h3>
+<h3 style="margin-top:40px;">Projects</h3>
 
-<div class="panel panel-default">
+<div class="project-card">
 
-<h4>🛡 Behaviour-Based Endpoint Detection & Response Lab</h4>
+<div class="project-title">
+🛡 Behaviour-Based EDR Detection & Automated Containment Lab 🛡
+</div>
 
 <p>
 Designed and implemented a behaviour-based Endpoint Detection and Response
-(EDR) environment using Wazuh and Sysmon to simulate enterprise security
-platforms such as CrowdStrike Falcon Complete.
+environment using Wazuh and Sysmon to simulate enterprise security platforms
+such as CrowdStrike Falcon Complete.
 </p>
 
-<p>
-The lab demonstrates how modern SOC environments collect endpoint telemetry,
-detect attacker behaviour, and automatically respond to security incidents.
-</p>
+<div class="project-section">
 
 <h5>Lab Architecture</h5>
 
 <ul>
 <li>Windows Endpoint (DC1) with Wazuh Agent and Sysmon</li>
 <li>Wazuh Manager for detection and event correlation</li>
-<li>Host-only virtual network for attack simulation</li>
+<li>Host-only virtual network environment</li>
 </ul>
+
+</div>
+
+<div class="project-section">
 
 <h5>Endpoint Telemetry</h5>
 
 <ul>
-<li>Windows Security Event Logs monitoring</li>
-<li>Sysmon process creation and command line monitoring</li>
+<li>Windows Security Event Log monitoring</li>
+<li>Sysmon process creation and command-line tracking</li>
 <li>Network connection telemetry</li>
-<li>Parent-child process relationship tracking</li>
+<li>Parent-child process relationship analysis</li>
 </ul>
+
+</div>
+
+<div class="project-section">
 
 <h5>Behaviour-Based Detection Engineering</h5>
 
 <ul>
-<li>Developed custom detection rules in Wazuh</li>
-<li>Detected encoded PowerShell execution</li>
-<li>Correlated suspicious process and command activity</li>
-<li>Identified multi-stage attack patterns</li>
+<li>Developed custom Wazuh correlation rules</li>
+<li>Detected encoded PowerShell execution patterns</li>
+<li>Correlated multi-stage attack behaviour</li>
+<li>Generated high-severity SOC alerts</li>
 </ul>
+
+</div>
+
+<div class="project-section">
 
 <h5>Automated Incident Response</h5>
 
 <ul>
 <li>Implemented Wazuh Active Response automation</li>
-<li>Automatically isolated compromised endpoint</li>
-<li>Disabled network connectivity via containment scripts</li>
-<li>Terminated malicious command shells</li>
+<li>Automatically isolated compromised host</li>
+<li>Disabled network connectivity using containment scripts</li>
+<li>Terminated attacker shells (PowerShell / CMD)</li>
 </ul>
 
-<h5>SOC Alerting</h5>
+</div>
 
-<ul>
-<li>Integrated Telegram Bot API for SOC notifications</li>
-<li>Alerts include host information and containment status</li>
-</ul>
+<div class="project-section">
 
 <h5>Attack Simulation</h5>
 
 <ul>
-<li>Developed PowerShell script to simulate attacker behaviour</li>
-<li>Generated encoded PowerShell commands</li>
-<li>Executed system reconnaissance commands</li>
-<li>Simulated outbound network connections</li>
+<li>Created PowerShell attack simulation script</li>
+<li>Executed encoded PowerShell commands</li>
+<li>Performed system reconnaissance activity</li>
+<li>Generated outbound HTTP communication</li>
 </ul>
+
+</div>
+
+<div class="project-section">
 
 <h5>MITRE ATT&CK Mapping</h5>
 
 <ul>
 <li>T1059.001 – PowerShell Execution</li>
-<li>T1027 – Obfuscated / Encoded Commands</li>
+<li>T1027 – Obfuscated Commands</li>
 <li>T1082 – System Discovery</li>
 <li>T1071 – Application Layer Protocol</li>
 </ul>
 
-<p>
-<a href="docs/EDR_FALCON.pdf" target="_blank">
+</div>
+
+<div class="project-btn">
+
+<a class="waves-effect waves-light btn blue"
+href="docs/EDR_FALCON.pdf"
+target="_blank">
+
 View Full Lab Report
+
 </a>
-</p>
+
+</div>
 
 </div>
 

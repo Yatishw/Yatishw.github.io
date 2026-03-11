@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta charset="utf-8">
+
+<title>Projects | Yatish W</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" type="text/css" href="css/main.css">
+<link rel="stylesheet" type="text/css" href="css/materialize.min.css">
+<link rel="stylesheet" href="css/all.css">
+
+<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700" rel="stylesheet">
+
+</head>
+
+<body>
+
+<nav class="blue lighten-2">
+<div class="container">
+<div class="nav-wrapper">
+
+<a href="index.html" class="brand-logo">Yatish W</a>
+
+<ul class="right hide-on-med-and-down">
+<li><a href="index.html">Home</a></li>
+<li><a href="projects.html">Projects</a></li>
+<li><a href="docs/Yatish_Resume.pdf">Resume</a></li>
+</ul>
+
+</div>
+</div>
+</nav>
+
+<div class="container">
+
+<h3>Projects</h3>
+
+<div class="panel panel-default">
+
+<h4>🛡 Behaviour-Based Endpoint Detection & Response Lab</h4>
+
+<p>
+Designed and implemented a behaviour-based Endpoint Detection and Response
+(EDR) environment using Wazuh and Sysmon to simulate enterprise security
+platforms such as CrowdStrike Falcon Complete.
+</p>
+
+<p>
+The lab demonstrates how modern SOC environments collect endpoint telemetry,
+detect attacker behaviour, and automatically respond to security incidents.
+</p>
+
+<h5>Lab Architecture</h5>
+
+<ul>
+<li>Windows Endpoint (DC1) with Wazuh Agent and Sysmon</li>
+<li>Wazuh Manager for detection and event correlation</li>
+<li>Host-only virtual network for attack simulation</li>
+</ul>
+
+<h5>Endpoint Telemetry</h5>
+
+<ul>
+<li>Windows Security Event Logs monitoring</li>
+<li>Sysmon process creation and command line monitoring</li>
+<li>Network connection telemetry</li>
+<li>Parent-child process relationship tracking</li>
+</ul>
+
+<h5>Behaviour-Based Detection Engineering</h5>
+
+<ul>
+<li>Developed custom detection rules in Wazuh</li>
+<li>Detected encoded PowerShell execution</li>
+<li>Correlated suspicious process and command activity</li>
+<li>Identified multi-stage attack patterns</li>
+</ul>
+
+<h5>Automated Incident Response</h5>
+
+<ul>
+<li>Implemented Wazuh Active Response automation</li>
+<li>Automatically isolated compromised endpoint</li>
+<li>Disabled network connectivity via containment scripts</li>
+<li>Terminated malicious command shells</li>
+</ul>
+
+<h5>SOC Alerting</h5>
+
+<ul>
+<li>Integrated Telegram Bot API for SOC notifications</li>
+<li>Alerts include host information and containment status</li>
+</ul>
+
+<h5>Attack Simulation</h5>
+
+<ul>
+<li>Developed PowerShell script to simulate attacker behaviour</li>
+<li>Generated encoded PowerShell commands</li>
+<li>Executed system reconnaissance commands</li>
+<li>Simulated outbound network connections</li>
+</ul>
+
+<h5>MITRE ATT&CK Mapping</h5>
+
+<ul>
+<li>T1059.001 – PowerShell Execution</li>
+<li>T1027 – Obfuscated / Encoded Commands</li>
+<li>T1082 – System Discovery</li>
+<li>T1071 – Application Layer Protocol</li>
+</ul>
+
+<p>
+<a href="docs/EDR_Falcon.pdf" target="_blank">
+View Full Lab Report
+</a>
+</p>
+
+</div>
+
+</div>
+
+</body>
+</html>

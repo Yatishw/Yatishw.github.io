@@ -97,15 +97,15 @@ div.footer{
 }
 #target{
   font-size: 48px;
-  font-weight: bold;
+  font-weight: 600;
 }
 #target-cursor{
   font-size: 50px;
-  font-weight: bold;
+  font-weight: 600;
 }
 #target-mark{
   font-size: 40px;
-  font-weight: bold;
+  font-weight: 600;
 }
 
 

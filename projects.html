@@ -7,47 +7,100 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link rel="stylesheet" type="text/css" href="css/materialize.min.css">
-<link rel="stylesheet" type="text/css" href="css/main.css">
+<link rel="stylesheet" href="css/materialize.min.css">
+<link rel="stylesheet" href="css/main.css">
 <link rel="stylesheet" href="css/all.css">
 
 <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700" rel="stylesheet">
 
 <style>
 
-.project-card {
-padding:30px;
-margin-top:30px;
-border-radius:8px;
-background:#ffffff;
-box-shadow:0 4px 12px rgba(0,0,0,0.08);
+body{
+font-family:'Source Sans Pro',sans-serif;
+background:#f5f7fa;
 }
 
-.project-title {
-font-size:28px;
+/* HERO BACKGROUND */
+
+.hero{
+height:420px;
+background-image:url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b');
+background-size:cover;
+background-position:center;
+position:relative;
+display:flex;
+align-items:center;
+justify-content:center;
+}
+
+.hero-overlay{
+background:rgba(0,0,0,0.65);
+position:absolute;
+top:0;
+left:0;
+right:0;
+bottom:0;
+}
+
+.hero-text{
+position:relative;
+color:white;
+text-align:center;
+}
+
+.hero-text h1{
 font-weight:600;
-margin-bottom:10px;
 }
 
-.project-section {
-margin-top:20px;
+/* PROJECT CARD */
+
+.project-card{
+
+margin-top:-80px;
+padding:40px;
+
+background:white;
+border-radius:10px;
+
+box-shadow:0 10px 30px rgba(0,0,0,0.1);
+
+transition:all 0.3s ease;
+
 }
 
-.project-section h5{
+.project-card:hover{
+
+transform:translateY(-6px);
+box-shadow:0 15px 40px rgba(0,0,0,0.15);
+
+}
+
+/* SECTION HEADINGS */
+
+.section-title{
+margin-top:25px;
 font-weight:600;
 color:#0d47a1;
 }
 
-.project-section ul{
-padding-left:20px;
-}
+/* LIST */
 
-.project-section li{
+.project-card li{
 margin-bottom:6px;
 }
 
+/* BUTTON */
+
 .project-btn{
-margin-top:20px;
+
+margin-top:30px;
+
+}
+
+.project-btn a{
+
+background:#1976d2;
+
 }
 
 </style>
@@ -72,102 +125,101 @@ margin-top:20px;
 </div>
 </nav>
 
-<div class="container">
+<!-- HERO -->
 
-<h3 style="margin-top:40px;">Projects</h3>
+<div class="hero">
+
+<div class="hero-overlay"></div>
+
+<div class="hero-text">
+
+<h1>Cyber Security Projects</h1>
+<p>Detection Engineering • EDR • Threat Investigation</p>
+
+</div>
+
+</div>
+
+<div class="container">
 
 <div class="project-card">
 
-<div class="project-title">
-🛡 Behaviour-Based EDR Detection & Automated Containment Lab 🛡
-</div>
+<h4>🛡 Behaviour-Based EDR Detection & Automated Containment Lab</h4>
 
 <p>
-Designed and implemented a behaviour-based Endpoint Detection and Response
-environment using Wazuh and Sysmon to simulate enterprise security platforms
-such as CrowdStrike Falcon Complete.
+Built a behaviour-based Endpoint Detection and Response environment using
+<strong>Wazuh, Sysmon, and automated containment scripts</strong>
+to simulate enterprise SOC workflows similar to CrowdStrike Falcon.
 </p>
 
-<div class="project-section">
-
-<h5>Lab Architecture</h5>
+<h5 class="section-title">Lab Architecture</h5>
 
 <ul>
-<li>Windows Endpoint (DC1) with Wazuh Agent and Sysmon</li>
-<li>Wazuh Manager for detection and event correlation</li>
-<li>Host-only virtual network environment</li>
+
+<li>Windows Endpoint with Wazuh Agent and Sysmon</li>
+<li>Wazuh Manager for detection and rule correlation</li>
+<li>Host-only network attack simulation lab</li>
+
 </ul>
 
-</div>
-
-<div class="project-section">
-
-<h5>Endpoint Telemetry</h5>
+<h5 class="section-title">Endpoint Telemetry</h5>
 
 <ul>
-<li>Windows Security Event Log monitoring</li>
-<li>Sysmon process creation and command-line tracking</li>
-<li>Network connection telemetry</li>
-<li>Parent-child process relationship analysis</li>
+
+<li>Windows Security Event Logs monitoring</li>
+<li>Sysmon process creation telemetry</li>
+<li>Network connection tracking</li>
+<li>Parent-child process behaviour analysis</li>
+
 </ul>
 
-</div>
-
-<div class="project-section">
-
-<h5>Behaviour-Based Detection Engineering</h5>
+<h5 class="section-title">Detection Engineering</h5>
 
 <ul>
-<li>Developed custom Wazuh correlation rules</li>
-<li>Detected encoded PowerShell execution patterns</li>
-<li>Correlated multi-stage attack behaviour</li>
-<li>Generated high-severity SOC alerts</li>
+
+<li>Developed custom Wazuh behavioural detection rules</li>
+<li>Detected encoded PowerShell execution</li>
+<li>Correlated multi-stage attack activity</li>
+<li>Triggered high severity SOC alerts</li>
+
 </ul>
 
-</div>
-
-<div class="project-section">
-
-<h5>Automated Incident Response</h5>
+<h5 class="section-title">Automated Incident Response</h5>
 
 <ul>
-<li>Implemented Wazuh Active Response automation</li>
+
+<li>Implemented Wazuh Active Response containment</li>
 <li>Automatically isolated compromised host</li>
-<li>Disabled network connectivity using containment scripts</li>
+<li>Disabled network interface via containment script</li>
 <li>Terminated attacker shells (PowerShell / CMD)</li>
+
 </ul>
 
-</div>
-
-<div class="project-section">
-
-<h5>Attack Simulation</h5>
+<h5 class="section-title">Attack Simulation</h5>
 
 <ul>
+
 <li>Created PowerShell attack simulation script</li>
 <li>Executed encoded PowerShell commands</li>
-<li>Performed system reconnaissance activity</li>
-<li>Generated outbound HTTP communication</li>
+<li>Simulated system reconnaissance behaviour</li>
+<li>Generated outbound network activity</li>
+
 </ul>
 
-</div>
-
-<div class="project-section">
-
-<h5>MITRE ATT&CK Mapping</h5>
+<h5 class="section-title">MITRE ATT&CK Techniques</h5>
 
 <ul>
+
 <li>T1059.001 – PowerShell Execution</li>
 <li>T1027 – Obfuscated Commands</li>
 <li>T1082 – System Discovery</li>
 <li>T1071 – Application Layer Protocol</li>
-</ul>
 
-</div>
+</ul>
 
 <div class="project-btn">
 
-<a class="waves-effect waves-light btn blue"
+<a class="waves-effect waves-light btn"
 href="docs/EDR_FALCON.pdf"
 target="_blank">
 

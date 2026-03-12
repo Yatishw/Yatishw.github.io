@@ -103,6 +103,65 @@ background:#1976d2;
 
 }
 
+
+/* LAB ARCHITECTURE SECTION */
+
+.arch-section{
+
+display:flex;
+gap:40px;
+align-items:flex-start;
+margin-top:10px;
+flex-wrap:wrap;
+
+}
+
+.arch-text{
+
+flex:1;
+min-width:250px;
+
+}
+
+.arch-image{
+
+flex:1;
+text-align:center;
+
+}
+
+.arch-image img{
+
+width:100%;
+max-width:420px;
+
+border-radius:10px;
+
+box-shadow:0 10px 30px rgba(0,0,0,0.2);
+
+transition:all 0.3s ease;
+
+}
+
+.arch-image img:hover{
+
+transform:scale(1.05);
+
+}
+
+.arch-caption{
+
+font-size:14px;
+color:#666;
+margin-top:8px;
+
+}
+
+
+
+
+  
+
 </style>
 
 </head>
@@ -154,13 +213,27 @@ to simulate enterprise SOC workflows similar to CrowdStrike Falcon.
 
 <h5 class="section-title">Lab Architecture</h5>
 
-<ul>
+<div class="arch-section">
 
+<div class="arch-text">
+
+<ul>
 <li>Windows Endpoint with Wazuh Agent and Sysmon</li>
 <li>Wazuh Manager for detection and rule correlation</li>
 <li>Host-only network attack simulation lab</li>
-
 </ul>
+
+</div>
+
+<div class="arch-image">
+
+<img src="images/lab-architecture.png" alt="EDR Lab Architecture">
+
+<p class="arch-caption">Falcon-Style EDR Lab Architecture</p>
+
+</div>
+
+</div>
 
 <h5 class="section-title">Endpoint Telemetry</h5>
 

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 
 <meta charset="utf-8">
@@ -11,35 +12,38 @@
 <link rel="stylesheet" href="css/main.css">
 <link rel="stylesheet" href="css/all.css">
 
-<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700" rel="stylesheet">
 
 <style>
+
+/* PAGE */
 
 body{
 font-family:'Source Sans Pro',sans-serif;
 background:#f5f7fa;
 }
 
-/* HERO BACKGROUND */
+
+/* HERO */
 
 .hero{
 height:420px;
 background-image:url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b');
 background-size:cover;
 background-position:center;
-position:relative;
 display:flex;
 align-items:center;
 justify-content:center;
+position:relative;
 }
 
 .hero-overlay{
-background:rgba(0,0,0,0.65);
 position:absolute;
 top:0;
+bottom:0;
 left:0;
 right:0;
-bottom:0;
+background:rgba(0,0,0,0.65);
 }
 
 .hero-text{
@@ -52,48 +56,72 @@ text-align:center;
 font-weight:600;
 }
 
+
+/* PROJECT GRID */
+
+.projects-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+gap:30px;
+margin-top:-80px;
+}
+
+
 /* PROJECT CARD */
 
 .project-card{
 
-margin-top:-80px;
-padding:40px;
-
 background:white;
-border-radius:10px;
+padding:35px;
+border-radius:12px;
 
-box-shadow:0 10px 30px rgba(0,0,0,0.1);
+box-shadow:0 10px 25px rgba(0,0,0,0.15);
 
-transition:all 0.3s ease;
+transition:all 0.35s ease;
 
 }
 
 .project-card:hover{
 
-transform:translateY(-6px);
-box-shadow:0 15px 40px rgba(0,0,0,0.15);
+transform:translateY(-10px);
+box-shadow:0 20px 50px rgba(0,0,0,0.25);
 
 }
 
-/* SECTION HEADINGS */
 
-.section-title{
-margin-top:25px;
+/* TITLES */
+
+.project-card h5{
+
 font-weight:600;
 color:#0d47a1;
+
 }
 
-/* LIST */
 
-.project-card li{
-margin-bottom:6px;
+/* BADGES */
+
+.badge{
+
+display:inline-block;
+background:#e3f2fd;
+color:#0d47a1;
+
+padding:6px 10px;
+margin:4px;
+
+border-radius:6px;
+
+font-size:13px;
+
 }
+
 
 /* BUTTON */
 
 .project-btn{
 
-margin-top:30px;
+margin-top:20px;
 
 }
 
@@ -109,21 +137,34 @@ background:#1976d2;
 
 <body>
 
+
+<!-- NAVBAR -->
+
 <nav class="blue lighten-2">
+
 <div class="container">
+
 <div class="nav-wrapper">
 
 <a href="index.html" class="brand-logo">Yatish W</a>
 
 <ul class="right hide-on-med-and-down">
+
 <li><a href="index.html">Home</a></li>
+
 <li><a href="projects.html">Projects</a></li>
+
 <li><a href="docs/Yatish_Resume.pdf">Resume</a></li>
+
 </ul>
 
 </div>
+
 </div>
+
 </nav>
+
+
 
 <!-- HERO -->
 
@@ -134,96 +175,73 @@ background:#1976d2;
 <div class="hero-text">
 
 <h1>Cyber Security Projects</h1>
-<p>Detection Engineering • EDR • Threat Investigation</p>
+
+<p>Detection Engineering • Threat Simulation • Security Architecture</p>
 
 </div>
 
 </div>
+
+
+
+<!-- PROJECTS -->
 
 <div class="container">
 
+<div class="projects-grid">
+
+
+<!-- PROJECT 1 -->
+
 <div class="project-card">
 
-<h4>🛡 Behaviour-Based EDR Detection & Automated Containment Lab</h4>
+<h5>🛡 Behaviour-Based EDR Detection Lab</h5>
 
-<p style="font-size:20px; line-height:1.7;">
+<p>
+
 Built a behaviour-based Endpoint Detection and Response environment using
+
 <strong>Wazuh, Sysmon, and automated containment scripts</strong>
+
 to simulate enterprise SOC workflows similar to CrowdStrike Falcon.
+
 </p>
 
-<h5 class="section-title">Lab Architecture</h5>
-
 <ul>
 
-<li>Windows Endpoint with Wazuh Agent and Sysmon</li>
-<li>Wazuh Manager for detection and rule correlation</li>
-<li>Host-only network attack simulation lab</li>
+<li>Behaviour-based correlation rules</li>
+
+<li>Multi-stage attack detection</li>
+
+<li>Automated host containment</li>
+
+<li>Telegram SOC alert notifications</li>
 
 </ul>
 
-<h5 class="section-title">Endpoint Telemetry</h5>
 
-<ul>
+<div>
 
-<li>Windows Security Event Logs monitoring</li>
-<li>Sysmon process creation telemetry</li>
-<li>Network connection tracking</li>
-<li>Parent-child process behaviour analysis</li>
+<span class="badge">Wazuh</span>
 
-</ul>
+<span class="badge">Sysmon</span>
 
-<h5 class="section-title">Detection Engineering</h5>
+<span class="badge">MITRE ATT&CK</span>
 
-<ul>
+<span class="badge">Detection Engineering</span>
 
-<li>Developed custom Wazuh behavioural detection rules</li>
-<li>Detected encoded PowerShell execution</li>
-<li>Correlated multi-stage attack activity</li>
-<li>Triggered high severity SOC alerts</li>
+</div>
 
-</ul>
-
-<h5 class="section-title">Automated Incident Response</h5>
-
-<ul>
-
-<li>Implemented Wazuh Active Response containment</li>
-<li>Automatically isolated compromised host</li>
-<li>Disabled network interface via containment script</li>
-<li>Terminated attacker shells (PowerShell / CMD)</li>
-
-</ul>
-
-<h5 class="section-title">Attack Simulation</h5>
-
-<ul>
-
-<li>Created PowerShell attack simulation script</li>
-<li>Executed encoded PowerShell commands</li>
-<li>Simulated system reconnaissance behaviour</li>
-<li>Generated outbound network activity</li>
-
-</ul>
-
-<h5 class="section-title">MITRE ATT&CK Techniques</h5>
-
-<ul>
-
-<li>T1059.001 – PowerShell Execution</li>
-<li>T1027 – Obfuscated Commands</li>
-<li>T1082 – System Discovery</li>
-<li>T1071 – Application Layer Protocol</li>
-
-</ul>
 
 <div class="project-btn">
 
 <a class="waves-effect waves-light btn"
+
 href="docs/EDR_FALCON.pdf"
+
 target="_blank">
 
-View Full Lab Report
+View Lab Report
 
 </a>
 
@@ -231,7 +249,131 @@ View Full Lab Report
 
 </div>
 
+
+
+<!-- PROJECT 2 -->
+
+<div class="project-card">
+
+<h5>🧨 Active Directory Ransomware Simulation Lab</h5>
+
+<p>
+
+Simulated a ransomware attack lifecycle inside an isolated Active Directory
+
+environment and implemented detection engineering using Splunk SIEM telemetry.
+
+</p>
+
+<ul>
+
+<li>Password spraying and credential abuse</li>
+
+<li>Remote execution using Impacket</li>
+
+<li>PowerShell ransomware simulation</li>
+
+<li>Splunk forensic event timeline analysis</li>
+
+</ul>
+
+
+<div>
+
+<span class="badge">Active Directory</span>
+
+<span class="badge">Splunk</span>
+
+<span class="badge">Impacket</span>
+
+<span class="badge">Incident Response</span>
+
 </div>
 
+
+<div class="project-btn">
+
+<a class="waves-effect waves-light btn"
+
+href="docs/RANSOMWARE_ATTACK___HOME_LAB.pdf"
+
+target="_blank">
+
+View Lab Report
+
+</a>
+
+</div>
+
+</div>
+
+
+
+<!-- PROJECT 3 -->
+
+<div class="project-card">
+
+<h5>🌐 Web Application Firewall Deployment Lab</h5>
+
+<p>
+
+Designed and deployed a Web Application Firewall using
+
+<strong>ModSecurity and the OWASP Core Rule Set</strong>
+
+to detect and block common web attacks against a vulnerable DVWA application.
+
+</p>
+
+<ul>
+
+<li>SQL Injection simulation</li>
+
+<li>Cross-Site Scripting attack testing</li>
+
+<li>Command injection analysis</li>
+
+<li>WAF telemetry monitoring in Splunk</li>
+
+</ul>
+
+
+<div>
+
+<span class="badge">ModSecurity</span>
+
+<span class="badge">OWASP CRS</span>
+
+<span class="badge">DVWA</span>
+
+<span class="badge">Web Security</span>
+
+</div>
+
+
+<div class="project-btn">
+
+<a class="waves-effect waves-light btn"
+
+href="docs/WAF-HOME lab.pdf"
+
+target="_blank">
+
+View Lab Report
+
+</a>
+
+</div>
+
+</div>
+
+
+
+</div>
+
+</div>
+
+
 </body>
+
 </html>

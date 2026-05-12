@@ -69,12 +69,15 @@ animation: fadeUp 1s ease;
 }
 
 /* glowing ring */
-.avatar-wrapper { animation: fadeUp 0.8s ease; }
-h1 { animation: fadeUp 1s ease; }
-h2 { animation: fadeUp 1.2s ease; }
-p { animation: fadeUp 1.4s ease; }
-.buttons { animation: fadeUp 1.6s ease; }
-.social { animation: fadeUp 1.8s ease; }
+.avatar-wrapper::before {
+  content: "";
+  position: absolute;
+  inset: -10px;
+  border-radius: 50%;
+  border: 2px solid #42a5f5;
+
+  animation: pulse 2.5s infinite ease-in-out;
+}
 
 @keyframes pulse {
   0% { box-shadow: 0 0 10px #42a5f5; }

@@ -2,8 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-
-<title>Yatish W</title>
+<title>Yatish W | SOC Dashboard</title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -11,19 +10,30 @@
 <link rel="stylesheet" href="css/all.css">
 
 <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600" rel="stylesheet">
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
-<link rel="icon" href="images/favicon.ico">
 
 <style>
 
-/* GLOBAL */
+/* BASE */
 
 body{
 margin:0;
 font-family:'Source Sans Pro',sans-serif;
-background:#0f172a;
+background:#020617;
 color:#e2e8f0;
+}
+
+/* GRID BACKGROUND */
+
+body::before{
+content:"";
+position:fixed;
+width:100%;
+height:100%;
+background:
+linear-gradient(rgba(56,189,248,0.04) 1px, transparent 1px),
+linear-gradient(90deg, rgba(56,189,248,0.04) 1px, transparent 1px);
+background-size:50px 50px;
+z-index:-1;
 }
 
 /* NAV */
@@ -37,114 +47,105 @@ border-bottom:1px solid #1e293b;
 
 .terminal{
 background:#020617;
+padding:20px;
+margin:20px auto;
+width:90%;
+max-width:1000px;
+border-radius:10px;
 color:#38bdf8;
 font-family:monospace;
-padding:20px;
-border-radius:10px;
-margin:30px auto;
-width:85%;
-max-width:900px;
-box-shadow:0 0 20px rgba(56,189,248,0.2);
 }
 
-#terminal-text::after{
-content:"_";
-animation:blink 1s infinite;
+/* DASHBOARD */
+
+.dashboard{
+display:grid;
+grid-template-columns:2fr 1fr;
+gap:20px;
+width:90%;
+margin:auto;
 }
 
-@keyframes blink{
-0%{opacity:1;}
-50%{opacity:0;}
-100%{opacity:1;}
-}
+/* CARD */
 
-/* PROFILE */
-
-.avatar{
-margin-top:30px;
-}
-
-#avatar{
-width:160px;
-border-radius:50%;
-}
-
-/* TEXT */
-
-.name{
-margin-top:15px;
-font-size:28px;
-font-weight:600;
-color:#38bdf8;
-}
-
-/* FADE TEXT */
-
-.fade-text{
-opacity:0;
-transition:0.5s;
-margin-top:10px;
-}
-
-/* THREAT FEED */
-
-.threat-feed{
+.card{
 background:#020617;
-margin:40px auto;
-padding:20px;
+border:1px solid #1e293b;
 border-radius:10px;
-width:85%;
-max-width:900px;
-height:220px;
-overflow:hidden;
-box-shadow:0 0 20px rgba(248,113,113,0.2);
+padding:20px;
 }
 
-.threat-title{
-color:#f87171;
-margin-bottom:10px;
-}
+/* THREATS */
 
 .threat-item{
-color:#f87171;
+padding:6px;
 font-family:monospace;
-margin-bottom:5px;
-opacity:0;
-animation:fadeIn 0.8s forwards;
+cursor:pointer;
 }
 
-@keyframes fadeIn{
-to{opacity:1;}
+.high{color:#f87171;}
+.medium{color:#facc15;}
+.low{color:#4ade80;}
+
+.threat-item:hover{
+background:rgba(255,255,255,0.05);
+}
+
+/* PANEL */
+
+.panel{
+position:fixed;
+right:-400px;
+top:0;
+width:350px;
+height:100%;
+background:#020617;
+border-left:1px solid #1e293b;
+padding:20px;
+transition:0.4s;
+}
+
+.panel.active{
+right:0;
+}
+
+/* BUTTON */
+
+.btn-sim{
+margin-top:15px;
+background:#38bdf8;
+color:black;
+padding:8px 15px;
+border:none;
+cursor:pointer;
+border-radius:6px;
+}
+
+/* CHART */
+
+canvas{
+width:100%;
+height:200px;
 }
 
 /* SOCIAL */
 
 .social{
 text-align:center;
-margin-top:20px;
+margin:30px 0;
 }
 
 .social a{
-margin:0 12px;
-font-size:30px;
+margin:0 10px;
+font-size:26px;
 color:#94a3b8;
-transition:0.3s;
 }
 
 .social a:hover{
 color:#38bdf8;
 }
 
-/* FOOTER */
-
-footer{
-text-align:center;
-margin-top:30px;
-color:#64748b;
-}
-
 </style>
-
 </head>
 
 <body>
@@ -152,131 +153,155 @@ color:#64748b;
 <nav>
 <div class="container">
 <div class="nav-wrapper">
-
-<a href="/" class="brand-logo">Yatish W</a>
-
-<ul class="right hide-on-med-and-down">
-<li><a href="/">Home</a></li>
+<a class="brand-logo">Yatish W</a>
+<ul class="right">
 <li><a href="projects.html">Projects</a></li>
-<li><a href="docs/Resume_Yatish1.pdf" target="_blank">Resume</a></li>
+<li><a href="docs/Resume_Yatish1.pdf">Resume</a></li>
 </ul>
-
 </div>
 </div>
 </nav>
 
 <!-- TERMINAL -->
 
-<div class="terminal">
-<div id="terminal-text"></div>
+<div class="terminal" id="terminal"></div>
+
+<!-- DASHBOARD -->
+
+<div class="dashboard">
+
+<!-- LEFT -->
+
+<div class="card">
+
+<h5>🚨 Threat Feed</h5>
+<div id="feed"></div>
+
+<button class="btn-sim" onclick="simulateAttack()">Run Attack Simulation</button>
+
+<h5 style="margin-top:20px;">📊 Detection Trend</h5>
+<canvas id="chart"></canvas>
+
 </div>
 
-<!-- PROFILE -->
+<!-- RIGHT -->
 
-<div class="container center-align">
+<div class="card">
+<h6>Alerts</h6>
+<h4 id="count">0</h4>
 
-<div class="avatar">
-<img src="images/avatar.jpg" class="responsive-img" id="avatar">
+<h6>Status</h6>
+<p style="color:#4ade80;">● Active Monitoring</p>
+
+<h6>Endpoint</h6>
+<p>Windows (Wazuh + Sysmon)</p>
 </div>
 
-<div class="name">Yatish W</div>
-
-<h5 class="fade-text" id="t1">Cyber Security Engineer — Bristol, UK</h5>
-<h5 class="fade-text" id="t2">Detection Engineering • SIEM • Threat Hunting</h5>
-<h5 class="fade-text" id="t3">Splunk • ELK • Wazuh • Sysmon • MITRE ATT&CK</h5>
-
 </div>
 
-<!-- THREAT FEED -->
+<!-- PANEL -->
 
-<div class="threat-feed" id="threat-feed">
-<div class="threat-title">🚨 Live Threat Feed</div>
+<div class="panel" id="panel">
+<h5>🔍 Investigation</h5>
+<p id="panel-text"></p>
 </div>
 
 <!-- SOCIAL -->
 
 <div class="social">
-
 <a href="https://github.com/Yatishw"><i class="fab fa-github"></i></a>
-<a href="mailto:yatiwaghmare@gmail.com"><i class="fas fa-envelope"></i></a>
 <a href="https://linkedin.com/in/yatish28"><i class="fab fa-linkedin"></i></a>
-
 </div>
-
-<footer>
-<p>Simulated SOC Interface • Built by Yatish W</p>
-</footer>
-
-<!-- SCRIPTS -->
-
-<script src="js/jquery-3.3.1.min.js"></script>
-<script src="js/materialize.min.js"></script>
 
 <script>
 
-/* TERMINAL EFFECT */
+/* TERMINAL */
 
-const lines = [
+const termLines = [
 "> Initializing EDR...",
-"> Loading detection rules...",
-"> Monitoring endpoint telemetry...",
-"> Behaviour analytics enabled...",
-"> SOC Analyst: Yatish W ✔"
+"> Loading rules...",
+"> Monitoring telemetry...",
+"> Detection active ✔"
 ];
 
-let i = 0;
-let j = 0;
+let t = document.getElementById("terminal");
+let ti=0;
 
-function typeEffect(){
-if(i < lines.length){
-if(j < lines[i].length){
-document.getElementById("terminal-text").innerHTML += lines[i].charAt(j);
-j++;
-setTimeout(typeEffect, 25);
-}else{
-document.getElementById("terminal-text").innerHTML += "<br>";
-i++;
-j = 0;
-setTimeout(typeEffect, 300);
+function termType(){
+if(ti<termLines.length){
+t.innerHTML+=termLines[ti]+"<br>";
+ti++;
+setTimeout(termType,400);
 }
 }
-}
+termType();
 
-typeEffect();
+/* THREATS */
 
+let count=0;
 
-/* FADE TEXT */
-
-setTimeout(()=>document.getElementById("t1").style.opacity=1,2000);
-setTimeout(()=>document.getElementById("t2").style.opacity=1,2600);
-setTimeout(()=>document.getElementById("t3").style.opacity=1,3200);
-
-
-/* THREAT FEED */
-
-const threats = [
-"[HIGH] Encoded PowerShell detected",
-"[MEDIUM] Suspicious process chain",
-"[CRITICAL] Multi-stage attack detected",
-"[LOW] Unusual outbound traffic",
-"[CRITICAL] Host isolated successfully"
+const threatTypes=[
+{msg:"Encoded PowerShell",cls:"high"},
+{msg:"Process Injection",cls:"high"},
+{msg:"Suspicious Network",cls:"medium"},
+{msg:"Recon Activity",cls:"low"}
 ];
 
 function addThreat(){
-const feed = document.getElementById("threat-feed");
+let feed=document.getElementById("feed");
 
-const item = document.createElement("div");
-item.className = "threat-item";
-item.innerText = threats[Math.floor(Math.random()*threats.length)];
+let t=threatTypes[Math.floor(Math.random()*threatTypes.length)];
 
-feed.appendChild(item);
+let div=document.createElement("div");
+div.className="threat-item "+t.cls;
+div.innerText="["+t.cls.toUpperCase()+"] "+t.msg;
 
-if(feed.children.length > 7){
-feed.removeChild(feed.children[1]);
+div.onclick=()=>openPanel(t.msg);
+
+feed.appendChild(div);
+
+count++;
+document.getElementById("count").innerText=count;
+
+if(feed.children.length>8){
+feed.removeChild(feed.children[0]);
 }
 }
 
-setInterval(addThreat, 1800);
+/* SIMULATION */
+
+function simulateAttack(){
+for(let i=0;i<5;i++){
+setTimeout(addThreat,i*500);
+}
+}
+
+/* PANEL */
+
+function openPanel(text){
+document.getElementById("panel").classList.add("active");
+document.getElementById("panel-text").innerHTML=
+"Alert: "+text+
+"<br><br>Stage 1: Detection<br>Stage 2: Correlation<br>Stage 3: Containment";
+}
+
+/* CHART */
+
+let canvas=document.getElementById("chart");
+let ctx=canvas.getContext("2d");
+
+let data=[5,10,6,14,9,18];
+
+function drawChart(){
+ctx.clearRect(0,0,canvas.width,canvas.height);
+
+for(let i=0;i<data.length;i++){
+ctx.fillStyle="#38bdf8";
+ctx.fillRect(i*40,200-data[i]*5,20,data[i]*5);
+}
+}
+
+drawChart();
 
 </script>
 

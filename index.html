@@ -2,213 +2,202 @@
 <html>
 <head>
 <meta charset="utf-8">
-
-<title>Yatish W</title>
+<title>Yatish W | Cyber Security</title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link rel="stylesheet" type="text/css" href="css/main.css">
-<link rel="stylesheet" type="text/css" href="css/materialize.min.css">
-<link rel="stylesheet" href="css/all.css" crossorigin="anonymous">
+<link rel="stylesheet" href="css/materialize.min.css">
+<link rel="stylesheet" href="css/all.css">
 
-<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700" rel="stylesheet">
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600" rel="stylesheet">
 
-<link rel="icon" href="images/favicon.ico">
+<style>
 
+/* GLOBAL */
+
+body{
+margin:0;
+font-family:'Source Sans Pro',sans-serif;
+background:#0f172a;
+color:#e2e8f0;
+}
+
+/* NAV */
+
+nav{
+background:#020617;
+border-bottom:1px solid #1e293b;
+}
+
+/* HERO */
+
+.hero{
+padding:80px 20px;
+text-align:center;
+}
+
+.hero h1{
+font-size:48px;
+font-weight:600;
+color:#38bdf8;
+}
+
+.hero p{
+color:#94a3b8;
+font-size:18px;
+}
+
+/* GRID */
+
+.dashboard{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:20px;
+padding:30px;
+}
+
+/* CARDS */
+
+.card-panel{
+background:#020617;
+border:1px solid #1e293b;
+border-radius:10px;
+padding:20px;
+transition:0.3s;
+}
+
+.card-panel:hover{
+transform:translateY(-5px);
+border-color:#38bdf8;
+}
+
+/* TITLES */
+
+.card-title{
+color:#38bdf8;
+font-weight:600;
+margin-bottom:10px;
+}
+
+/* PROJECT LINK */
+
+.project-btn{
+margin-top:15px;
+display:inline-block;
+padding:8px 16px;
+background:#38bdf8;
+color:black;
+border-radius:6px;
+font-weight:600;
+text-decoration:none;
+}
+
+.project-btn:hover{
+background:#0ea5e9;
+}
+
+/* SOCIAL */
+
+.social{
+text-align:center;
+margin:30px 0;
+}
+
+.social a{
+margin:0 10px;
+font-size:28px;
+color:#94a3b8;
+transition:0.3s;
+}
+
+.social a:hover{
+color:#38bdf8;
+}
+
+/* FOOTER */
+
+footer{
+text-align:center;
+padding:20px;
+color:#64748b;
+}
+
+</style>
 </head>
 
 <body>
 
-<div id="wrap">
-
-<header>
-
-<nav class="blue lighten-2">
+<nav>
 <div class="container">
 <div class="nav-wrapper">
-
-<a href="/" class="brand-logo" style="font-weight:bold;">
-Yatish W
-</a>
-
-<a href="#" data-target="mobile-demo" class="sidenav-trigger">
-<i class="material-icons">menu</i>
-</a>
-
-<ul class="right hide-on-med-and-down">
-
-<li><a href="/">Home</a></li>
+<a href="#" class="brand-logo">Yatish W</a>
+<ul class="right">
+<li><a href="#">Home</a></li>
 <li><a href="projects.html">Projects</a></li>
 <li><a href="docs/Resume_Yatish1.pdf" target="_blank">Resume</a></li>
-
 </ul>
-
 </div>
 </div>
 </nav>
 
-<ul class="sidenav blue lighten-2" id="mobile-demo">
+<!-- HERO -->
 
-<li><a class="white-text" href="/">Home</a></li>
-<li><a class="white-text" href="projects.html">Projects</a></li>
-<li><a class="white-text" href="docs/Resume_Yatish1.pdf" target="_blank">Resume</a></li>
-
-</ul>
-
-</header>
-
-<div class="container center-align">
-
-<div class="avatar">
-<img src="images/avatar.jpg" class="responsive-img" id="avatar">
+<div class="hero">
+<h1>Yatish W</h1>
+<p>Detection Engineering • Threat Hunting • SOC Operations</p>
 </div>
 
-<div class="name">
-<strong>
-<span id="target-mark"></span>
-<span id="target"></span>
-<span id="target-cursor"></span>
-</strong>
+<!-- DASHBOARD -->
+
+<div class="dashboard">
+
+<div class="card-panel">
+<div class="card-title">👨‍💻 About Me</div>
+<p>
+Cyber Security Engineer with experience in SIEM detection, incident response, 
+and behavioural threat analysis using Splunk, ELK, and Wazuh.
+</p>
 </div>
 
-<div>
+<div class="card-panel">
+<div class="card-title">🛠 Skills</div>
+<p>
+SIEM • Wazuh • Splunk • Elastic • Sysmon • MITRE ATT&CK • Threat Detection
+</p>
+</div>
 
-<h5 id="test1">
-<span style="color:#929292;">I'm a</span>
-Cyber Security Engineer
-<span style="color:#929292;">based in</span>
-Bristol, UK.
-</h5>
+<div class="card-panel">
+<div class="card-title">🚨 Featured Project</div>
+<p>
+Built a behaviour-based EDR lab simulating CrowdStrike Falcon using Wazuh, Sysmon,
+and automated containment.
+</p>
 
-<h5 id="test2">
-<span style="color:#929292;">I have</span>
-2+ years
-<span style="color:#929292;">experience in</span>
-Security Operations & Threat Detection
-<span style="color:#929292;">using</span>
-Splunk, Elastic (ELK) & Wazuh.
-</h5>
+<a href="projects.html" class="project-btn">View Project</a>
+</div>
 
-<h5 id="test3">
-<span style="color:#929292;">Experienced in</span>
-SIEM Detection Engineering,
-Incident Response,
-<span style="color:#929292;">and</span>
-MITRE ATT&CK–based Threat Analysis.
-</h5>
-
-<h5 id="test4">
-<span style="color:#929292;">I analyse security telemetry from</span>
-Windows Event Logs,
-Active Directory,
-DNS,
-<span style="color:#929292;">and</span>
-endpoint telemetry
-<span style="color:#929292;">using</span>
-CrowdStrike Falcon & Microsoft Defender.
-</h5>
-
-<h5 id="test5">
-MSc Cyber Security
-<span style="color:#929292;">—</span>
-University of Bristol.
-</h5>
-
-<h5 id="test6">
-View my
-<span class="hov">
-<a href="docs/Resume_Yatish1.pdf" target="_blank">Resume</a>
-</span>
-or connect via
-<span class="hov">
-<a href="https://linkedin.com/in/yatish28">LinkedIn</a>
-</span>.
-</h5>
+<div class="card-panel">
+<div class="card-title">🎓 Education</div>
+<p>
+MSc Cyber Security — University of Bristol
+</p>
+</div>
 
 </div>
+
+<!-- SOCIAL -->
 
 <div class="social">
 
-<h4>
-
-<a href="https://github.com/Yatishw">
-<i class="fab fa-github" style="font-size:36px"></i>
-</a>
-
-<a href="mailto:yatiwaghmare@gmail.com">
-<i class="fas fa-envelope" style="font-size:36px"></i>
-</a>
-
-<a href="https://linkedin.com/in/yatish28">
-<i class="fab fa-linkedin" style="font-size:36px"></i>
-</a>
-
-</h4>
-
-</div>
-
-</div>
+<a href="https://github.com/Yatishw"><i class="fab fa-github"></i></a>
+<a href="mailto:yatiwaghmare@gmail.com"><i class="fas fa-envelope"></i></a>
+<a href="https://linkedin.com/in/yatish28"><i class="fab fa-linkedin"></i></a>
 
 </div>
 
 <footer>
-
-<div id="footer">
-
-<div class="container center-align">
-
-<p class="text-muted">
-Made with ❤️ in the UK
-</p>
-
-</div>
-
-</div>
-
+Made with 💻 in the UK
 </footer>
-
-<script src="js/pxbWriter.js"></script>
-
-<script src="js/jquery-3.3.1.min.js"></script>
-
-<script src="js/materialize.min.js"></script>
-
-<script>
-
-$(document).ready(function(){
-
-$('.sidenav').sidenav();
-
-var targetWriter =
-new Writer(
-$("#target"),
-$("#target-cursor"),
-$("#target-mark"),
-100,
-false,
-false,
-0
-);
-
-targetWriter.write(" Yatish W ",0);
-
-targetWriter.setCursor("'");
-
-setInterval(function(){
-targetWriter.animateCursor(600);
-},0);
-
-$("#test1").delay(2000).animate({"opacity":"1"},500);
-$("#test2").delay(2500).animate({"opacity":"1"},500);
-$("#test3").delay(3000).animate({"opacity":"1"},500);
-$("#test4").delay(3500).animate({"opacity":"1"},500);
-$("#test5").delay(4000).animate({"opacity":"1"},500);
-$("#test6").delay(4500).animate({"opacity":"1"},500);
-
-});
-
-</script>
 
 </body>
 </html>

@@ -56,8 +56,9 @@ animation:fadeUp 1s ease;
   width: 160px;
   height: 160px;
   border-radius: 50%;
-  position: relative;
-  z-index: 2;
+
+  object-fit: cover;
+  object-position: center top; /* 🔥 THIS FIXES YOUR ISSUE */
 }
 
 /* glowing ring */

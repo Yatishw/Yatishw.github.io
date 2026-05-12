@@ -1,150 +1,146 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-
 <meta charset="utf-8">
+
 <title>Projects | Yatish W</title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <link rel="stylesheet" href="css/materialize.min.css">
-<link rel="stylesheet" href="css/main.css">
 <link rel="stylesheet" href="css/all.css">
 
 <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700" rel="stylesheet">
 
 <style>
 
-/* PAGE */
+/* GLOBAL */
 
 body{
+margin:0;
 font-family:'Source Sans Pro',sans-serif;
-background:#f5f7fa;
+background:#020617;
+color:#e2e8f0;
 }
 
+/* NAV */
 
-/* HERO */
-
-.hero{
-height:420px;
-background-image:url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b');
-background-size:cover;
-background-position:center;
-display:flex;
-align-items:center;
-justify-content:center;
-position:relative;
-z-index:1;
+nav{
+background:#020617;
+border-bottom:1px solid #1e293b;
 }
 
-.hero-overlay{
-position:absolute;
-top:0;
-bottom:0;
-left:0;
-right:0;
-background:rgba(0,0,0,0.65);
-}
+/* TITLE */
 
-.hero-text{
-position:relative;
-color:white;
+.page-title{
 text-align:center;
+padding:50px 20px 20px;
 }
 
-.hero-text h1{
-font-weight:600;
+.page-title h2{
+color:#38bdf8;
 }
 
+/* GRID */
 
-/* PROJECT GRID */
-
-.projects-grid{
+.projects{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
-gap:40px;
-margin-top:-80px;
-padding-bottom:40px;
+gap:25px;
+width:90%;
+margin:40px auto;
 }
 
-
-/* PROJECT CARD */
+/* CARD */
 
 .project-card{
-
-background:white;
-padding:35px;
-border-radius:12px;
-
-box-shadow:0 8px 20px rgba(0,0,0,0.15);
-
-transition:transform 0.3s ease, box-shadow 0.3s ease;
-
-height:100%;
-
-}
-
-
-.container{
 position:relative;
-z-index:5;
+height:260px;
+border-radius:12px;
+overflow:hidden;
+background:#020617;
+border:1px solid #1e293b;
+transition:0.3s;
+cursor:pointer;
 }
 
-/* HOVER */
+/* IMAGE */
 
-.project-card:hover{
-
-transform:translateY(-6px);
-
-box-shadow:0 18px 40px rgba(0,0,0,0.25),
-0 0 12px rgba(33,150,243,0.6);
-
-z-index:10;
-
+.project-card img{
+width:100%;
+height:100%;
+object-fit:cover;
+opacity:0.25;
+transition:0.4s;
 }
 
+/* TITLE */
 
-/* TITLES */
-
-.project-card h5{
-
+.project-title{
+position:absolute;
+bottom:20px;
+left:20px;
+font-size:22px;
 font-weight:600;
-color:#0d47a1;
-
+color:white;
+z-index:2;
 }
 
+/* HOVER OVERLAY */
 
-/* BADGES */
-
-.badge{
-
-display:inline-block;
-background:#e3f2fd;
-color:#0d47a1;
-
-padding:6px 10px;
-margin:4px;
-
-border-radius:6px;
-
-font-size:13px;
-
+.project-overlay{
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(2,6,23,0.95);
+opacity:0;
+padding:20px;
+transition:0.4s;
+overflow:auto;
 }
 
+.project-card:hover .project-overlay{
+opacity:1;
+}
+
+.project-card:hover img{
+transform:scale(1.1);
+opacity:0.15;
+}
+
+/* TEXT */
+
+.project-overlay h5{
+color:#38bdf8;
+margin-bottom:10px;
+}
+
+.project-overlay p{
+color:#94a3b8;
+font-size:14px;
+}
 
 /* BUTTON */
 
 .project-btn{
-
-margin-top:20px;
-
+margin-top:15px;
+display:inline-block;
+background:#38bdf8;
+color:black;
+padding:8px 16px;
+border-radius:6px;
+text-decoration:none;
+font-weight:600;
 }
 
-.project-btn a{
+/* FOOTER */
 
-background:#1976d2;
-
+footer{
+text-align:center;
+padding:20px;
+color:#64748b;
 }
 
 </style>
@@ -153,243 +149,141 @@ background:#1976d2;
 
 <body>
 
+<!-- NAV -->
 
-<!-- NAVBAR -->
-
-<nav class="blue lighten-2">
-
+<nav>
 <div class="container">
-
 <div class="nav-wrapper">
-
 <a href="index.html" class="brand-logo">Yatish W</a>
 
 <ul class="right hide-on-med-and-down">
-
 <li><a href="index.html">Home</a></li>
-
 <li><a href="projects.html">Projects</a></li>
-
-<li><a href="docs/Yatish_Resume.pdf">Resume</a></li>
-
+<li><a href="docs/Resume_Yatish1.pdf" target="_blank">Resume</a></li>
 </ul>
 
 </div>
-
 </div>
-
 </nav>
 
+<!-- TITLE -->
 
-
-<!-- HERO -->
-
-<div class="hero">
-
-<div class="hero-overlay"></div>
-
-<div class="hero-text">
-
-<h1>Cyber Security Projects</h1>
-
-<p>Detection Engineering • Threat Simulation • Security Architecture</p>
-
+<div class="page-title">
+<h2>Projects</h2>
+<p>Detection Engineering • Security Labs • SOC Simulations</p>
 </div>
 
-</div>
+<!-- PROJECT GRID -->
 
+<div class="projects">
 
-
-<!-- PROJECTS -->
-
-<div class="container">
-
-<div class="projects-grid">
-
-
-<!-- PROJECT 1 -->
+<!-- EDR PROJECT -->
 
 <div class="project-card">
 
-<h5>🛡 Behaviour-Based EDR Detection Lab</h5>
+<img src="images/edr.jpg">
 
-<p>
-
-Built a behaviour-based Endpoint Detection and Response environment using
-
-<strong>Wazuh, Sysmon, and automated containment scripts</strong>
-
-to simulate enterprise SOC workflows similar to CrowdStrike Falcon.
-
-</p>
-
-<ul>
-
-<li>Behaviour-based correlation rules</li>
-
-<li>Multi-stage attack detection</li>
-
-<li>Automated host containment</li>
-
-<li>Telegram SOC alert notifications</li>
-
-</ul>
-
-
-<div>
-
-<span class="badge">Wazuh</span>
-
-<span class="badge">Sysmon</span>
-
-<span class="badge">MITRE ATT&CK</span>
-
-<span class="badge">Detection Engineering</span>
-
+<div class="project-title">
+EDR Detection & Response Lab
 </div>
 
+<div class="project-overlay">
 
-<div class="project-btn">
+<h5>Behaviour-Based EDR Lab</h5>
 
-<a class="waves-effect waves-light btn"
+<p>
+Built a behaviour-based endpoint detection and response system using 
+Wazuh and Sysmon to simulate enterprise SOC workflows.
+</p>
 
-href="docs/EDR_FALCON.pdf"
+<p>
+• Custom detection rules (PowerShell, multi-stage attacks)<br>
+• Real-time telemetry monitoring<br>
+• Automated host containment (network isolation + process kill)<br>
+• MITRE ATT&CK mapping
+</p>
 
-target="_blank">
-
-View Lab Report
-
+<a href="docs/EDR_FALCON.pdf" target="_blank" class="project-btn">
+View Report
 </a>
 
 </div>
 
 </div>
-
-
 
 <!-- PROJECT 2 -->
 
 <div class="project-card">
 
-<h5>🧨 Active Directory Ransomware Simulation Lab</h5>
+<img src="https://images.unsplash.com/photo-1518770660439-4636190af475">
 
-<p>
-
-Simulated a ransomware attack lifecycle inside an isolated Active Directory
-
-environment and implemented detection engineering using Splunk SIEM telemetry.
-
-</p>
-
-<ul>
-
-<li>Password spraying and credential abuse</li>
-
-<li>Remote execution using Impacket</li>
-
-<li>PowerShell ransomware simulation</li>
-
-<li>Splunk forensic event timeline analysis</li>
-
-</ul>
-
-
-<div>
-
-<span class="badge">Active Directory</span>
-
-<span class="badge">Splunk</span>
-
-<span class="badge">Impacket</span>
-
-<span class="badge">Incident Response</span>
-
+<div class="project-title">
+SIEM Threat Detection Lab
 </div>
 
+<div class="project-overlay">
 
-<div class="project-btn">
+<h5>SIEM Detection Engineering</h5>
 
-<a class="waves-effect waves-light btn"
+<p>
+Developed detection use cases using Splunk and ELK stack to identify 
+suspicious authentication and lateral movement activity.
+</p>
 
-href="docs/RANSOMWARE_ATTACK__HOME_LAB.pdf"
+<p>
+• Log analysis (Windows, AD, DNS)<br>
+• Correlation rules<br>
+• Alert tuning & false positive reduction
+</p>
 
-target="_blank">
-
-View Lab Report
-
+<a href="#" class="project-btn">
+View Details
 </a>
 
 </div>
 
 </div>
-
-
 
 <!-- PROJECT 3 -->
 
 <div class="project-card">
 
-<h5>🌐 Web Application Firewall Deployment Lab</h5>
+<img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b">
 
-<p>
-
-Designed and deployed a Web Application Firewall using
-
-<strong>ModSecurity and the OWASP Core Rule Set</strong>
-
-to detect and block common web attacks against a vulnerable DVWA application.
-
-</p>
-
-<ul>
-
-<li>SQL Injection simulation</li>
-
-<li>Cross-Site Scripting attack testing</li>
-
-<li>Command injection analysis</li>
-
-<li>WAF telemetry monitoring in Splunk</li>
-
-</ul>
-
-
-<div>
-
-<span class="badge">ModSecurity</span>
-
-<span class="badge">OWASP CRS</span>
-
-<span class="badge">DVWA</span>
-
-<span class="badge">Web Security</span>
-
+<div class="project-title">
+Threat Hunting Lab
 </div>
 
+<div class="project-overlay">
 
-<div class="project-btn">
+<h5>Threat Hunting & Investigation</h5>
 
-<a class="waves-effect waves-light btn"
+<p>
+Performed proactive threat hunting using MITRE ATT&CK techniques 
+to identify suspicious behaviour across endpoint telemetry.
+</p>
 
-href="docs/WAF-HOME lab.pdf"
+<p>
+• Process analysis<br>
+• Command-line investigation<br>
+• Behaviour correlation
+</p>
 
-target="_blank">
-
-View Lab Report
-
+<a href="#" class="project-btn">
+View Details
 </a>
 
 </div>
 
 </div>
 
-
-
 </div>
 
-</div>
+<!-- FOOTER -->
 
+<footer>
+Built with focus on detection engineering & SOC operations
+</footer>
 
 </body>
-
 </html>

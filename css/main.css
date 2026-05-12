@@ -121,76 +121,106 @@ div.footer{
 }
 
 
+/* ========================= */
+/* 🔥 INTERACTIVE HERO FIX */
+/* ========================= */
+
+/* Remove white bg conflict */
+body {
+  background-color: #000;
+  overflow-x: hidden;
+}
+
+/* HERO SECTION IMPROVED */
 .hero {
   height: 100vh;
-  background: url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b') no-repeat center center/cover;
+  background: linear-gradient(rgba(10,20,40,0.8), rgba(10,20,40,0.9)),
+              url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b') no-repeat center/cover;
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.hero-overlay {
-  position: absolute;
-  top:0;
-  left:0;
-  right:0;
-  bottom:0;
-  background: rgba(10,20,40,0.75);
-}
-
+/* HERO CONTENT CENTER FIX */
 .hero-content {
-  position: relative;
-  color: white;
-  max-width: 800px;
-  padding: 20px;
+  text-align: center;
+  animation: fadeUp 1s ease forwards;
 }
 
+/* AVATAR ANIMATION */
 .hero-avatar {
-  width: 150px;
-  height: 150px;
+  width: 160px;
+  height: 160px;
   border-radius: 50%;
+  border: 3px solid #42a5f5;
   margin-bottom: 20px;
-  border: 3px solid #2196f3;
+
+  animation: float 4s ease-in-out infinite;
+  box-shadow: 0 0 20px rgba(66,165,245,0.6);
 }
 
+.hero-avatar:hover {
+  transform: scale(1.08);
+}
+
+/* FLOAT EFFECT */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-12px); }
+  100% { transform: translateY(0px); }
+}
+
+/* TEXT */
 .hero-title {
-  font-size: 48px;
+  font-size: 52px;
   font-weight: 700;
 }
 
 .hero-sub {
-  font-size: 24px;
-  margin-top: 10px;
-  color: #90caf9;
+  font-size: 26px;
+  color: #64b5f6;
+  min-height: 32px;
 }
 
+/* DESCRIPTION */
 .hero-desc {
   font-size: 18px;
-  margin-top: 20px;
-  line-height: 1.6;
   color: #cfd8dc;
 }
 
-.hero-buttons {
-  margin-top: 30px;
-}
-
+/* BUTTONS */
 .hero-buttons a {
-  margin: 10px;
-}
-
-.hero-social {
-  margin-top: 30px;
-}
-
-.hero-social a {
-  font-size: 28px;
-  margin: 0 12px;
+  padding: 12px 24px;
+  border-radius: 6px;
+  background: #2196f3;
   color: white;
   transition: 0.3s;
 }
 
+.hero-buttons a:hover {
+  transform: translateY(-3px);
+  background: #1976d2;
+}
+
+/* SOCIAL ICONS */
+.hero-social a {
+  font-size: 30px;
+  transition: 0.3s;
+}
+
 .hero-social a:hover {
-  color: #42a5f5;
+  color: #64b5f6;
+}
+
+/* FADE ANIMATION */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

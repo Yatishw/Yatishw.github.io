@@ -57,5 +57,55 @@
 <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
 <script src="script.js"></script>
 
+
+
+  
+<script>
+const roles = [
+"Detection Engineer",
+"Threat Hunter",
+"EDR Analyst"
+];
+
+let i = 0;
+let j = 0;
+let current = "";
+let isDeleting = false;
+
+function type(){
+let el = document.getElementById("typing-role");
+
+if(i < roles.length){
+
+if(!isDeleting && j <= roles[i].length){
+current = roles[i].substring(0,j++);
+}
+else if(isDeleting && j >= 0){
+current = roles[i].substring(0,j--);
+}
+
+el.innerHTML = current;
+
+if(j === roles[i].length){
+isDeleting = true;
+setTimeout(type,1200);
+return;
+}
+
+if(j === 0){
+isDeleting = false;
+i = (i+1)%roles.length;
+}
+}
+
+setTimeout(type, isDeleting ? 40 : 80);
+}
+
+type();
+</script>
+
+
+
+  
 </body>
 </html>

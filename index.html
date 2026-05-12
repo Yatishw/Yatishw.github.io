@@ -2,7 +2,8 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Yatish W | Cyber Security</title>
+
+<title>Yatish W</title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -10,6 +11,9 @@
 <link rel="stylesheet" href="css/all.css">
 
 <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600" rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<link rel="icon" href="images/favicon.ico">
 
 <style>
 
@@ -29,83 +33,100 @@ background:#020617;
 border-bottom:1px solid #1e293b;
 }
 
-/* HERO */
+/* TERMINAL */
 
-.hero{
-padding:80px 20px;
-text-align:center;
-}
-
-.hero h1{
-font-size:48px;
-font-weight:600;
-color:#38bdf8;
-}
-
-.hero p{
-color:#94a3b8;
-font-size:18px;
-}
-
-/* GRID */
-
-.dashboard{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-gap:20px;
-padding:30px;
-}
-
-/* CARDS */
-
-.card-panel{
+.terminal{
 background:#020617;
-border:1px solid #1e293b;
-border-radius:10px;
-padding:20px;
-transition:0.3s;
-}
-
-.card-panel:hover{
-transform:translateY(-5px);
-border-color:#38bdf8;
-}
-
-/* TITLES */
-
-.card-title{
 color:#38bdf8;
+font-family:monospace;
+padding:20px;
+border-radius:10px;
+margin:30px auto;
+width:85%;
+max-width:900px;
+box-shadow:0 0 20px rgba(56,189,248,0.2);
+}
+
+#terminal-text::after{
+content:"_";
+animation:blink 1s infinite;
+}
+
+@keyframes blink{
+0%{opacity:1;}
+50%{opacity:0;}
+100%{opacity:1;}
+}
+
+/* PROFILE */
+
+.avatar{
+margin-top:30px;
+}
+
+#avatar{
+width:160px;
+border-radius:50%;
+}
+
+/* TEXT */
+
+.name{
+margin-top:15px;
+font-size:28px;
 font-weight:600;
+color:#38bdf8;
+}
+
+/* FADE TEXT */
+
+.fade-text{
+opacity:0;
+transition:0.5s;
+margin-top:10px;
+}
+
+/* THREAT FEED */
+
+.threat-feed{
+background:#020617;
+margin:40px auto;
+padding:20px;
+border-radius:10px;
+width:85%;
+max-width:900px;
+height:220px;
+overflow:hidden;
+box-shadow:0 0 20px rgba(248,113,113,0.2);
+}
+
+.threat-title{
+color:#f87171;
 margin-bottom:10px;
 }
 
-/* PROJECT LINK */
-
-.project-btn{
-margin-top:15px;
-display:inline-block;
-padding:8px 16px;
-background:#38bdf8;
-color:black;
-border-radius:6px;
-font-weight:600;
-text-decoration:none;
+.threat-item{
+color:#f87171;
+font-family:monospace;
+margin-bottom:5px;
+opacity:0;
+animation:fadeIn 0.8s forwards;
 }
 
-.project-btn:hover{
-background:#0ea5e9;
+@keyframes fadeIn{
+to{opacity:1;}
 }
 
 /* SOCIAL */
 
 .social{
 text-align:center;
-margin:30px 0;
+margin-top:20px;
 }
 
 .social a{
-margin:0 10px;
-font-size:28px;
+margin:0 12px;
+font-size:30px;
 color:#94a3b8;
 transition:0.3s;
 }
@@ -118,11 +139,12 @@ color:#38bdf8;
 
 footer{
 text-align:center;
-padding:20px;
+margin-top:30px;
 color:#64748b;
 }
 
 </style>
+
 </head>
 
 <body>
@@ -130,59 +152,45 @@ color:#64748b;
 <nav>
 <div class="container">
 <div class="nav-wrapper">
-<a href="#" class="brand-logo">Yatish W</a>
-<ul class="right">
-<li><a href="#">Home</a></li>
+
+<a href="/" class="brand-logo">Yatish W</a>
+
+<ul class="right hide-on-med-and-down">
+<li><a href="/">Home</a></li>
 <li><a href="projects.html">Projects</a></li>
 <li><a href="docs/Resume_Yatish1.pdf" target="_blank">Resume</a></li>
 </ul>
+
 </div>
 </div>
 </nav>
 
-<!-- HERO -->
+<!-- TERMINAL -->
 
-<div class="hero">
-<h1>Yatish W</h1>
-<p>Detection Engineering • Threat Hunting • SOC Operations</p>
+<div class="terminal">
+<div id="terminal-text"></div>
 </div>
 
-<!-- DASHBOARD -->
+<!-- PROFILE -->
 
-<div class="dashboard">
+<div class="container center-align">
 
-<div class="card-panel">
-<div class="card-title">👨‍💻 About Me</div>
-<p>
-Cyber Security Engineer with experience in SIEM detection, incident response, 
-and behavioural threat analysis using Splunk, ELK, and Wazuh.
-</p>
+<div class="avatar">
+<img src="images/avatar.jpg" class="responsive-img" id="avatar">
 </div>
 
-<div class="card-panel">
-<div class="card-title">🛠 Skills</div>
-<p>
-SIEM • Wazuh • Splunk • Elastic • Sysmon • MITRE ATT&CK • Threat Detection
-</p>
+<div class="name">Yatish W</div>
+
+<h5 class="fade-text" id="t1">Cyber Security Engineer — Bristol, UK</h5>
+<h5 class="fade-text" id="t2">Detection Engineering • SIEM • Threat Hunting</h5>
+<h5 class="fade-text" id="t3">Splunk • ELK • Wazuh • Sysmon • MITRE ATT&CK</h5>
+
 </div>
 
-<div class="card-panel">
-<div class="card-title">🚨 Featured Project</div>
-<p>
-Built a behaviour-based EDR lab simulating CrowdStrike Falcon using Wazuh, Sysmon,
-and automated containment.
-</p>
+<!-- THREAT FEED -->
 
-<a href="projects.html" class="project-btn">View Project</a>
-</div>
-
-<div class="card-panel">
-<div class="card-title">🎓 Education</div>
-<p>
-MSc Cyber Security — University of Bristol
-</p>
-</div>
-
+<div class="threat-feed" id="threat-feed">
+<div class="threat-title">🚨 Live Threat Feed</div>
 </div>
 
 <!-- SOCIAL -->
@@ -196,8 +204,81 @@ MSc Cyber Security — University of Bristol
 </div>
 
 <footer>
-Made with 💻 in the UK
+<p>Simulated SOC Interface • Built by Yatish W</p>
 </footer>
+
+<!-- SCRIPTS -->
+
+<script src="js/jquery-3.3.1.min.js"></script>
+<script src="js/materialize.min.js"></script>
+
+<script>
+
+/* TERMINAL EFFECT */
+
+const lines = [
+"> Initializing EDR...",
+"> Loading detection rules...",
+"> Monitoring endpoint telemetry...",
+"> Behaviour analytics enabled...",
+"> SOC Analyst: Yatish W ✔"
+];
+
+let i = 0;
+let j = 0;
+
+function typeEffect(){
+if(i < lines.length){
+if(j < lines[i].length){
+document.getElementById("terminal-text").innerHTML += lines[i].charAt(j);
+j++;
+setTimeout(typeEffect, 25);
+}else{
+document.getElementById("terminal-text").innerHTML += "<br>";
+i++;
+j = 0;
+setTimeout(typeEffect, 300);
+}
+}
+}
+
+typeEffect();
+
+
+/* FADE TEXT */
+
+setTimeout(()=>document.getElementById("t1").style.opacity=1,2000);
+setTimeout(()=>document.getElementById("t2").style.opacity=1,2600);
+setTimeout(()=>document.getElementById("t3").style.opacity=1,3200);
+
+
+/* THREAT FEED */
+
+const threats = [
+"[HIGH] Encoded PowerShell detected",
+"[MEDIUM] Suspicious process chain",
+"[CRITICAL] Multi-stage attack detected",
+"[LOW] Unusual outbound traffic",
+"[CRITICAL] Host isolated successfully"
+];
+
+function addThreat(){
+const feed = document.getElementById("threat-feed");
+
+const item = document.createElement("div");
+item.className = "threat-item";
+item.innerText = threats[Math.floor(Math.random()*threats.length)];
+
+feed.appendChild(item);
+
+if(feed.children.length > 7){
+feed.removeChild(feed.children[1]);
+}
+}
+
+setInterval(addThreat, 1800);
+
+</script>
 
 </body>
 </html>

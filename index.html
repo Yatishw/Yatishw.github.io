@@ -6,106 +6,214 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- Fonts -->
+<!-- FONT -->
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-<!-- Icons -->
+<!-- ICONS -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-<!-- CSS -->
-<link rel="stylesheet" href="style.css">
+<style>
+
+/* RESET */
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Inter',sans-serif;
+}
+
+body{
+background:#0a0f1c;
+color:white;
+overflow:hidden;
+}
+
+/* HERO */
+.hero{
+height:100vh;
+background:linear-gradient(rgba(5,10,25,0.85), rgba(5,10,25,0.95)),
+url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b') no-repeat center/cover;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+}
+
+/* CONTENT */
+.hero-content{
+max-width:800px;
+padding:20px;
+animation:fadeUp 1s ease;
+}
+
+/* AVATAR */
+.avatar{
+width:160px;
+height:160px;
+border-radius:50%;
+border:3px solid #42a5f5;
+margin-bottom:20px;
+animation:float 4s ease-in-out infinite;
+box-shadow:0 0 25px rgba(66,165,245,0.6);
+}
+
+/* FLOAT */
+@keyframes float{
+0%{transform:translateY(0);}
+50%{transform:translateY(-15px);}
+100%{transform:translateY(0);}
+}
+
+/* TEXT */
+h1{
+font-size:52px;
+font-weight:700;
+}
+
+h2{
+font-size:26px;
+color:#64b5f6;
+margin-top:10px;
+min-height:30px;
+}
+
+p{
+margin-top:20px;
+font-size:18px;
+color:#cfd8dc;
+line-height:1.6;
+}
+
+/* BUTTONS */
+.buttons{
+margin-top:30px;
+}
+
+.buttons a{
+display:inline-block;
+padding:12px 24px;
+margin:10px;
+border-radius:6px;
+background:#2196f3;
+color:white;
+text-decoration:none;
+transition:0.3s;
+}
+
+.buttons a:hover{
+transform:translateY(-3px);
+background:#1976d2;
+}
+
+.secondary{
+background:transparent;
+border:1px solid #aaa;
+}
+
+.secondary:hover{
+background:white;
+color:black;
+}
+
+/* SOCIAL */
+.social{
+margin-top:25px;
+}
+
+.social a{
+font-size:28px;
+margin:0 10px;
+color:white;
+transition:0.3s;
+}
+
+.social a:hover{
+color:#64b5f6;
+}
+
+/* FADE */
+@keyframes fadeUp{
+from{opacity:0;transform:translateY(40px);}
+to{opacity:1;transform:translateY(0);}
+}
+
+</style>
 
 </head>
 
 <body>
 
-<!-- PARTICLES BACKGROUND -->
-<div id="particles-js"></div>
+<div class="hero">
 
-<!-- HERO -->
-<section class="hero">
+<div class="hero-content">
 
-  <div class="content">
+<img src="images/avatar.jpg" class="avatar">
 
-    <img src="images/avatar.jpg" class="avatar">
+<h1>Yatish W</h1>
 
-    <h1 class="fade">Yatish W</h1>
+<h2 id="typing"></h2>
 
-    <h2 id="typing"></h2>
+<p>
+Behaviour-based detection engineering • Threat hunting • SOC automation  
+<br>
+Building real-world EDR simulations using Wazuh, Sysmon & MITRE ATT&CK
+</p>
 
-    <p class="fade delay">
-      I design behaviour-based detection systems and simulate real-world attacks 
-      using Wazuh, Sysmon, and MITRE ATT&CK to build SOC-ready security workflows.
-    </p>
+<div class="buttons">
+<a href="projects.html">View Projects</a>
+<a href="docs/Resume_Yatish1.pdf" target="_blank" class="secondary">Resume</a>
+</div>
 
-    <div class="buttons fade delay2">
-      <a href="projects.html">View Projects</a>
-      <a href="docs/Resume_Yatish1.pdf" target="_blank" class="secondary">Resume</a>
-    </div>
+<div class="social">
+<a href="https://github.com/Yatishw"><i class="fab fa-github"></i></a>
+<a href="https://linkedin.com/in/yatish28"><i class="fab fa-linkedin"></i></a>
+<a href="mailto:yatiwaghmare@gmail.com"><i class="fas fa-envelope"></i></a>
+</div>
 
-    <div class="socials fade delay3">
-      <a href="https://github.com/Yatishw"><i class="fab fa-github"></i></a>
-      <a href="https://linkedin.com/in/yatish28"><i class="fab fa-linkedin"></i></a>
-      <a href="mailto:yatiwaghmare@gmail.com"><i class="fas fa-envelope"></i></a>
-    </div>
+</div>
 
-  </div>
+</div>
 
-</section>
-
-<!-- SCRIPTS -->
-<script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
-<script src="script.js"></script>
-
-
-
-  
 <script>
+
+/* TYPING EFFECT */
 const roles = [
 "Detection Engineer",
 "Threat Hunter",
 "EDR Analyst"
 ];
 
-let i = 0;
-let j = 0;
-let current = "";
-let isDeleting = false;
+let i=0, j=0, current="", deleting=false;
 
 function type(){
-let el = document.getElementById("typing-role");
+let el=document.getElementById("typing");
 
-if(i < roles.length){
-
-if(!isDeleting && j <= roles[i].length){
-current = roles[i].substring(0,j++);
+if(!deleting && j<=roles[i].length){
+current=roles[i].substring(0,j++);
 }
-else if(isDeleting && j >= 0){
-current = roles[i].substring(0,j--);
+else if(deleting && j>=0){
+current=roles[i].substring(0,j--);
 }
 
-el.innerHTML = current;
+el.innerHTML=current;
 
-if(j === roles[i].length){
-isDeleting = true;
+if(j===roles[i].length){
+deleting=true;
 setTimeout(type,1200);
 return;
 }
 
-if(j === 0){
-isDeleting = false;
-i = (i+1)%roles.length;
-}
+if(j===0){
+deleting=false;
+i=(i+1)%roles.length;
 }
 
-setTimeout(type, isDeleting ? 40 : 80);
+setTimeout(type, deleting?40:80);
 }
 
 type();
+
 </script>
 
-
-
-  
 </body>
 </html>

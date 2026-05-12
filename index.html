@@ -175,44 +175,48 @@ Building real-world EDR simulations using Wazuh, Sysmon & MITRE ATT&CK
 </div>
 
 <script>
-
-/* TYPING EFFECT */
 const roles = [
 "Detection Engineer",
 "Threat Hunter",
 "EDR Analyst"
 ];
 
-let i=0, j=0, current="", deleting=false;
+let i = 0;
+let j = 0;
+let current = "";
+let deleting = false;
 
 function type(){
-let el=document.getElementById("typing");
+let el = document.getElementById("typing");
 
-if(!deleting && j<=roles[i].length){
-current=roles[i].substring(0,j++);
+if(!deleting && j < roles[i].length){
+  current += roles[i].charAt(j);
+  j++;
 }
-else if(deleting && j>=0){
-current=roles[i].substring(0,j--);
-}
-
-el.innerHTML=current;
-
-if(j===roles[i].length){
-deleting=true;
-setTimeout(type,1200);
-return;
+else if(deleting && j > 0){
+  current = current.slice(0, -1);
+  j--;
 }
 
-if(j===0){
-deleting=false;
-i=(i+1)%roles.length;
+el.innerHTML = current;
+
+/* pause at full word */
+if(j === roles[i].length){
+  deleting = true;
+  setTimeout(type, 1200);
+  return;
 }
 
-setTimeout(type, deleting?40:80);
+/* move to next word */
+if(j === 0 && deleting){
+  deleting = false;
+  i = (i + 1) % roles.length;
+}
+
+setTimeout(type, deleting ? 40 : 80);
 }
 
 type();
-
 </script>
 
 </body>

@@ -23,32 +23,31 @@ font-family:'Inter',sans-serif;
 }
 
 body{
-  background:
-    linear-gradient(rgba(5,10,25,0.85), rgba(5,10,25,0.95)),
-    url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b') no-repeat center/cover;
+  background: radial-gradient(circle at top, #0f172a, #020617 80%);
+  color: black;
 }
 
 
 /* HERO */  
 .hero{
-height:100vh;
-background:linear-gradient(rgba(5,10,25,0.85), rgba(5,10,25,0.95)),
-url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b') no-repeat center/cover;
-display:flex;
-align-items:center;
-justify-content:center;
-text-align:center;
+  height:100vh;
 
-position: relative;
-z-index: 1;  
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
 
-background: transparent;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
 }
 
 /* CONTENT */
 .hero-content{
 max-width:800px;
 padding:20px;
+position: relative;
+z-index: 2;  
 }
 
 /* AVATAR */
@@ -175,6 +174,66 @@ to{opacity:1;transform:translateY(0);}
   pointer-events: none; /* 🔥 important */
 }
 
+
+/* ===== CYBER GRID BACKGROUND ===== */
+.hero::before {
+  opacity: 0.6;
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+
+  background:
+    repeating-linear-gradient(
+      to right,
+      rgba(66,165,245,0.12) 0px,
+      rgba(66,165,245,0.12) 1px,
+      transparent 1px,
+      transparent 80px
+    ),
+    repeating-linear-gradient(
+      to bottom,
+      rgba(66,165,245,0.12) 0px,
+      rgba(66,165,245,0.12) 1px,
+      transparent 1px,
+      transparent 80px
+    );
+
+  z-index: 0;
+  animation: scan 6s linear infinite;
+}
+
+/* ===== LIGHT SWEEP ===== */
+.hero::after {
+  content: "";
+  position: absolute;
+  width: 200%;
+  height: 100%;
+  top: 0;
+  left: -50%;
+
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255,255,255,0.08),
+    transparent
+  );
+
+  animation: sweep 6s infinite;
+}
+
+/* ANIMATIONS */
+@keyframes scan {
+  0% { background-position: 0 0; }
+  100% { background-position: 0 80px; }
+}
+
+@keyframes sweep {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+  
 
 
 

@@ -28,6 +28,8 @@ body{
 }
 
 
+  
+
 /* HERO */  
 .hero{
   height:100vh;
@@ -225,7 +227,34 @@ to{opacity:1;transform:translateY(0);}
   100% { transform: translateX(100%); }
 }
 
-  
+
+
+.nav{
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+
+  background: rgba(0,0,0,0.4);
+  padding: 10px 20px;
+  border-radius: 30px;
+  backdrop-filter: blur(10px);
+}
+
+.nav a{
+  margin: 0 12px;
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+  opacity: 0.8;
+  transition: 0.3s;
+}
+
+.nav a:hover{
+  opacity: 1;
+  color: #42a5f5;
+}  
 
 
 
@@ -236,6 +265,17 @@ to{opacity:1;transform:translateY(0);}
 </head>
 
 <body>
+
+<nav class="nav">
+  <a href="#experience">Experience</a>
+  <a href="#skills">Skills</a>
+  <a href="#projects">Projects</a>
+  <a href="#certs">Certifications</a>
+  <a href="#contact">Contact</a>
+</nav>
+
+  
+  
 <div class="hero">
 
 <div class="hero-content">
@@ -254,10 +294,7 @@ I design and engineer behaviour-based detection systems to identify and stop att
 Specialising in EDR (CrowdStrike), threat hunting, and SOC automation using Wazuh, Sysmon, and MITRE ATT&CK.
 </p>
 
-<div class="buttons">
-<a href="projects.html">View Projects</a>
-<a href="docs/Resume_Yatish1.pdf" target="_blank" class="secondary">Resume</a>
-</div>
+
 
 <div class="social">
 <a href="https://github.com/Yatishw"><i class="fab fa-github"></i></a>
@@ -268,6 +305,65 @@ Specialising in EDR (CrowdStrike), threat hunting, and SOC automation using Wazu
 </div>
 
 </div>
+
+
+<!-- 🔥 ADD SECTIONS HERE -->
+<section class="section" id="experience">
+  <h2>Experience</h2>
+
+  <div class="card">
+    <h3>Security Analyst — eClerx</h3>
+    <p>Monitored 500+ alerts weekly using Splunk.</p>
+    <p>Reduced false positives by 30%.</p>
+  </div>
+
+  <div class="card">
+    <h3>Cyber Security Analyst — CyberNX</h3>
+    <p>Handled 200+ alerts/month using Elastic.</p>
+  </div>
+
+  <div class="card">
+    <h3>Monitoring Analyst — Amazon</h3>
+    <p>Reviewed 500+ alerts weekly.</p>
+  </div>
+</section>
+
+
+<section class="section" id="skills">
+  <h2>Skills</h2>
+  <div class="cards">
+    <div class="card">Splunk / Elastic</div>
+    <div class="card">CrowdStrike</div>
+    <div class="card">MITRE ATT&CK</div>
+    <div class="card">Incident Response</div>
+  </div>
+</section>
+
+
+<section class="section" id="projects">
+  <h2>Projects</h2>
+  <div class="card">EDR Detection Lab (Wazuh + Sysmon)</div>
+  <div class="card">Ransomware Simulation</div>
+  <div class="card">WAF Deployment</div>
+</section>
+
+
+<section class="section" id="certs">
+  <h2>Certifications</h2>
+  <div class="cards">
+    <div class="card">Google Data Analytics</div>
+    <div class="card">Threat Intelligence</div>
+  </div>
+</section>
+
+
+<section class="section" id="contact">
+  <h2>Contact</h2>
+  <p>Email: yatiwaghmare@gmail.com</p>
+</section>
+  
+
+  
 
 <script>
 const roles = [
@@ -316,5 +412,5 @@ type();
 
  
   
-</body>
+</body>  
 </html>

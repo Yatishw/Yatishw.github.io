@@ -68,22 +68,7 @@ z-index: 2;
   object-position: 50% 25%; /* 🔥 THIS FIXES YOUR ISSUE */
 }
 
-/* glowing ring */
-.avatar-wrapper::before {
-  content: "";
-  position: absolute;
-  inset: -10px;
-  border-radius: 50%;
-  border: 2px solid #42a5f5;
 
-  animation: pulse 2.5s infinite ease-in-out;
-}
-
-@keyframes pulse {
-  0% { box-shadow: 0 0 10px #42a5f5; }
-  50% { box-shadow: 0 0 35px #42a5f5; }
-  100% { box-shadow: 0 0 10px #42a5f5; }
-}
 
 /* TEXT */
 h1{

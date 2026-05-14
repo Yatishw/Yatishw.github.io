@@ -492,9 +492,9 @@ z-index:2;
 
 position:relative;
 
-height:220px;
+height:240px;
 
-padding:30px;
+padding:28px;
 
 display:flex;
 flex-direction:column;
@@ -516,7 +516,28 @@ box-shadow:
 0 10px 30px rgba(0,0,0,0.35);
 
 transition:0.3s ease;
+
+isolation:isolate;
 }
+
+
+
+
+.featured-certs{
+
+width:88%;
+
+margin:90px auto 40px;
+
+display:grid;
+
+grid-template-columns:
+repeat(3,1fr);
+
+gap:30px;
+}
+
+  
 
 
 .featured-cert::before{

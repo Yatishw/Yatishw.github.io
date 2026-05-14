@@ -1,21 +1,22 @@
 <!DOCTYPE html>
-<html>
-<head>
-<meta charset="utf-8">
+<html lang="en">
 
+<head>
+
+<meta charset="utf-8">
 <title>Projects | Yatish W</title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link rel="stylesheet" href="css/all.css">
+<!-- FONT -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700" rel="stylesheet">
+<!-- ICONS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
 
-<style>
-
-/* ===== RESET ===== */
+/* ================= RESET ================= */
 
 *{
 margin:0;
@@ -29,13 +30,15 @@ scroll-behavior:smooth;
 }
 
 body{
-background: radial-gradient(circle at top, #0f172a, #020617 80%);
+background:
+radial-gradient(circle at top,#0f172a,#020617 80%);
 color:white;
 overflow-x:hidden;
 position:relative;
+min-height:100vh;
 }
 
-/* ===== GRID BACKGROUND ===== */
+/* ================= CYBER GRID ================= */
 
 body::before{
 content:"";
@@ -64,9 +67,7 @@ transparent 80px
 z-index:-2;
 }
 
-/* ===== NAV ===== */
-
-/* ===== PREMIUM NAV ===== */
+/* ================= NAVBAR ================= */
 
 .nav{
 position:fixed;
@@ -79,11 +80,11 @@ display:flex;
 align-items:center;
 gap:12px;
 
-background:rgba(10,15,30,0.65);
-
 padding:14px 24px;
 
 border-radius:50px;
+
+background:rgba(10,15,30,0.65);
 
 backdrop-filter:blur(14px);
 
@@ -93,8 +94,6 @@ box-shadow:
 0 10px 40px rgba(0,0,0,0.4);
 }
 
-/* LINKS */
-
 .nav a{
 color:#e2e8f0;
 text-decoration:none;
@@ -103,14 +102,11 @@ font-size:15px;
 font-weight:600;
 
 padding:10px 14px;
+
 border-radius:12px;
 
 transition:0.3s ease;
-
-position:relative;
 }
-
-/* HOVER */
 
 .nav a:hover{
 background:rgba(255,255,255,0.05);
@@ -126,127 +122,169 @@ font-weight:700;
 }
 
 .resume-btn:hover{
-transform:translateY(-2px);
 background:#64b5f6 !important;
+transform:translateY(-2px);
 }
 
-/* ===== PAGE TITLE ===== */
+/* ================= PAGE TITLE ================= */
 
 .page-title{
-padding-top:140px;
+padding-top:170px;
 text-align:center;
 position:relative;
 z-index:2;
 }
 
-.page-title h2{
-font-size:58px;
+.page-title h1{
+font-size:72px;
 font-weight:700;
-color:white;
+
+letter-spacing:-3px;
+line-height:1;
+
+margin-bottom:18px;
 }
 
 .page-title p{
-margin-top:15px;
-color:#94a3b8;
-font-size:18px;
+font-size:20px;
+font-weight:300;
+
+color:#cbd5e1;
 }
 
-/* ===== GRID ===== */
+/* ================= PROJECT GRID ================= */
 
 .projects{
 width:90%;
-margin:70px auto;
+margin:90px auto;
 
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(340px,1fr));
-gap:35px;
+grid-template-columns:
+repeat(auto-fit,minmax(360px,1fr));
+
+gap:40px;
 
 position:relative;
 z-index:2;
 }
 
-/* ===== CARD ===== */
+/* ================= ELITE CARD ================= */
 
 .project-card{
 position:relative;
-height:320px;
 
-border-radius:20px;
+height:340px;
+
+border-radius:24px;
+
 overflow:hidden;
 
-background:rgba(255,255,255,0.04);
+background:
+linear-gradient(
+145deg,
+rgba(255,255,255,0.06),
+rgba(255,255,255,0.02)
+);
 
 border:1px solid rgba(255,255,255,0.08);
 
-backdrop-filter:blur(10px);
+backdrop-filter:blur(16px);
 
-transition:0.4s ease;
+transition:0.5s ease;
 
 cursor:pointer;
-}
-
-/* ===== HOVER ===== */
-
-.project-card:hover{
-transform:translateY(-10px);
-border-color:#42a5f5;
 
 box-shadow:
-0 0 25px rgba(66,165,245,0.15);
+0 10px 30px rgba(0,0,0,0.35);
 }
 
-/* ===== IMAGE ===== */
+/* ================= HOVER ================= */
+
+.project-card:hover{
+
+transform:
+translateY(-12px)
+scale(1.02);
+
+border-color:
+rgba(66,165,245,0.5);
+
+box-shadow:
+0 0 30px rgba(66,165,245,0.18),
+0 20px 60px rgba(0,0,0,0.5);
+}
+
+/* ================= IMAGE ================= */
 
 .project-card img{
 width:100%;
 height:100%;
+
 object-fit:cover;
 
-opacity:0.2;
-transition:0.5s;
+opacity:0.18;
+
+transition:0.6s ease;
+
+filter:grayscale(20%);
 }
 
 .project-card:hover img{
+
 transform:scale(1.08);
-opacity:0.12;
+
+opacity:0.1;
+
+filter:grayscale(0%);
 }
 
-/* ===== TITLE ===== */
+/* ================= TITLE ================= */
 
 .project-title{
 position:absolute;
-left:25px;
-bottom:25px;
 
-font-size:28px;
+left:28px;
+bottom:28px;
+
+font-size:30px;
 font-weight:700;
-color:white;
+
+line-height:1.2;
+
+max-width:80%;
 
 z-index:2;
 }
 
-/* ===== OVERLAY ===== */
+/* ================= OVERLAY ================= */
 
 .project-overlay{
 position:absolute;
 inset:0;
 
-padding:30px;
+padding:35px;
 
-background:rgba(2,6,23,0.96);
+background:
+linear-gradient(
+180deg,
+rgba(2,6,23,0.92),
+rgba(2,6,23,0.98)
+);
 
 opacity:0;
 
-transition:0.4s ease;
+transition:0.45s ease;
 
 overflow:auto;
+
+backdrop-filter:blur(10px);
 }
 
 .project-card:hover .project-overlay{
 opacity:1;
 }
 
-/* ===== OVERLAY TEXT ===== */
+/* ================= OVERLAY TEXT ================= */
 
 .project-overlay h5{
 font-size:24px;
@@ -255,20 +293,24 @@ color:#42a5f5;
 }
 
 .project-overlay p{
-font-size:15px;
-line-height:1.7;
+font-size:16px;
+font-weight:300;
+
+line-height:1.8;
+
 color:#cbd5e1;
+
 margin-bottom:15px;
 }
 
-/* ===== BUTTON ===== */
+/* ================= BUTTON ================= */
 
 .project-btn{
 display:inline-block;
 
 padding:10px 20px;
 
-border-radius:8px;
+border-radius:10px;
 
 background:#42a5f5;
 color:black;
@@ -280,21 +322,43 @@ transition:0.3s;
 }
 
 .project-btn:hover{
-transform:translateY(-3px);
 background:#64b5f6;
+transform:translateY(-3px);
 }
 
-/* ===== FOOTER ===== */
+/* ================= FOOTER ================= */
 
 footer{
 text-align:center;
-padding:50px 20px;
+
+padding:60px 20px;
+
 color:#64748b;
+
 position:relative;
 z-index:2;
 }
 
-</style>
+/* ================= MOBILE ================= */
+
+@media(max-width:768px){
+
+.page-title h1{
+font-size:52px;
+}
+
+.projects{
+grid-template-columns:1fr;
+}
+
+.nav{
+width:95%;
+justify-content:center;
+flex-wrap:wrap;
+border-radius:24px;
+}
+
+}
 
 </style>
 
@@ -302,34 +366,41 @@ z-index:2;
 
 <body>
 
-<!-- NAV -->
+<!-- ================= NAV ================= -->
 
 <nav class="nav">
 
-  <a href="index.html">Home</a>
-  <a href="projects.html">Projects</a>
-  <a href="experience.html">Experience</a>
-  <a href="skills.html">Skills</a>
-  <a href="certs.html">Certifications</a>
+<a href="index.html">Home</a>
+<a href="projects.html">Projects</a>
+<a href="experience.html">Experience</a>
+<a href="skills.html">Skills</a>
+<a href="certs.html">Certifications</a>
 
-  <a href="docs/Resume_Yatish1.pdf" target="_blank" class="resume-btn">
-    Resume
-  </a>
+<a href="docs/Resume_Yatish1.pdf"
+target="_blank"
+class="resume-btn">
+Resume
+</a>
 
 </nav>
 
-<!-- TITLE -->
+<!-- ================= TITLE ================= -->
 
 <div class="page-title">
-<h2>Projects</h2>
-<p>Detection Engineering • Security Labs • SOC Simulations</p>
+
+<h1>Projects</h1>
+
+<p>
+Detection Engineering • Security Labs • SOC Simulations
+</p>
+
 </div>
 
-<!-- PROJECT GRID -->
+<!-- ================= PROJECT GRID ================= -->
 
 <div class="projects">
 
-<!-- EDR PROJECT -->
+<!-- PROJECT 1 -->
 
 <div class="project-card">
 
@@ -344,18 +415,21 @@ EDR Detection & Response Lab
 <h5>Behaviour-Based EDR Lab</h5>
 
 <p>
-Built a behaviour-based endpoint detection and response system using 
+Built a behaviour-based endpoint detection and response system using
 Wazuh and Sysmon to simulate enterprise SOC workflows.
 </p>
 
 <p>
-• Custom detection rules (PowerShell, multi-stage attacks)<br>
+• Custom detection rules<br>
+• PowerShell attack detection<br>
 • Real-time telemetry monitoring<br>
-• Automated host containment (network isolation + process kill)<br>
+• Automated host containment<br>
 • MITRE ATT&CK mapping
 </p>
 
-<a href="docs/EDR_FALCON.pdf" target="_blank" class="project-btn">
+<a href="docs/EDR_FALCON.pdf"
+target="_blank"
+class="project-btn">
 View Report
 </a>
 
@@ -378,17 +452,19 @@ SIEM Threat Detection Lab
 <h5>SIEM Detection Engineering</h5>
 
 <p>
-Developed detection use cases using Splunk and ELK stack to identify 
+Developed detection use cases using Splunk and ELK stack to identify
 suspicious authentication and lateral movement activity.
 </p>
 
 <p>
-• Log analysis (Windows, AD, DNS)<br>
+• Windows + AD log analysis<br>
 • Correlation rules<br>
-• Alert tuning & false positive reduction
+• Alert tuning<br>
+• Threat visibility engineering
 </p>
 
-<a href="#" class="project-btn">
+<a href="#"
+class="project-btn">
 View Details
 </a>
 
@@ -411,17 +487,19 @@ Threat Hunting Lab
 <h5>Threat Hunting & Investigation</h5>
 
 <p>
-Performed proactive threat hunting using MITRE ATT&CK techniques 
+Performed proactive threat hunting using MITRE ATT&CK techniques
 to identify suspicious behaviour across endpoint telemetry.
 </p>
 
 <p>
 • Process analysis<br>
 • Command-line investigation<br>
-• Behaviour correlation
+• Behaviour correlation<br>
+• IOC tracking
 </p>
 
-<a href="#" class="project-btn">
+<a href="#"
+class="project-btn">
 View Details
 </a>
 
@@ -431,10 +509,10 @@ View Details
 
 </div>
 
-<!-- FOOTER -->
+<!-- ================= FOOTER ================= -->
 
 <footer>
-Built with focus on detection engineering & SOC operations
+Built with focus on Detection Engineering & SOC Operations
 </footer>
 
 </body>

@@ -290,53 +290,61 @@ color:#cbd5e1;
 
 /* ================= HOVER ================= */
 
-/* ================= TROPHY SHINE EFFECT ================= */
+/* ================= PREMIUM CERT STYLE ================= */
 
 .cert-card{
 position:relative;
 overflow:hidden;
-}
-
-/* moving shine */
-.cert-card::before{
-content:"";
-
-position:absolute;
-top:-150%;
-left:-60%;
-
-width:45%;
-height:400%;
 
 background:
 linear-gradient(
-120deg,
-transparent,
-rgba(255,255,255,0.18),
-transparent
+145deg,
+rgba(255,255,255,0.05),
+rgba(255,255,255,0.025)
 );
 
-transform:rotate(25deg);
+border:1px solid rgba(255,255,255,0.08);
+}
 
-transition:0.9s ease;
+/* subtle premium reflection */
+.cert-card::after{
+content:"";
+
+position:absolute;
+inset:0;
+
+background:
+linear-gradient(
+145deg,
+rgba(255,255,255,0.04),
+transparent 40%
+);
 
 pointer-events:none;
 }
 
-/* shine animation */
-.cert-card:hover::before{
-left:140%;
-}
-
-/* cleaner hover */
+/* hover */
 .cert-card:hover{
-transform:translateY(-6px);
+transform:translateY(-5px);
 
 border-color:
 rgba(255,255,255,0.14);
+
+background:
+linear-gradient(
+145deg,
+rgba(255,255,255,0.07),
+rgba(255,255,255,0.03)
+);
 }
 
-/* subtle title highlight */
+/* image */
+.cert-card:hover img{
+transform:scale(1.03);
+opacity:0.16;
+}
+
+/* title */
 .cert-card:hover h3{
 color:#ffffff;
 }

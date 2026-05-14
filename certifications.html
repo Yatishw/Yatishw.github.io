@@ -372,6 +372,23 @@ opacity:0.18;
 color:#ffffff;
 }
 
+
+
+
+/* click feedback */
+
+.cert-card:active{
+
+transform:
+translateY(-1px)
+scale(0.992);
+
+transition:0.08s;
+}
+
+
+
+  
 /* ================= FOOTER ================= */
 
 footer{
@@ -389,6 +406,7 @@ z-index:2;
 
 /* ================= SCROLLBAR ================= */
 
+/* Chrome, Edge, Safari */
 ::-webkit-scrollbar{
 width:12px;
 }
@@ -408,6 +426,9 @@ linear-gradient(
 border-radius:20px;
 
 border:2px solid #020617;
+
+box-shadow:
+0 0 10px rgba(66,165,245,0.35);
 }
 
 ::-webkit-scrollbar-thumb:hover{
@@ -417,6 +438,15 @@ linear-gradient(
 #42a5f5,
 #90caf9
 );
+
+box-shadow:
+0 0 14px rgba(66,165,245,0.6);
+}
+
+/* Firefox */
+html{
+scrollbar-width:thin;
+scrollbar-color:#42a5f5 #020617;
 }
 
 /* ================= MOBILE ================= */

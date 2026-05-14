@@ -537,18 +537,17 @@ Detection Engineering • Security Labs • SOC Simulations
 
 <div class="project-content">
 
-<h3>EDR Detection & Response Lab</h3>
+<h3>Falcon-Style EDR Detection & Automated Containment Lab</h3>
 
 <p>
-Built a behaviour-based endpoint detection and response system using
-Wazuh and Sysmon to simulate enterprise SOC workflows.
+Built a behaviour-based Endpoint Detection & Response (EDR) lab using Wazuh and Sysmon to simulate CrowdStrike Falcon-style threat detection. Implemented custom correlation rules to detect encoded PowerShell execution, reconnaissance activity, and multi-stage attacks, with automated host isolation and SOC alerting via Telegram.
 </p>
 
 <div class="tags">
 <span>Wazuh</span>
 <span>Sysmon</span>
-<span>MITRE ATT&CK</span>
 <span>EDR</span>
+<span>MITRE ATT&CK</span>
 </div>
 
 
@@ -556,23 +555,23 @@ Wazuh and Sysmon to simulate enterprise SOC workflows.
 </a>
 <!-- PROJECT 2 -->
 
-<a href="docs/SIEM_PROJECT.pdf" target="_blank" class="project-card">
+<a href="docs/WAF-HOME lab.pdf" target="_blank" class="project-card">
 
 <img src="images/Firewall.png">
 
 <div class="project-content">
 
-<h3>SIEM Threat Detection Lab</h3>
+<h3>Web Application Firewall (WAF) Security Lab</h3>
 
 <p>
-Developed Splunk and ELK detections to identify suspicious
-authentication and lateral movement behaviour.
+Deployed ModSecurity with the OWASP Core Rule Set (CRS) to protect DVWA from SQL injection, XSS, command injection, brute-force, and file upload attacks. Integrated WAF audit logs with Splunk for centralized detection and attack analysis.
 </p>
 
 <div class="tags">
+<span>ModSecurity</span>
+<span>OWASP CRS</span>
 <span>Splunk</span>
-<span>ELK</span>
-<span>Detection Rules</span>
+<span>DVWA</span>
 </div>
 
 
@@ -580,23 +579,23 @@ authentication and lateral movement behaviour.
 </a>
 <!-- PROJECT 3 -->
 
-<a href="docs/THREAT_HUNTING.pdf" target="_blank" class="project-card">
+<a href="docs/RANSOMWARE_ATTACK__HOME_LAB.pdf" target="_blank" class="project-card">
 
 <img src="images/ransomware.png">
 
 <div class="project-content">
 
-<h3>Threat Hunting Lab</h3>
+<h3>Active Directory Ransomware Detection Lab</h3>
 
 <p>
-Performed proactive threat hunting using endpoint telemetry,
-process analysis, and MITRE ATT&CK correlation.
+Simulated a full ransomware attack lifecycle inside an isolated Active Directory environment using Kali Linux, Impacket, PowerShell, Snort IDS/IPS, and Splunk SIEM. Detected password spraying, SMB lateral movement, PowerShell execution, and mass file encryption activity through correlated host and network telemetry.
 </p>
 
 <div class="tags">
-<span>Threat Hunting</span>
-<span>Telemetry</span>
-<span>SOC</span>
+<span>Active Directory</span>
+<span>Splunk</span>
+<span>Snort IDS/IPS</span>
+<span>PowerShell</span>
 </div>
 
 

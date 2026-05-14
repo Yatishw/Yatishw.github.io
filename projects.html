@@ -213,8 +213,8 @@ margin:90px auto;
 
 display:grid;
 
-grid-template-columns:
-repeat(3, 1fr);
+grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+align-items:start;
 
 gap:35px;
 
@@ -240,8 +240,11 @@ transition:0.35s ease;
 box-shadow:
 0 10px 30px rgba(0,0,0,0.35);
 
-height:520px;
+min-height:420px;
 
+max-width:420px;
+margin:auto;
+ 
 display:flex;
 flex-direction:column;
 

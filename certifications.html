@@ -182,23 +182,7 @@ color:#94a3b8;
 letter-spacing:0.3px;
 }
 
-/* ================= CERTIFICATION GRID ================= */
 
-.certifications{
-width:88%;
-
-margin:90px auto;
-
-display:grid;
-
-grid-template-columns:
-repeat(3,1fr);
-
-gap:30px;
-
-position:relative;
-z-index:2;
-}
 
 /* ================= CERT CARD ================= */
 
@@ -458,6 +442,16 @@ scrollbar-color:#42a5f5 #020617;
 grid-template-columns:1fr;
 }
 
+
+.featured-certs{
+grid-template-columns:1fr;
+}
+
+.other-certs{
+grid-template-columns:1fr;
+}
+
+  
 .nav{
 width:94%;
 display:flex;
@@ -471,6 +465,179 @@ margin:6px 10px;
 
 }
 
+
+
+
+
+/* ================= FEATURED CERTS ================= */
+
+.featured-certs{
+
+width:88%;
+
+margin:90px auto 40px;
+
+display:grid;
+
+grid-template-columns:
+repeat(3,1fr);
+
+gap:30px;
+
+position:relative;
+z-index:2;
+}
+
+.featured-cert{
+
+background:
+linear-gradient(
+180deg,
+rgba(15,23,42,0.88),
+rgba(9,14,28,0.92)
+);
+
+border:1px solid rgba(255,255,255,0.08);
+
+border-radius:22px;
+
+overflow:hidden;
+
+text-decoration:none;
+color:inherit;
+
+transition:0.3s ease;
+
+box-shadow:
+0 10px 30px rgba(0,0,0,0.35);
+
+position:relative;
+height:320px;
+}
+
+.featured-cert img{
+width:100%;
+height:150px;
+
+object-fit:cover;
+
+opacity:0.16;
+}
+
+.featured-content{
+padding:26px 24px 28px;
+}
+
+.featured-content h3{
+font-size:21px;
+font-weight:700;
+
+line-height:1.4;
+
+color:white;
+
+margin-bottom:14px;
+}
+
+.featured-content span{
+font-size:14px;
+
+color:#64b5f6;
+
+font-weight:600;
+
+letter-spacing:0.3px;
+}
+
+
+
+  
+
+.featured-cert:hover{
+
+transform:
+translateY(-4px);
+
+border-color:
+rgba(66,165,245,0.18);
+
+box-shadow:
+0 0 18px rgba(66,165,245,0.08),
+0 14px 35px rgba(0,0,0,0.45);
+}
+
+
+.featured-cert:active{
+
+transform:
+translateY(-1px)
+scale(0.992);
+
+transition:0.08s;
+}
+
+/* ================= MINI CERTS ================= */
+
+.other-certs{
+
+width:88%;
+
+margin:0 auto 90px;
+
+display:grid;
+
+grid-template-columns:
+repeat(2,1fr);
+
+gap:18px;
+
+position:relative;
+z-index:2;
+}
+
+.mini-cert{
+
+background:
+rgba(255,255,255,0.04);
+
+border:1px solid rgba(255,255,255,0.08);
+
+padding:18px 22px;
+
+border-radius:16px;
+
+font-size:15px;
+font-weight:500;
+
+color:#dbeafe;
+
+transition:0.25s ease;
+}
+
+.mini-cert:hover{
+
+border-color:
+rgba(66,165,245,0.20);
+
+transform:translateY(-2px);
+
+background:
+rgba(255,255,255,0.055);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
 </style>
 
 </head>
@@ -502,60 +669,54 @@ Cybersecurity • Threat Detection • SOC Operations
 
 <!-- ================= CERTIFICATIONS ================= -->
 
-<div class="certifications">
 
-<!-- CERT 1 -->
+<!-- ================= FEATURED CERTIFICATIONS ================= -->
 
-<a href="docs/securityplus.pdf" target="_blank" class="cert-card">
+<div class="featured-certs">
 
-<img src="images/security.jpg">
+<!-- SC-900 -->
 
-<div class="cert-content">
+<a href="#" class="featured-cert">
 
-<h3>CompTIA Security+</h3>
+<img src="images/sc900.png">
 
-<p>
-Industry-recognized certification covering security operations,
-risk management, networking, and incident response.
-</p>
+<div class="featured-content">
 
-</div>
+<h3>Microsoft Certified: Security, Compliance, and Identity Fundamentals</h3>
 
-</a>
-
-<!-- CERT 2 -->
-
-<a href="docs/splunk.pdf" target="_blank" class="cert-card">
-
-<img src="images/splunk.jpg">
-
-<div class="cert-content">
-
-<h3>Splunk Core Certified User</h3>
-
-<p>
-Validated SIEM analysis, log monitoring, alerting,
-and dashboard creation using Splunk Enterprise.
-</p>
+<span>Microsoft SC-900 • 2026</span>
 
 </div>
 
 </a>
 
-<!-- CERT 3 -->
+<!-- CISMP -->
 
-<a href="docs/google-cyber.pdf" target="_blank" class="cert-card">
+<a href="#" class="featured-cert">
 
-<img src="images/cyber.jpg">
+<img src="images/cismp.png">
 
-<div class="cert-content">
+<div class="featured-content">
 
-<h3>Google Cybersecurity Certificate</h3>
+<h3>Certified Information Security Management Professional</h3>
 
-<p>
-Focused on SOC workflows, Linux, SIEM operations,
-network security, and threat analysis fundamentals.
-</p>
+<span>BCS CISMP • 2026</span>
+
+</div>
+
+</a>
+
+<!-- PROOFPOINT -->
+
+<a href="#" class="featured-cert">
+
+<img src="images/proofpoint.png">
+
+<div class="featured-content">
+
+<h3>Proofpoint Certified AI Email Security Specialist</h3>
+
+<span>Proofpoint • 2026</span>
 
 </div>
 
@@ -563,9 +724,41 @@ network security, and threat analysis fundamentals.
 
 </div>
 
-<footer>
-Built for Detection Engineering & SOC Operations
-</footer>
+<!-- ================= OTHER CERTIFICATIONS ================= -->
+
+<div class="other-certs">
+
+<div class="mini-cert">Proofpoint AI Email Security Specialist</div>
+
+<div class="mini-cert">ISC2 Certificate in Cybersecurity (CC)</div>
+
+<div class="mini-cert">ISO/IEC 27001 Information Security Associate</div>
+
+<div class="mini-cert">Foundation Level Threat Intelligence Analyst</div>
+
+<div class="mini-cert">PwC Cyber Security Consulting Simulation</div>
+
+<div class="mini-cert">SAP Cyber Security Virtual Internship</div>
+
+<div class="mini-cert">Google Data Analytics</div>
+
+<div class="mini-cert">Cisco Introduction to Cybersecurity</div>
+
+<div class="mini-cert">Certified Network Security Specialist (CNSS)</div>
+
+<div class="mini-cert">UK Civil Aviation Authority Flyer ID</div>
+
+</div>
+
+
+
+
+
+
+
+
+
+  
 
 </body>
 </html>

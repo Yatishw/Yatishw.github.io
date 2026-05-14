@@ -25,20 +25,16 @@ box-sizing:border-box;
 font-family:'Inter',sans-serif;
 }
 
-html{
-scroll-behavior:smooth;
-}
-
 body{
 background:
 radial-gradient(circle at top,#0f172a,#020617 80%);
 color:white;
 overflow-x:hidden;
-position:relative;
 min-height:100vh;
+position:relative;
 }
 
-/* ================= CYBER GRID ================= */
+/* ================= GRID BACKGROUND ================= */
 
 body::before{
 content:"";
@@ -48,88 +44,154 @@ left:0;
 width:100%;
 height:100%;
 
+mask-image: linear-gradient(
+to bottom,
+rgba(0,0,0,0.95) 0%,
+rgba(0,0,0,0.7) 45%,
+rgba(0,0,0,0.25) 75%,
+transparent 100%
+);
+
 background:
 repeating-linear-gradient(
 to right,
-rgba(66,165,245,0.12) 0px,
-rgba(66,165,245,0.12) 1px,
+rgba(66,165,245,0.25) 0px,
+rgba(66,165,245,0.25) 1px,
 transparent 1px,
 transparent 80px
 ),
+
 repeating-linear-gradient(
 to bottom,
-rgba(66,165,245,0.05) 0px,
-rgba(66,165,245,0.05) 1px,
+rgba(66,165,245,0.08) 0px,
+rgba(66,165,245,0.08) 1px,
 transparent 1px,
 transparent 80px
 );
 
+animation:gridMove 10s linear infinite;
+
 z-index:-2;
+}
+
+/* ================= LIGHT SWEEP ================= */
+
+body::after{
+content:"";
+position:fixed;
+
+top:0;
+left:-50%;
+
+width:200%;
+height:100%;
+
+background:
+linear-gradient(
+120deg,
+transparent,
+rgba(255,255,255,0.05),
+transparent
+);
+
+animation:sweep 7s linear infinite;
+
+z-index:-1;
+}
+
+/* ================= ANIMATION ================= */
+
+@keyframes gridMove{
+
+0%{
+background-position:0 0;
+}
+
+100%{
+background-position:0 80px;
+}
+
+}
+
+@keyframes sweep{
+
+0%{
+transform:translateX(-100%);
+}
+
+100%{
+transform:translateX(100%);
+}
+
 }
 
 /* ================= NAVBAR ================= */
 
 .nav{
 position:fixed;
-top:25px;
+top:30px;
 left:50%;
 transform:translateX(-50%);
 z-index:100;
 
-display:flex;
-align-items:center;
-gap:12px;
+background:rgba(10,15,30,0.6);
 
-padding:14px 24px;
+padding:14px 30px;
 
-border-radius:50px;
+border-radius:40px;
 
-background:rgba(10,15,30,0.65);
-
-backdrop-filter:blur(14px);
+backdrop-filter:blur(12px);
 
 border:1px solid rgba(255,255,255,0.08);
 
 box-shadow:
-0 10px 40px rgba(0,0,0,0.4);
+0 10px 30px rgba(0,0,0,0.4);
 }
 
 .nav a{
-color:#e2e8f0;
+margin:0 18px;
+
+color:#e0e0e0;
+
 text-decoration:none;
 
-font-size:15px;
-font-weight:600;
+font-size:16px;
+font-weight:500;
 
-padding:10px 14px;
+letter-spacing:0.5px;
 
-border-radius:12px;
+transition:0.3s;
 
-transition:0.3s ease;
+position:relative;
+}
+
+.nav a::after{
+content:"";
+position:absolute;
+
+bottom:-6px;
+left:0;
+
+width:0%;
+height:2px;
+
+background:#42a5f5;
+
+transition:0.3s;
+}
+
+.nav a:hover::after{
+width:100%;
 }
 
 .nav a:hover{
-background:rgba(255,255,255,0.05);
-color:#42a5f5;
-}
-
-/* RESUME BUTTON */
-
-.resume-btn{
-background:#42a5f5;
-color:#020617 !important;
-font-weight:700;
-}
-
-.resume-btn:hover{
-background:#64b5f6 !important;
-transform:translateY(-2px);
+color:#ffffff;
 }
 
 /* ================= PAGE TITLE ================= */
 
 .page-title{
-padding-top:170px;
+padding-top:180px;
 text-align:center;
 position:relative;
 z-index:2;
@@ -155,180 +217,193 @@ color:#cbd5e1;
 /* ================= PROJECT GRID ================= */
 
 .projects{
-width:90%;
+
+width:88%;
+
 margin:90px auto;
 
 display:grid;
+
 grid-template-columns:
 repeat(auto-fit,minmax(360px,1fr));
 
-gap:40px;
+gap:35px;
 
 position:relative;
 z-index:2;
 }
 
-/* ================= ELITE CARD ================= */
+/* ================= PROJECT CARD ================= */
 
 .project-card{
+
 position:relative;
 
-height:340px;
+height:300px;
 
-border-radius:24px;
+border-radius:22px;
 
 overflow:hidden;
 
 background:
 linear-gradient(
 145deg,
-rgba(255,255,255,0.06),
+rgba(255,255,255,0.05),
 rgba(255,255,255,0.02)
 );
 
 border:1px solid rgba(255,255,255,0.08);
 
-backdrop-filter:blur(16px);
+backdrop-filter:blur(12px);
 
-transition:0.5s ease;
-
-cursor:pointer;
+transition:0.35s ease;
 
 box-shadow:
 0 10px 30px rgba(0,0,0,0.35);
 }
 
-/* ================= HOVER ================= */
-
-.project-card:hover{
-
-transform:
-translateY(-12px)
-scale(1.02);
-
-border-color:
-rgba(66,165,245,0.5);
-
-box-shadow:
-0 0 30px rgba(66,165,245,0.18),
-0 20px 60px rgba(0,0,0,0.5);
-}
-
-/* ================= IMAGE ================= */
+/* ================= CARD IMAGE ================= */
 
 .project-card img{
+
 width:100%;
 height:100%;
 
 object-fit:cover;
 
-opacity:0.18;
+opacity:0.16;
 
-transition:0.6s ease;
-
-filter:grayscale(20%);
+transition:0.5s ease;
 }
 
-.project-card:hover img{
+/* ================= CARD CONTENT ================= */
 
-transform:scale(1.08);
+.project-content{
 
-opacity:0.1;
+position:absolute;
+inset:0;
 
-filter:grayscale(0%);
+padding:30px;
+
+display:flex;
+flex-direction:column;
+justify-content:flex-end;
+
+background:
+linear-gradient(
+180deg,
+transparent,
+rgba(2,6,23,0.88)
+);
+
+z-index:2;
 }
 
 /* ================= TITLE ================= */
 
-.project-title{
-position:absolute;
-
-left:28px;
-bottom:28px;
+.project-content h3{
 
 font-size:30px;
 font-weight:700;
 
 line-height:1.2;
 
-max-width:80%;
-
-z-index:2;
+margin-bottom:14px;
 }
 
-/* ================= OVERLAY ================= */
+/* ================= DESCRIPTION ================= */
 
-.project-overlay{
-position:absolute;
-inset:0;
+.project-content p{
 
-padding:35px;
-
-background:
-linear-gradient(
-180deg,
-rgba(2,6,23,0.92),
-rgba(2,6,23,0.98)
-);
-
-opacity:0;
-
-transition:0.45s ease;
-
-overflow:auto;
-
-backdrop-filter:blur(10px);
-}
-
-.project-card:hover .project-overlay{
-opacity:1;
-}
-
-/* ================= OVERLAY TEXT ================= */
-
-.project-overlay h5{
-font-size:24px;
-margin-bottom:15px;
-color:#42a5f5;
-}
-
-.project-overlay p{
-font-size:16px;
-font-weight:300;
-
+font-size:15px;
 line-height:1.8;
 
 color:#cbd5e1;
 
-margin-bottom:15px;
+margin-bottom:18px;
+}
+
+/* ================= TAGS ================= */
+
+.tags{
+display:flex;
+flex-wrap:wrap;
+gap:10px;
+
+margin-bottom:20px;
+}
+
+.tags span{
+
+padding:7px 14px;
+
+border-radius:30px;
+
+background:rgba(66,165,245,0.12);
+
+border:1px solid rgba(66,165,245,0.25);
+
+font-size:13px;
+
+color:#90caf9;
 }
 
 /* ================= BUTTON ================= */
 
 .project-btn{
+
 display:inline-block;
 
-padding:10px 20px;
+width:fit-content;
+
+padding:11px 20px;
 
 border-radius:10px;
 
 background:#42a5f5;
-color:black;
+
+color:#020617;
 
 font-weight:700;
+
 text-decoration:none;
 
 transition:0.3s;
 }
 
 .project-btn:hover{
+
 background:#64b5f6;
-transform:translateY(-3px);
+
+transform:translateY(-2px);
+}
+
+/* ================= CARD HOVER ================= */
+
+.project-card:hover{
+
+transform:
+translateY(-8px);
+
+border-color:
+rgba(66,165,245,0.45);
+
+box-shadow:
+0 0 25px rgba(66,165,245,0.16),
+0 20px 50px rgba(0,0,0,0.45);
+}
+
+.project-card:hover img{
+
+transform:scale(1.05);
+
+opacity:0.1;
 }
 
 /* ================= FOOTER ================= */
 
 footer{
+
 text-align:center;
 
 padding:60px 20px;
@@ -352,10 +427,14 @@ grid-template-columns:1fr;
 }
 
 .nav{
-width:95%;
+width:94%;
+display:flex;
 justify-content:center;
 flex-wrap:wrap;
-border-radius:24px;
+}
+
+.nav a{
+margin:6px 10px;
 }
 
 }
@@ -366,19 +445,14 @@ border-radius:24px;
 
 <body>
 
-<!-- ================= NAV ================= -->
+<!-- ================= NAVBAR ================= -->
 
 <nav class="nav">
 
 <a href="index.html">Home</a>
 <a href="projects.html">Projects</a>
 <a href="experience.html">Experience</a>
-<a href="skills.html">Skills</a>
-<a href="certs.html">Certifications</a>
-
-<a href="docs/Resume_Yatish1.pdf"
-target="_blank"
-class="resume-btn">
+<a href="docs/Resume_Yatish1.pdf" target="_blank">
 Resume
 </a>
 
@@ -396,7 +470,7 @@ Detection Engineering • Security Labs • SOC Simulations
 
 </div>
 
-<!-- ================= PROJECT GRID ================= -->
+<!-- ================= PROJECTS ================= -->
 
 <div class="projects">
 
@@ -406,26 +480,21 @@ Detection Engineering • Security Labs • SOC Simulations
 
 <img src="images/edr.jpg">
 
-<div class="project-title">
-EDR Detection & Response Lab
-</div>
+<div class="project-content">
 
-<div class="project-overlay">
-
-<h5>Behaviour-Based EDR Lab</h5>
+<h3>EDR Detection & Response Lab</h3>
 
 <p>
 Built a behaviour-based endpoint detection and response system using
 Wazuh and Sysmon to simulate enterprise SOC workflows.
 </p>
 
-<p>
-• Custom detection rules<br>
-• PowerShell attack detection<br>
-• Real-time telemetry monitoring<br>
-• Automated host containment<br>
-• MITRE ATT&CK mapping
-</p>
+<div class="tags">
+<span>Wazuh</span>
+<span>Sysmon</span>
+<span>MITRE ATT&CK</span>
+<span>EDR</span>
+</div>
 
 <a href="docs/EDR_FALCON.pdf"
 target="_blank"
@@ -443,25 +512,20 @@ View Report
 
 <img src="https://images.unsplash.com/photo-1518770660439-4636190af475">
 
-<div class="project-title">
-SIEM Threat Detection Lab
+<div class="project-content">
+
+<h3>SIEM Threat Detection Lab</h3>
+
+<p>
+Developed Splunk and ELK detections to identify suspicious
+authentication and lateral movement behaviour.
+</p>
+
+<div class="tags">
+<span>Splunk</span>
+<span>ELK</span>
+<span>Detection Rules</span>
 </div>
-
-<div class="project-overlay">
-
-<h5>SIEM Detection Engineering</h5>
-
-<p>
-Developed detection use cases using Splunk and ELK stack to identify
-suspicious authentication and lateral movement activity.
-</p>
-
-<p>
-• Windows + AD log analysis<br>
-• Correlation rules<br>
-• Alert tuning<br>
-• Threat visibility engineering
-</p>
 
 <a href="#"
 class="project-btn">
@@ -478,25 +542,20 @@ View Details
 
 <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b">
 
-<div class="project-title">
-Threat Hunting Lab
+<div class="project-content">
+
+<h3>Threat Hunting Lab</h3>
+
+<p>
+Performed proactive threat hunting using endpoint telemetry,
+process analysis, and MITRE ATT&CK correlation.
+</p>
+
+<div class="tags">
+<span>Threat Hunting</span>
+<span>Telemetry</span>
+<span>SOC</span>
 </div>
-
-<div class="project-overlay">
-
-<h5>Threat Hunting & Investigation</h5>
-
-<p>
-Performed proactive threat hunting using MITRE ATT&CK techniques
-to identify suspicious behaviour across endpoint telemetry.
-</p>
-
-<p>
-• Process analysis<br>
-• Command-line investigation<br>
-• Behaviour correlation<br>
-• IOC tracking
-</p>
 
 <a href="#"
 class="project-btn">

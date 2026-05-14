@@ -207,18 +207,14 @@ letter-spacing:0.3px;
 /* ================= PROJECT GRID ================= */
 
 .projects{
-
 width:88%;
 margin:90px auto;
 
 display:grid;
 
-grid-template-columns:
-repeat(auto-fit, minmax(340px, 1fr));
+grid-template-columns:repeat(3, 1fr);
 
 gap:35px;
-
-align-items:start;
 
 position:relative;
 z-index:2;
@@ -228,16 +224,21 @@ z-index:2;
 
 .project-card{
 background:rgba(255,255,255,0.04);
+
 border:1px solid rgba(255,255,255,0.08);
+
 border-radius:22px;
+
 overflow:hidden;
+
 backdrop-filter:blur(10px);
+
 transition:0.35s ease;
 
 box-shadow:
 0 10px 30px rgba(0,0,0,0.35);
 
-min-height:420px;
+height:430px;
 
 display:flex;
 flex-direction:column;

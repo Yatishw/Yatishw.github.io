@@ -66,6 +66,8 @@ z-index:-2;
 
 /* ===== NAV ===== */
 
+/* ===== PREMIUM NAV ===== */
+
 .nav{
 position:fixed;
 top:25px;
@@ -73,44 +75,59 @@ left:50%;
 transform:translateX(-50%);
 z-index:100;
 
-background:rgba(10,15,30,0.6);
-padding:14px 30px;
-border-radius:40px;
+display:flex;
+align-items:center;
+gap:12px;
 
-backdrop-filter:blur(12px);
+background:rgba(10,15,30,0.65);
+
+padding:14px 24px;
+
+border-radius:50px;
+
+backdrop-filter:blur(14px);
 
 border:1px solid rgba(255,255,255,0.08);
 
-box-shadow:0 10px 30px rgba(0,0,0,0.4);
+box-shadow:
+0 10px 40px rgba(0,0,0,0.4);
 }
 
+/* LINKS */
+
 .nav a{
-margin:0 18px;
 color:#e2e8f0;
 text-decoration:none;
+
 font-size:15px;
 font-weight:600;
-transition:0.3s;
+
+padding:10px 14px;
+border-radius:12px;
+
+transition:0.3s ease;
+
 position:relative;
 }
 
+/* HOVER */
+
 .nav a:hover{
+background:rgba(255,255,255,0.05);
 color:#42a5f5;
 }
 
-.nav a::after{
-content:"";
-position:absolute;
-left:0;
-bottom:-6px;
-width:0%;
-height:2px;
+/* RESUME BUTTON */
+
+.resume-btn{
 background:#42a5f5;
-transition:0.3s;
+color:#020617 !important;
+font-weight:700;
 }
 
-.nav a:hover::after{
-width:100%;
+.resume-btn:hover{
+transform:translateY(-2px);
+background:#64b5f6 !important;
 }
 
 /* ===== PAGE TITLE ===== */

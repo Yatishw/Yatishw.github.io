@@ -197,10 +197,11 @@ color:white;
 }
 
 .page-title p{
-font-size:20px;
+margin-top:14px;
+font-size:17px;
 font-weight:300;
-
-color:#cbd5e1;
+color:#94a3b8;
+letter-spacing:0.3px;
 }
 
 /* ================= PROJECT GRID ================= */
@@ -225,30 +226,22 @@ z-index:2;
 /* ================= PROJECT CARD ================= */
 
 .project-card{
-
-position:relative;
-
-height:300px;
-
-border-radius:22px;
-
-overflow:hidden;
-
-background:
-linear-gradient(
-145deg,
-rgba(255,255,255,0.05),
-rgba(255,255,255,0.02)
-);
+background:rgba(255,255,255,0.04);
 
 border:1px solid rgba(255,255,255,0.08);
 
-backdrop-filter:blur(12px);
+border-radius:24px;
+
+overflow:hidden;
+
+backdrop-filter:blur(10px);
 
 transition:0.35s ease;
 
 box-shadow:
 0 10px 30px rgba(0,0,0,0.35);
+
+min-height:440px;   /* 🔥 important */
 }
 
 /* ================= CARD IMAGE ================= */
@@ -268,48 +261,31 @@ transition:0.5s ease;
 /* ================= CARD CONTENT ================= */
 
 .project-content{
-
-position:absolute;
-inset:0;
-
-padding:30px;
-
+padding:32px;
 display:flex;
 flex-direction:column;
-justify-content:flex-end;
-
-background:
-linear-gradient(
-180deg,
-transparent,
-rgba(2,6,23,0.88)
-);
-
-z-index:2;
+height:100%;
 }
 
 /* ================= TITLE ================= */
 
 .project-content h3{
-
-font-size:30px;
-font-weight:700;
-
+font-size:24px;
 line-height:1.2;
+font-weight:700;
+margin-bottom:22px;
+color:white;
 
-margin-bottom:14px;
+min-height:64px; /* 🔥 keeps all cards aligned */
 }
 
 /* ================= DESCRIPTION ================= */
 
 .project-content p{
-
-font-size:15px;
+font-size:16px;
 line-height:1.8;
-
 color:#cbd5e1;
-
-margin-bottom:18px;
+margin-bottom:24px;
 }
 
 /* ================= TAGS ================= */
@@ -318,8 +294,8 @@ margin-bottom:18px;
 display:flex;
 flex-wrap:wrap;
 gap:10px;
-
-margin-bottom:20px;
+margin-top:auto;
+margin-bottom:26px;
 }
 
 .tags span{
@@ -340,24 +316,28 @@ color:#90caf9;
 /* ================= BUTTON ================= */
 
 .project-btn{
+display:inline-flex;
+align-items:center;
+justify-content:center;
 
-display:inline-block;
+padding:12px 22px;
 
-width:fit-content;
-
-padding:11px 20px;
-
-border-radius:10px;
+border-radius:12px;
 
 background:#42a5f5;
+color:#02111f;
 
-color:#020617;
-
+font-size:15px;
 font-weight:700;
 
 text-decoration:none;
 
-transition:0.3s;
+transition:0.3s ease;
+}
+
+.project-btn:hover{
+transform:translateY(-2px);
+background:#64b5f6;
 }
 
 .project-btn:hover{

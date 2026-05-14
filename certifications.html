@@ -490,43 +490,84 @@ z-index:2;
 
 .featured-cert{
 
-background:
-linear-gradient(
-180deg,
-rgba(15,23,42,0.88),
-rgba(9,14,28,0.92)
-);
+position:relative;
 
-border:1px solid rgba(255,255,255,0.08);
+height:220px;
+
+padding:30px;
+
+display:flex;
+flex-direction:column;
+justify-content:flex-end;
 
 border-radius:22px;
 
 overflow:hidden;
 
 text-decoration:none;
-color:inherit;
+color:white;
 
-transition:0.3s ease;
+background-size:cover;
+background-position:center;
+
+border:1px solid rgba(255,255,255,0.08);
 
 box-shadow:
 0 10px 30px rgba(0,0,0,0.35);
 
-position:relative;
-height:320px;
+transition:0.3s ease;
 }
 
-.featured-cert img{
-width:100%;
-height:150px;
 
-object-fit:cover;
+.featured-cert::before{
+content:"";
 
-opacity:0.16;
+position:absolute;
+inset:0;
+
+background:
+linear-gradient(
+180deg,
+rgba(2,6,23,0.35),
+rgba(2,6,23,0.88)
+);
+
+z-index:1;
 }
+
+
+
+  
 
 .featured-content{
-padding:26px 24px 28px;
+position:relative;
+z-index:2;
+padding:0;
 }
+
+
+
+
+
+.sc900{
+background-image:url('images/microsoft-bg.png');
+}
+
+.cismp{
+background-image:url('images/bcs-bg.png');
+}
+
+.proofpoint{
+background-image:url('images/proofpoint-bg.png');
+}
+
+
+
+
+
+
+
+  
 
 .featured-content h3{
 font-size:21px;
@@ -673,7 +714,7 @@ Cybersecurity • Threat Detection • SOC Operations
 
 <!-- ================= FEATURED CERTIFICATIONS ================= -->
 
-<div class="featured-certs">
+<a href="#" class="featured-cert sc900">
 
 <!-- SC-900 -->
 
@@ -693,7 +734,7 @@ Cybersecurity • Threat Detection • SOC Operations
 
 <!-- CISMP -->
 
-<a href="#" class="featured-cert">
+<a href="#" class="featured-cert cismp">
 
 <img src="images/cismp.png">
 
@@ -709,7 +750,7 @@ Cybersecurity • Threat Detection • SOC Operations
 
 <!-- PROOFPOINT -->
 
-<a href="#" class="featured-cert">
+<a href="#" class="featured-cert proofpoint">
 
 <img src="images/proofpoint.png">
 

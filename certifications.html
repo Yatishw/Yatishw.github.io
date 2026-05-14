@@ -274,78 +274,82 @@ color:#cbd5e1;
 
 /* ================= HOVER ================= */
 
-/* ================= PREMIUM CERT CARD ================= */
+/* ================= PREMIUM AMBIENT REFLECTION ================= */
 
 .cert-card{
 position:relative;
 overflow:hidden;
-
-background:
-linear-gradient(
-160deg,
-rgba(255,255,255,0.07) 0%,
-rgba(255,255,255,0.03) 45%,
-rgba(255,255,255,0.02) 100%
-);
-
-border:1px solid rgba(255,255,255,0.10);
-
-border-radius:20px;
-
-backdrop-filter:blur(14px);
-
-box-shadow:
-0 10px 30px rgba(0,0,0,0.35);
-
-transition:0.35s ease;
 }
 
-/* reflective top lighting */
-.cert-card::after{
+/* soft moving reflection */
+.cert-card::before{
 content:"";
 
 position:absolute;
-top:0;
-left:0;
+top:-20%;
+left:-10%;
 
-width:100%;
-height:100%;
+width:140%;
+height:140%;
 
 background:
-linear-gradient(
-145deg,
-rgba(255,255,255,0.06) 0%,
+radial-gradient(
+circle at top left,
+rgba(255,255,255,0.08),
 transparent 35%
 );
+
+animation:ambientGlow 8s ease-in-out infinite alternate;
 
 pointer-events:none;
 }
 
-/* hover */
-.cert-card:hover{
-transform:translateY(-5px);
+/* secondary reflection */
+.cert-card::after{
+content:"";
 
-border-color:
-rgba(255,255,255,0.16);
+position:absolute;
+bottom:-30%;
+right:-20%;
+
+width:120%;
+height:120%;
 
 background:
-linear-gradient(
-160deg,
-rgba(255,255,255,0.09) 0%,
-rgba(255,255,255,0.04) 45%,
-rgba(255,255,255,0.025) 100%
+radial-gradient(
+circle,
+rgba(66,165,245,0.05),
+transparent 40%
 );
+
+animation:ambientGlow2 10s ease-in-out infinite alternate;
+
+pointer-events:none;
 }
 
-/* image */
-.cert-card:hover img{
-transform:scale(1.03);
-opacity:0.18;
+/* animation */
+@keyframes ambientGlow{
+0%{
+transform:translate(0px,0px);
+opacity:0.5;
 }
 
-/* title */
-.cert-card:hover h3{
-color:#ffffff;
+100%{
+transform:translate(12px,-8px);
+opacity:0.9;
+}
+}
+
+@keyframes ambientGlow2{
+0%{
+transform:translate(0px,0px);
+opacity:0.3;
+}
+
+100%{
+transform:translate(-10px,8px);
+opacity:0.7;
+}
 }
 
 /* ================= FOOTER ================= */

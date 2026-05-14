@@ -128,55 +128,47 @@ transform:translateX(100%);
 /* ================= NAVBAR ================= */
 
 .nav{
-position:fixed;
-top:30px;
-left:50%;
-transform:translateX(-50%);
-z-index:100;
+position: fixed;
+top: 30px;
+left: 50%;
+transform: translateX(-50%);
+z-index: 100;
 
-background:rgba(10,15,30,0.6);
+background: rgba(10,15,30,0.6);
 
-padding:14px 30px;
+padding: 14px 30px;
 
-border-radius:40px;
+border-radius: 40px;
 
-backdrop-filter:blur(12px);
+backdrop-filter: blur(12px);
+-webkit-backdrop-filter: blur(12px);
 
-border:1px solid rgba(255,255,255,0.08);
+border: 1px solid rgba(255,255,255,0.08);
 
-box-shadow:
-0 10px 30px rgba(0,0,0,0.4);
+box-shadow: 0 10px 30px rgba(0,0,0,0.4);
 }
 
 .nav a{
-margin:0 18px;
+margin: 0 18px;
+color: #e0e0e0;
+text-decoration: none;
 
-color:#e0e0e0;
+font-size: 16px;
+font-weight: 500;
+letter-spacing: 0.5px;
 
-text-decoration:none;
-
-font-size:16px;
-font-weight:500;
-
-letter-spacing:0.5px;
-
-transition:0.3s;
-
-position:relative;
+transition: 0.3s;
+position: relative;
 }
 
 .nav a::after{
 content:"";
 position:absolute;
-
 bottom:-6px;
 left:0;
-
 width:0%;
 height:2px;
-
 background:#42a5f5;
-
 transition:0.3s;
 }
 

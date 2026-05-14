@@ -394,6 +394,72 @@ transform:scale(1.05);
 opacity:0.1;
 }
 
+
+
+/* =================== more clickable */
+
+
+
+ /* CLICKABLE FEEL */
+
+.project-card{
+cursor:pointer;
+position:relative;
+}
+
+/* subtle glow layer */
+.project-card::after{
+content:"";
+
+position:absolute;
+inset:0;
+
+border-radius:22px;
+
+background:
+linear-gradient(
+135deg,
+rgba(66,165,245,0.06),
+transparent 40%
+);
+
+opacity:0;
+
+transition:0.35s ease;
+
+pointer-events:none;
+}
+
+/* stronger hover feedback */
+.project-card:hover::after{
+opacity:1;
+}
+
+/* title interactive effect */
+.project-card h3{
+transition:0.3s ease;
+}
+
+.project-card:hover h3{
+color:#64b5f6;
+
+text-shadow:
+0 0 12px rgba(66,165,245,0.35);
+}
+
+/* tiny image zoom */
+.project-card:hover img{
+transform:scale(1.04);
+opacity:0.12;
+}
+
+
+
+
+
+
+
+ 
 /* ================= FOOTER ================= */
 
 footer{
@@ -471,8 +537,6 @@ Detection Engineering • Security Labs • SOC Simulations
 <!-- PROJECT 1 -->
   
 <a href="docs/EDR_FALCON.pdf" target="_blank" class="project-card">
-  
-<div class="project-card">
 
 <img src="images/edr.jpg">
 
@@ -492,11 +556,6 @@ Wazuh and Sysmon to simulate enterprise SOC workflows.
 <span>EDR</span>
 </div>
 
-<a href="docs/EDR_FALCON.pdf"
-target="_blank"
-class="project-btn">
-View Report
-</a>
 
 </div>
 
@@ -505,8 +564,6 @@ View Report
 <!-- PROJECT 2 -->
 
 <a href="docs/SIEM_PROJECT.pdf" target="_blank" class="project-card">
-  
-<div class="project-card">
 
 <img src="https://images.unsplash.com/photo-1518770660439-4636190af475">
 
@@ -525,10 +582,6 @@ authentication and lateral movement behaviour.
 <span>Detection Rules</span>
 </div>
 
-<a href="#"
-class="project-btn">
-View Details
-</a>
 
 </div>
 
@@ -537,8 +590,6 @@ View Details
 <!-- PROJECT 3 -->
 
 <a href="docs/THREAT_HUNTING.pdf" target="_blank" class="project-card">
-  
-<div class="project-card">
 
 <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b">
 
@@ -557,10 +608,6 @@ process analysis, and MITRE ATT&CK correlation.
 <span>SOC</span>
 </div>
 
-<a href="#"
-class="project-btn">
-View Details
-</a>
 
 </div>
 

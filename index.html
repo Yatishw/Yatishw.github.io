@@ -282,6 +282,93 @@ to{opacity:1;transform:translateY(0);}
 
 
 
+
+
+/* ================= TECH STACK MARQUEE ================= */
+
+.stack-marquee{
+
+width:100%;
+
+overflow:hidden;
+
+margin-top:70px;
+
+padding:28px 0;
+
+position:relative;
+z-index:2;
+
+border-top:
+1px solid rgba(255,255,255,0.05);
+
+border-bottom:
+1px solid rgba(255,255,255,0.05);
+
+background:
+rgba(255,255,255,0.015);
+
+backdrop-filter:blur(10px);
+}
+
+.stack-track{
+
+display:flex;
+align-items:center;
+
+gap:20px;
+
+width:max-content;
+
+animation:marqueeScroll 42s linear infinite;
+}
+
+.stack-track span{
+
+font-size:24px;
+
+font-weight:650;
+
+letter-spacing:-0.4px;
+
+white-space:nowrap;
+
+color:
+rgba(255,255,255,0.74);
+}
+
+/* separator dots */
+
+.stack-track span:nth-child(even){
+
+font-size:18px;
+
+color:#64b5f6;
+}
+
+/* animation */
+
+@keyframes marqueeScroll{
+
+0%{
+transform:translateX(0%);
+}
+
+100%{
+transform:translateX(-50%);
+}
+}
+
+
+
+
+
+
+
+  
+
+
+
   
 </style>
 
@@ -311,10 +398,146 @@ to{opacity:1;transform:translateY(0);}
 <h2 id="typing"></h2>
 
 <p>
-I design and engineer behaviour-based detection systems to identify and stop attacks in real time.
+Cyber Security Analyst specialising in threat detection, SOC operations, and infrastructure security across enterprise and OT environments.
 <br>
-Specialising in EDR (CrowdStrike), threat hunting, and SOC automation using Wazuh, Sysmon, and MITRE ATT&CK.
+Experienced with CrowdStrike Falcon, Splunk, Elastic SIEM, and MITRE ATT&CK-aligned detection engineering focused on identifying, analysing, and responding to real-world threats.
 </p>
+
+
+
+
+<!-- ================= TECH STACK MARQUEE ================= -->
+
+<section class="stack-marquee">
+
+<div class="stack-track">
+
+<span>CrowdStrike Falcon</span>
+<span>•</span>
+
+<span>Splunk</span>
+<span>•</span>
+
+<span>Elastic SIEM</span>
+<span>•</span>
+
+<span>Wireshark</span>
+<span>•</span>
+
+<span>Nessus</span>
+<span>•</span>
+
+<span>Metasploit</span>
+<span>•</span>
+
+<span>Burp Suite</span>
+<span>•</span>
+
+<span>Snort</span>
+<span>•</span>
+
+<span>Nmap</span>
+<span>•</span>
+
+<span>EDR</span>
+<span>•</span>
+
+<span>SIEM Operations</span>
+<span>•</span>
+
+<span>Incident Response</span>
+<span>•</span>
+
+<span>Threat Detection</span>
+<span>•</span>
+
+<span>Detection Engineering</span>
+<span>•</span>
+
+<span>SCADA Security</span>
+<span>•</span>
+
+<span>ICS Security</span>
+<span>•</span>
+
+<span>Operational Technology</span>
+<span>•</span>
+
+<span>MITRE ATT&CK for ICS</span>
+<span>•</span>
+
+<span>Modbus</span>
+<span>•</span>
+
+<span>DNP3</span>
+<span>•</span>
+
+<span>EtherNet/IP</span>
+<span>•</span>
+
+<span>Siemens PLCs</span>
+<span>•</span>
+
+<span>TIA Portal</span>
+<span>•</span>
+
+<span>MQTT</span>
+<span>•</span>
+
+<span>IoT Security</span>
+<span>•</span>
+
+<span>Linux Administration</span>
+<span>•</span>
+
+<span>Windows Administration</span>
+<span>•</span>
+
+<span>Network Segmentation</span>
+<span>•</span>
+
+<span>Firewall Management</span>
+<span>•</span>
+
+<span>Threat Analysis</span>
+<span>•</span>
+
+<span>Vulnerability Assessment</span>
+<span>•</span>
+
+<span>Python</span>
+<span>•</span>
+
+<span>Bash Scripting</span>
+<span>•</span>
+
+<span>Security Automation</span>
+
+<!-- duplicate for infinite smooth scrolling -->
+
+<span>•</span>
+
+<span>CrowdStrike Falcon</span>
+<span>•</span>
+
+<span>Splunk</span>
+<span>•</span>
+
+<span>Elastic SIEM</span>
+<span>•</span>
+
+<span>Wireshark</span>
+<span>•</span>
+
+<span>Nessus</span>
+<span>•</span>
+
+<span>Threat Detection</span>
+
+</div>
+
+</section>
+  
 
 
 

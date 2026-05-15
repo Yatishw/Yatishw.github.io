@@ -567,6 +567,7 @@ z-index:2;
 
 /* ================= SCROLLBAR ================= */
 
+/* Chrome, Edge, Safari */
 ::-webkit-scrollbar{
 width:12px;
 }
@@ -576,7 +577,6 @@ background:#020617;
 }
 
 ::-webkit-scrollbar-thumb{
-
 background:
 linear-gradient(
 180deg,
@@ -587,16 +587,27 @@ linear-gradient(
 border-radius:20px;
 
 border:2px solid #020617;
+
+box-shadow:
+0 0 10px rgba(66,165,245,0.35);
 }
 
 ::-webkit-scrollbar-thumb:hover{
-
 background:
 linear-gradient(
 180deg,
 #42a5f5,
 #90caf9
 );
+
+box-shadow:
+0 0 14px rgba(66,165,245,0.6);
+}
+
+/* Firefox */
+html{
+scrollbar-width:thin;
+scrollbar-color:#42a5f5 #020617;
 }
 
 /* ================= MOBILE ================= */

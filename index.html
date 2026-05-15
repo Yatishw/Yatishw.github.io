@@ -50,7 +50,7 @@ max-width:800px;
 padding:20px;
 position: relative;
 z-index: 2;  
-margin-top:80px;
+margin-top:85px;
 }
 
 /* AVATAR */
@@ -324,13 +324,15 @@ position:absolute;
 
 top:0;
 
-width:120px;
+width:220px;
 height:100%;
 
 z-index:3;
 
 pointer-events:none;
 }
+
+/* LEFT FADE */
 
 .stack-marquee::before{
 
@@ -339,10 +341,14 @@ left:0;
 background:
 linear-gradient(
 to right,
-#020617,
-transparent
+rgba(2,6,23,1) 0%,
+rgba(2,6,23,0.92) 35%,
+rgba(2,6,23,0.55) 65%,
+transparent 100%
 );
 }
+
+/* RIGHT FADE */
 
 .stack-marquee::after{
 
@@ -351,11 +357,12 @@ right:0;
 background:
 linear-gradient(
 to left,
-#020617,
-transparent
+rgba(2,6,23,1) 0%,
+rgba(2,6,23,0.92) 35%,
+rgba(2,6,23,0.55) 65%,
+transparent 100%
 );
 }
-
 .stack-track{
 
 display:flex;

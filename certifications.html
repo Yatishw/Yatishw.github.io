@@ -8,10 +8,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- FONT -->
+<!-- GOOGLE FONT -->
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-<!-- ICONS -->
+<!-- FONT AWESOME -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
@@ -26,37 +26,39 @@ font-family:'Inter',sans-serif;
 }
 
 body{
+
 background:
 radial-gradient(circle at top,#0f172a,#020617 80%);
+
 color:white;
+
 overflow-x:hidden;
+
 min-height:100vh;
+
 position:relative;
 }
 
 /* ================= GRID BACKGROUND ================= */
 
 body::before{
+
 content:"";
+
 position:fixed;
+
 top:0;
 left:0;
+
 width:100%;
 height:100%;
 
-mask-image: linear-gradient(
-to bottom,
-rgba(0,0,0,0.95) 0%,
-rgba(0,0,0,0.7) 45%,
-rgba(0,0,0,0.25) 75%,
-transparent 100%
-);
-
 background:
+
 repeating-linear-gradient(
 to right,
-rgba(66,165,245,0.25) 0px,
-rgba(66,165,245,0.25) 1px,
+rgba(66,165,245,0.18) 0px,
+rgba(66,165,245,0.18) 1px,
 transparent 1px,
 transparent 80px
 ),
@@ -69,16 +71,18 @@ transparent 1px,
 transparent 80px
 );
 
-animation:gridMove 8s linear infinite;
+mask-image:
+linear-gradient(
+to bottom,
+rgba(0,0,0,0.95),
+rgba(0,0,0,0.75),
+transparent
+);
+
+animation:gridMove 10s linear infinite;
 
 z-index:-2;
 }
-
-/* ================= LIGHT SWEEP ================= */
-
-
-
-/* ================= ANIMATIONS ================= */
 
 @keyframes gridMove{
 
@@ -89,64 +93,68 @@ background-position:0 0;
 100%{
 background-position:0 80px;
 }
-
-}
-
-@keyframes sweep{
-
-0%{
-transform:translateX(-100%);
-}
-
-100%{
-transform:translateX(100%);
-}
-
 }
 
 /* ================= NAVBAR ================= */
 
 .nav{
-position: fixed;
-top: 30px;
-left: 50%;
-transform: translateX(-50%);
-z-index: 100;
 
-background: rgba(10,15,30,0.6);
+position:fixed;
 
-padding: 14px 30px;
+top:30px;
+left:50%;
 
-border-radius: 40px;
+transform:translateX(-50%);
 
-backdrop-filter: blur(12px);
--webkit-backdrop-filter: blur(12px);
+z-index:100;
 
-border: 1px solid rgba(255,255,255,0.08);
+padding:14px 32px;
 
-box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+border-radius:40px;
+
+background:
+rgba(10,15,30,0.60);
+
+backdrop-filter:blur(12px);
+
+border:
+1px solid rgba(255,255,255,0.08);
+
+box-shadow:
+0 10px 30px rgba(0,0,0,0.4);
 }
 
 .nav a{
-margin: 0 18px;
-color: #e0e0e0;
-text-decoration: none;
 
-font-size: 16px;
-font-weight: 500;
+margin:0 18px;
 
-transition: 0.3s;
-position: relative;
+color:#e2e8f0;
+
+text-decoration:none;
+
+font-size:16px;
+font-weight:500;
+
+position:relative;
+
+transition:0.3s;
 }
 
 .nav a::after{
+
 content:"";
+
 position:absolute;
+
 bottom:-6px;
 left:0;
+
 width:0%;
+
 height:2px;
+
 background:#42a5f5;
+
 transition:0.3s;
 }
 
@@ -155,334 +163,55 @@ width:100%;
 }
 
 .nav a:hover{
-color:#ffffff;
+color:white;
 }
 
-/* ================= PAGE TITLE ================= */
+/* ================= TITLE ================= */
 
 .page-title{
+
 padding-top:180px;
+
 text-align:center;
+
 position:relative;
 z-index:2;
 }
 
 .page-title h1{
-font-size:52px;
-font-weight:650;
+
+font-size:56px;
+
+font-weight:700;
+
 letter-spacing:-1px;
-color:white;
+
+margin-bottom:14px;
 }
 
 .page-title p{
-margin-top:14px;
-font-size:17px;
+
+font-size:18px;
+
 font-weight:300;
+
 color:#94a3b8;
-letter-spacing:0.3px;
 }
 
-
-
-/* ================= CERT CARD ================= */
-
-.cert-card{
-background:rgba(255,255,255,0.04);
-
-border:1px solid rgba(255,255,255,0.08);
-
-border-radius:20px;
-
-overflow:hidden;
-
-backdrop-filter:blur(10px);
-
-transition:0.35s ease;
-
-box-shadow:
-0 10px 30px rgba(0,0,0,0.35);
-
-height:240px;
-
-display:flex;
-flex-direction:column;
-
-text-decoration:none;
-color:inherit;
-
-cursor:pointer;
-position:relative;
-}
-
-/* ================= IMAGE ================= */
-
-.cert-card img{
-width:100%;
-height:110px;
-
-object-fit:cover;
-
-opacity:0.16;
-
-filter:
-grayscale(15%)
-contrast(105%)
-brightness(0.85);
-
-transition:0.35s ease;
-}
-
-/* ================= CONTENT ================= */
-
-.cert-content{
-padding:20px 24px;
-
-display:flex;
-flex-direction:column;
-
-flex:1;
-}
-
-.cert-content h3{
-font-size:20px;
-font-weight:700;
-
-line-height:1.3;
-
-margin-bottom:10px;
-
-transition:0.3s ease;
-}
-
-.cert-content p{
-font-size:14px;
-line-height:1.6;
-
-color:#cbd5e1;
-}
-
-
-
-
-
-
-/* ================= PREMIUM AMBIENT REFLECTION ================= */
-
-/* ================= PREMIUM REFLECTION ================= */
-
-.cert-card{
-
-background:
-linear-gradient(
-180deg,
-rgba(15,23,42,0.88),
-rgba(9,14,28,0.92)
-);
-
-border:1px solid rgba(255,255,255,0.08);
-
-border-radius:20px;
-
-overflow:hidden;
-
-backdrop-filter:blur(12px);
-
-transition:0.3s ease;
-
-box-shadow:
-0 10px 30px rgba(0,0,0,0.35);
-
-height:240px;
-
-display:flex;
-flex-direction:column;
-
-text-decoration:none;
-color:inherit;
-
-cursor:pointer;
-position:relative;
-}
-
-/* top reflective corner */
-/* realistic reflective sheen */
-
-/* subtle premium surface */
-
-.cert-card::before{
-content:"";
-
-position:absolute;
-top:0;
-left:0;
-
-width:100%;
-height:100%;
-
-background:
-linear-gradient(
-145deg,
-rgba(255,255,255,0.03),
-transparent 40%
-);
-
-pointer-events:none;
-}
-
-
-  
-/* ================= HOVER ================= */
-
-/* ================= HOVER ================= */
-
-.cert-card:hover{
-
-transform:translateY(-4px);
-
-border-color:
-rgba(66,165,245,0.22);
-
-box-shadow:
-0 0 18px rgba(66,165,245,0.08),
-0 12px 35px rgba(0,0,0,0.42);
-}
-
-.cert-card:hover img{
-transform:scale(1.02);
-
-opacity:0.18;
-}
-
-.cert-card:hover h3{
-color:#ffffff;
-}
-
-
-
-
-/* click feedback */
-
-.cert-card:active{
-
-transform:
-translateY(-1px)
-scale(0.992);
-
-transition:0.08s;
-}
-
-
-
-  
-/* ================= FOOTER ================= */
-
-footer{
-text-align:center;
-
-padding:45px 20px 60px;
-
-color:#64748b;
-
-font-size:15px;
-
-position:relative;
-z-index:2;
-}
-
-/* ================= SCROLLBAR ================= */
-
-/* Chrome, Edge, Safari */
-::-webkit-scrollbar{
-width:12px;
-}
-
-::-webkit-scrollbar-track{
-background:#020617;
-}
-
-::-webkit-scrollbar-thumb{
-background:
-linear-gradient(
-180deg,
-#1e3a8a,
-#42a5f5
-);
-
-border-radius:20px;
-
-border:2px solid #020617;
-
-box-shadow:
-0 0 10px rgba(66,165,245,0.35);
-}
-
-::-webkit-scrollbar-thumb:hover{
-background:
-linear-gradient(
-180deg,
-#42a5f5,
-#90caf9
-);
-
-box-shadow:
-0 0 14px rgba(66,165,245,0.6);
-}
-
-/* Firefox */
-html{
-scrollbar-width:thin;
-scrollbar-color:#42a5f5 #020617;
-}
-
-/* ================= MOBILE ================= */
-
-@media(max-width:1100px){
-
-.certifications{
-grid-template-columns:1fr;
-}
-
-
-.featured-certs{
-grid-template-columns:1fr;
-}
-
-.other-certs{
-grid-template-columns:1fr;
-}
-
-  
-.nav{
-width:94%;
-display:flex;
-justify-content:center;
-flex-wrap:wrap;
-}
-
-.nav a{
-margin:6px 10px;
-}
-
-}
-
-
-
-
-
-/* ================= FEATURED CERTS ================= */
+/* ================= FEATURED CERTIFICATIONS ================= */
 
 .featured-certs{
 
 width:88%;
 
-margin:90px auto 40px;
+margin:80px auto 38px;
 
 display:grid;
 
 grid-template-columns:
 repeat(3,1fr);
 
-gap:30px;
+gap:24px;
 
 position:relative;
 z-index:2;
@@ -492,83 +221,141 @@ z-index:2;
 
 position:relative;
 
-height:240px;
+height:185px;
 
 padding:28px;
 
 display:flex;
-flex-direction:column;
-justify-content:flex-end;
+align-items:center;
 
 border-radius:22px;
 
 overflow:hidden;
 
 text-decoration:none;
+
 color:white;
 
-background-size:cover;
+background-size:100%;
 background-position:center;
 
-border:1px solid rgba(255,255,255,0.08);
+border:
+1px solid rgba(255,255,255,0.08);
+
+background-color:
+rgba(15,23,42,0.82);
+
+backdrop-filter:blur(12px);
+
+transition:0.32s ease;
 
 box-shadow:
 0 10px 30px rgba(0,0,0,0.35);
 
-transition:0.3s ease;
-
 isolation:isolate;
 }
 
-
-
-
-.featured-certs{
-
-width:88%;
-
-margin:90px auto 40px;
-
-display:grid;
-
-grid-template-columns:
-repeat(3,1fr);
-
-gap:30px;
-}
-
-  
-
+/* overlay */
 
 .featured-cert::before{
+
 content:"";
 
 position:absolute;
+
 inset:0;
 
 background:
 linear-gradient(
 180deg,
-rgba(2,6,23,0.35),
-rgba(2,6,23,0.88)
+rgba(2,6,23,0.18) 0%,
+rgba(2,6,23,0.58) 45%,
+rgba(2,6,23,0.96) 100%
 );
 
 z-index:1;
 }
 
+/* surface reflection */
 
+.featured-cert::after{
 
-  
+content:"";
 
-.featured-content{
-position:relative;
-z-index:2;
-padding:0;
+position:absolute;
+
+top:0;
+left:0;
+
+width:100%;
+height:100%;
+
+background:
+linear-gradient(
+145deg,
+rgba(255,255,255,0.04),
+transparent 38%
+);
+
+z-index:1;
 }
 
+.featured-content{
 
+position:relative;
 
+z-index:2;
+}
 
+.featured-content h3{
+
+font-size:28px;
+
+font-weight:700;
+
+line-height:1.15;
+
+margin-bottom:10px;
+}
+
+.featured-content span{
+
+font-size:15px;
+
+font-weight:500;
+
+color:#64b5f6;
+
+line-height:1.5;
+}
+
+/* hover */
+
+.featured-cert:hover{
+
+transform:
+translateY(-4px);
+
+background-size:108%;
+
+border-color:
+rgba(66,165,245,0.18);
+
+box-shadow:
+0 0 18px rgba(66,165,245,0.08),
+0 16px 40px rgba(0,0,0,0.42);
+}
+
+.featured-cert:active{
+
+transform:
+translateY(-1px)
+scale(0.992);
+
+transition:0.08s;
+}
+
+/* background images */
 
 .sc900{
 background-image:url('images/microsoft-bg.png');
@@ -582,63 +369,7 @@ background-image:url('images/bcs-bg.png');
 background-image:url('images/proofpoint-bg.png');
 }
 
-
-
-
-
-
-
-  
-
-.featured-content h3{
-font-size:21px;
-font-weight:700;
-
-line-height:1.4;
-
-color:white;
-
-margin-bottom:14px;
-}
-
-.featured-content span{
-font-size:14px;
-
-color:#64b5f6;
-
-font-weight:600;
-
-letter-spacing:0.3px;
-}
-
-
-
-  
-
-.featured-cert:hover{
-
-transform:
-translateY(-4px);
-
-border-color:
-rgba(66,165,245,0.18);
-
-box-shadow:
-0 0 18px rgba(66,165,245,0.08),
-0 14px 35px rgba(0,0,0,0.45);
-}
-
-
-.featured-cert:active{
-
-transform:
-translateY(-1px)
-scale(0.992);
-
-transition:0.08s;
-}
-
-/* ================= MINI CERTS ================= */
+/* ================= OTHER CERTIFICATIONS ================= */
 
 .other-certs{
 
@@ -649,9 +380,9 @@ margin:0 auto 90px;
 display:grid;
 
 grid-template-columns:
-repeat(2,1fr);
+repeat(3,1fr);
 
-gap:18px;
+gap:16px;
 
 position:relative;
 z-index:2;
@@ -659,48 +390,127 @@ z-index:2;
 
 .mini-cert{
 
-background:
-rgba(255,255,255,0.04);
+display:flex;
+align-items:center;
 
-border:1px solid rgba(255,255,255,0.08);
+gap:12px;
 
-padding:18px 22px;
+padding:18px;
 
 border-radius:16px;
 
-font-size:15px;
+background:
+rgba(255,255,255,0.04);
+
+border:
+1px solid rgba(255,255,255,0.08);
+
+backdrop-filter:blur(8px);
+
+transition:0.25s ease;
+
+font-size:14px;
 font-weight:550;
 
 color:#dbeafe;
-
-transition:0.25s ease;
-backdrop-filter:blur(8px); 
 }
 
 .mini-cert:hover{
 
-border-color:
-rgba(66,165,245,0.20);
-
 transform:translateY(-2px);
+
+border-color:
+rgba(66,165,245,0.18);
 
 background:
 rgba(255,255,255,0.055);
 }
 
+.mini-cert i{
 
+font-size:14px;
 
+color:#64b5f6;
+}
 
+/* ================= FOOTER ================= */
 
+footer{
 
+text-align:center;
 
+padding:50px 20px 60px;
 
+color:#64748b;
 
+font-size:15px;
 
+position:relative;
+z-index:2;
+}
 
+/* ================= SCROLLBAR ================= */
 
+::-webkit-scrollbar{
+width:12px;
+}
 
-  
+::-webkit-scrollbar-track{
+background:#020617;
+}
+
+::-webkit-scrollbar-thumb{
+
+background:
+linear-gradient(
+180deg,
+#1e3a8a,
+#42a5f5
+);
+
+border-radius:20px;
+
+border:2px solid #020617;
+}
+
+::-webkit-scrollbar-thumb:hover{
+
+background:
+linear-gradient(
+180deg,
+#42a5f5,
+#90caf9
+);
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:1100px){
+
+.featured-certs{
+grid-template-columns:1fr;
+}
+
+.other-certs{
+grid-template-columns:1fr;
+}
+
+.nav{
+
+width:94%;
+
+display:flex;
+
+justify-content:center;
+
+flex-wrap:wrap;
+}
+
+.nav a{
+margin:6px 10px;
+}
+}
+
 </style>
 
 </head>
@@ -730,11 +540,6 @@ Cybersecurity • Threat Detection • SOC Operations
 
 </div>
 
-<!-- ================= CERTIFICATIONS ================= -->
-
-
-<!-- ================= FEATURED CERTIFICATIONS ================= -->
-
 <!-- ================= FEATURED CERTIFICATIONS ================= -->
 
 <div class="featured-certs">
@@ -747,7 +552,9 @@ Cybersecurity • Threat Detection • SOC Operations
 
 <h3>Microsoft SC-900</h3>
 
-<span>Security, Compliance & Identity Fundamentals</span>
+<span>
+Security, Compliance & Identity Fundamentals
+</span>
 
 </div>
 
@@ -761,7 +568,9 @@ Cybersecurity • Threat Detection • SOC Operations
 
 <h3>BCS CISMP</h3>
 
-<span>Certified Information Security Management Professional</span>
+<span>
+Certified Information Security Management Professional
+</span>
 
 </div>
 
@@ -775,7 +584,9 @@ Cybersecurity • Threat Detection • SOC Operations
 
 <h3>Proofpoint AI Email Security Specialist</h3>
 
-<span>Proofpoint • 2026</span>
+<span>
+Proofpoint • 2026
+</span>
 
 </div>
 
@@ -787,35 +598,58 @@ Cybersecurity • Threat Detection • SOC Operations
 
 <div class="other-certs">
 
-<div class="mini-cert">ISC2 Certificate in Cybersecurity (CC)</div>
+<div class="mini-cert">
+<i class="fa-solid fa-shield-halved"></i>
+ISC2 Certificate in Cybersecurity (CC)
+</div>
 
-<div class="mini-cert">ISO/IEC 27001 Information Security Associate</div>
+<div class="mini-cert">
+<i class="fa-solid fa-lock"></i>
+ISO/IEC 27001 Information Security Associate
+</div>
 
-<div class="mini-cert">Foundation Level Threat Intelligence Analyst</div>
+<div class="mini-cert">
+<i class="fa-solid fa-crosshairs"></i>
+Foundation Level Threat Intelligence Analyst
+</div>
 
-<div class="mini-cert">PwC Cyber Security Consulting Simulation</div>
+<div class="mini-cert">
+<i class="fa-solid fa-briefcase"></i>
+PwC Cyber Security Consulting Simulation
+</div>
 
-<div class="mini-cert">SAP Cyber Security Virtual Internship</div>
+<div class="mini-cert">
+<i class="fa-solid fa-building"></i>
+SAP Cyber Security Virtual Internship
+</div>
 
-<div class="mini-cert">Google Data Analytics</div>
+<div class="mini-cert">
+<i class="fa-solid fa-chart-line"></i>
+Google Data Analytics
+</div>
 
-<div class="mini-cert">Cisco Introduction to Cybersecurity</div>
+<div class="mini-cert">
+<i class="fa-solid fa-network-wired"></i>
+Cisco Introduction to Cybersecurity
+</div>
 
-<div class="mini-cert">Certified Network Security Specialist (CNSS)</div>
+<div class="mini-cert">
+<i class="fa-solid fa-server"></i>
+Certified Network Security Specialist (CNSS)
+</div>
 
-<div class="mini-cert">UK Civil Aviation Authority Flyer ID</div>
+<div class="mini-cert">
+<i class="fa-solid fa-plane"></i>
+UK Civil Aviation Authority Flyer ID
+</div>
 
 </div>
 
+<!-- ================= FOOTER ================= -->
 
-
-
-
-
-
-
-
-  
+<footer>
+Built for Detection Engineering & SOC Operations
+</footer>
 
 </body>
 </html>

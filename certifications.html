@@ -384,13 +384,51 @@ background-size:64%;
 }
 
 .cismp:hover{
-background-size:38%;
+background-size:34%;
 }
 
 .proofpoint:hover{
 background-size:64%;
 }
 
+
+
+
+/* external link icon */
+
+.cert-link{
+
+position:absolute;
+
+top:20px;
+right:20px;
+
+z-index:3;
+
+font-size:14px;
+
+color:
+rgba(255,255,255,0.55);
+
+transition:0.25s ease;
+}
+
+.featured-cert:hover .cert-link{
+
+color:#90caf9;
+
+transform:translate(2px,-2px);
+}
+
+
+
+
+
+
+
+
+
+  
 
   
 
@@ -457,6 +495,59 @@ font-size:14px;
 
 color:#64b5f6;
 }
+
+
+
+
+
+/* mini cert layout */
+
+.mini-cert{
+
+display:flex;
+align-items:center;
+justify-content:space-between;
+
+text-decoration:none;
+}
+
+/* left side */
+
+.mini-cert-left{
+
+display:flex;
+align-items:center;
+
+gap:12px;
+}
+
+/* external icon */
+
+.mini-link{
+
+font-size:12px;
+
+opacity:0.45;
+
+transition:0.25s ease;
+
+color:#94a3b8;
+}
+
+.mini-cert:hover .mini-link{
+
+opacity:1;
+
+transform:translate(2px,-2px);
+
+color:#90caf9;
+}
+
+
+
+
+
+  
 
 /* ================= FOOTER ================= */
 
@@ -571,7 +662,9 @@ Cybersecurity • Threat Detection • SOC Operations
 
 <!-- SC-900 -->
 
-<a href="#" class="featured-cert sc900">
+<a href="https://www.credly.com/badges/bbd2a710-43c0-40e8-9e4b-80d437e04bd6/public_url" class="featured-cert sc900">
+
+<i class="fa-solid fa-arrow-up-right-from-square cert-link"></i>
 
 <div class="featured-content">
 
@@ -589,7 +682,9 @@ Microsoft SC-900 • 2026
 
 <!-- CISMP -->
 
-<a href="#" class="featured-cert cismp">
+<a href="docs/Bcs cismp.pdf" class="featured-cert cismp">
+
+ <i class="fa-solid fa-arrow-up-right-from-square cert-link"></i> 
 
 <div class="featured-content">
 
@@ -607,7 +702,9 @@ British Computer Society • 2026
 
 <!-- PROOFPOINT -->
 
-<a href="#" class="featured-cert proofpoint">
+<a href="https://www.credly.com/badges/b06499f8-d69c-4414-a559-46ba6478917c/public_url" class="featured-cert proofpoint">
+
+<i class="fa-solid fa-arrow-up-right-from-square cert-link"></i>
 
 <div class="featured-content">
 
@@ -629,54 +726,102 @@ Proofpoint • 2026
 
 <div class="other-certs">
 
-<div class="mini-cert">
+<a href="https://ondemand.defensityone.com/certificates/ri9jwr5vy1"
+target="_blank"
+class="mini-cert">
+
+<div class="mini-cert-left">
 <i class="fa-solid fa-server"></i>
-Certified Network Security Specialist (CNSS)
+<span>Certified Network Security Specialist (CNSS)</span>
 </div>
 
-<div class="mini-cert">
+<i class="fa-solid fa-arrow-up-right-from-square mini-link"></i>
+
+</a>
+
+<a href="https://www.skillfront.com/Badges/32497731755258"
+target="_blank"
+class="mini-cert">
+
+<div class="mini-cert-left">
 <i class="fa-solid fa-lock"></i>
-ISO/IEC 27001 Information Security Associate
+<span>ISO/IEC 27001 Information Security Associate</span>
 </div>
 
-<div class="mini-cert">
+<i class="fa-solid fa-arrow-up-right-from-square mini-link"></i>
+
+</a>
+
+<a href="https://arcx.io/verify-certificate?id=b89d507d616e42e2e4e985c7f6fbc791b1961804&k=2d405b2c38d14100a7f5d690a34505da"
+target="_blank"
+class="mini-cert">
+
+<div class="mini-cert-left">
 <i class="fa-solid fa-crosshairs"></i>
-Foundation Level Threat Intelligence Analyst
+<span>Cyber Threat Intelligence Analyst</span>
 </div>
 
-<div class="mini-cert">
+<i class="fa-solid fa-arrow-up-right-from-square mini-link"></i>
+
+</a>
+
+<a href="https://www.theforage.com/completion-certificates/CA4pBqsy4b4PdyaBP/4KqDALSkyRNPXjQGa_CA4pBqsy4b4PdyaBP_fCichwQGFxbxasX4z_1770498147057_completion_certificate.pdf"
+target="_blank"
+class="mini-cert">
+
+<div class="mini-cert-left">
 <i class="fa-solid fa-briefcase"></i>
-PwC Cyber Security Consulting Simulation
+<span>PwC Cyber Security Consulting Simulation</span>
 </div>
 
-<div class="mini-cert">
-<i class="fa-solid fa-building"></i>
-SAP Cyber Security Virtual Internship
-</div>
+<i class="fa-solid fa-arrow-up-right-from-square mini-link"></i>
 
-<div class="mini-cert">
+</a>
+
+
+<a href="https://www.coursera.org/account/accomplishments/certificate/AM7U6J5WQQ78"
+target="_blank"
+class="mini-cert">
+
+<div class="mini-cert-left">
 <i class="fa-solid fa-chart-line"></i>
-Google Data Analytics
+<span>Google Data Analytics</span>
 </div>
 
-<div class="mini-cert">
+<i class="fa-solid fa-arrow-up-right-from-square mini-link"></i>
+
+</a>
+
+<a href="https://www.credly.com/badges/56678c86-3297-44b3-81d3-ac345a11e1e8/public_url"
+target="_blank"
+class="mini-cert">
+
+<div class="mini-cert-left">
 <i class="fa-solid fa-network-wired"></i>
-Cisco Introduction to Cybersecurity
+<span>Cisco Introduction to Cybersecurity</span>
 </div>
 
+<i class="fa-solid fa-arrow-up-right-from-square mini-link"></i>
 
-<div class="mini-cert">
+</a>
+
+<a href="docs/View user certificate _ UK Civil Aviation Authority.pdf"
+target="_blank"
+class="mini-cert">
+
+<div class="mini-cert-left">
 <i class="fa-solid fa-plane"></i>
-UK Civil Aviation Authority Flyer ID
+<span>UK Civil Aviation Authority Flyer ID</span>
 </div>
+
+<i class="fa-solid fa-arrow-up-right-from-square mini-link"></i>
+
+</a>
 
 </div>
 
 <!-- ================= FOOTER ================= -->
 
-<footer>
-Built for Detection Engineering & SOC Operations
-</footer>
 
 </body>
 </html>

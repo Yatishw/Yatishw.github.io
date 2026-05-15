@@ -3,10 +3,10 @@
 
 <head>
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+<meta charset="utf-8">
 <title>Certifications | Yatish W</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- GOOGLE FONT -->
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -24,8 +24,6 @@ padding:0;
 box-sizing:border-box;
 font-family:'Inter',sans-serif;
 }
-
-/* ================= BODY ================= */
 
 body{
 
@@ -67,8 +65,8 @@ transparent 80px
 
 repeating-linear-gradient(
 to bottom,
-rgba(66,165,245,0.07) 0px,
-rgba(66,165,245,0.07) 1px,
+rgba(66,165,245,0.08) 0px,
+rgba(66,165,245,0.08) 1px,
 transparent 1px,
 transparent 80px
 );
@@ -110,12 +108,12 @@ transform:translateX(-50%);
 
 z-index:100;
 
-padding:14px 34px;
+padding:14px 32px;
 
 border-radius:40px;
 
 background:
-rgba(10,15,30,0.62);
+rgba(10,15,30,0.60);
 
 backdrop-filter:blur(12px);
 
@@ -123,7 +121,7 @@ border:
 1px solid rgba(255,255,255,0.08);
 
 box-shadow:
-0 10px 30px rgba(0,0,0,0.35);
+0 10px 30px rgba(0,0,0,0.4);
 }
 
 .nav a{
@@ -148,8 +146,8 @@ content:"";
 
 position:absolute;
 
-left:0;
 bottom:-6px;
+left:0;
 
 width:0%;
 
@@ -168,11 +166,11 @@ width:100%;
 color:white;
 }
 
-/* ================= PAGE TITLE ================= */
+/* ================= TITLE ================= */
 
 .page-title{
 
-padding-top:170px;
+padding-top:180px;
 
 text-align:center;
 
@@ -182,7 +180,7 @@ z-index:2;
 
 .page-title h1{
 
-font-size:58px;
+font-size:56px;
 
 font-weight:700;
 
@@ -200,13 +198,13 @@ font-weight:300;
 color:#94a3b8;
 }
 
-/* ================= FEATURED CERTS ================= */
+/* ================= FEATURED CERTIFICATIONS ================= */
 
 .featured-certs{
 
 width:88%;
 
-margin:80px auto 36px;
+margin:80px auto 38px;
 
 display:grid;
 
@@ -223,63 +221,64 @@ z-index:2;
 
 position:relative;
 
-height:190px;
+height:170px;
 
-padding:26px;
+padding:28px;
 
 display:flex;
-align-items:flex-end;
+align-items:center;
+
+border-radius:22px;
 
 overflow:hidden;
-
-border-radius:24px;
 
 text-decoration:none;
 
 color:white;
 
-background-color:
-rgba(15,23,42,0.82);
-
+background-size:55%;
 background-repeat:no-repeat;
 background-position:center;
-background-size:48%;
+
+background-color:
+rgba(10,15,30,0.92);
 
 border:
 1px solid rgba(255,255,255,0.08);
 
+background-color:
+rgba(15,23,42,0.82);
+
 backdrop-filter:blur(12px);
+
+transition:0.32s ease;
 
 box-shadow:
 0 10px 30px rgba(0,0,0,0.35);
 
-transition:0.32s ease;
-
 isolation:isolate;
 }
 
-/* dark overlay */
+/* overlay */
 
 .featured-cert::before{
-
 content:"";
 
 position:absolute;
-
 inset:0;
 
 background:
 linear-gradient(
 180deg,
-rgba(2,6,23,0.42) 0%,
-rgba(2,6,23,0.76) 50%,
-rgba(2,6,23,0.96) 100%
+rgba(2,6,23,0.55) 0%,
+rgba(2,6,23,0.82) 55%,
+rgba(2,6,23,0.97) 100%
 );
 
 z-index:1;
 }
 
-/* subtle reflection */
+/* surface reflection */
 
 .featured-cert::after{
 
@@ -308,32 +307,28 @@ z-index:1;
 position:relative;
 
 z-index:2;
-
-max-width:90%;
 }
 
 .featured-content h3{
 
-font-size:19px;
+font-size:28px;
 
 font-weight:700;
 
-line-height:1.3;
+line-height:1.15;
 
-margin-bottom:8px;
-
-color:white;
+margin-bottom:10px;
 }
 
 .featured-content span{
 
-font-size:14px;
+font-size:15px;
 
 font-weight:500;
 
 color:#64b5f6;
 
-line-height:1.45;
+line-height:1.5;
 }
 
 /* hover */
@@ -343,7 +338,7 @@ line-height:1.45;
 transform:
 translateY(-4px);
 
-background-size:54%;
+background-size:108%;
 
 border-color:
 rgba(66,165,245,0.18);
@@ -362,21 +357,61 @@ scale(0.992);
 transition:0.08s;
 }
 
-/* ================= BACKGROUNDS ================= */
+/* background images */
 
 .sc900{
-background-image:url('images/microsoft-logo.png');
+background-image:url('images/microsoft-bg.png');
 }
 
 .cismp{
-background-image:url('images/bcs-logo.png');
+background-image:url('images/bcs-bg.png');
 }
 
 .proofpoint{
-background-image:url('images/proofpoint-logo.png');
+background-image:url('images/proofpoint-bg.png');
 }
 
-/* ================= OTHER CERTS ================= */
+
+
+
+
+
+/* ================= FEATURED LOGO ================= */
+
+.cert-logo{
+
+position:absolute;
+
+top:24px;
+left:24px;
+
+z-index:3;
+}
+
+.cert-logo img{
+
+height:34px;
+
+width:auto;
+
+object-fit:contain;
+
+opacity:0.95;
+
+filter:
+drop-shadow(0 0 10px rgba(255,255,255,0.06));
+}
+
+
+
+
+
+
+
+
+
+  
+/* ================= OTHER CERTIFICATIONS ================= */
 
 .other-certs{
 
@@ -402,7 +437,7 @@ align-items:center;
 
 gap:12px;
 
-padding:18px 20px;
+padding:18px;
 
 border-radius:16px;
 
@@ -414,19 +449,12 @@ border:
 
 backdrop-filter:blur(8px);
 
+transition:0.25s ease;
+
 font-size:14px;
 font-weight:550;
 
 color:#dbeafe;
-
-transition:0.25s ease;
-}
-
-.mini-cert i{
-
-font-size:14px;
-
-color:#64b5f6;
 }
 
 .mini-cert:hover{
@@ -438,6 +466,13 @@ rgba(66,165,245,0.18);
 
 background:
 rgba(255,255,255,0.055);
+}
+
+.mini-cert i{
+
+font-size:14px;
+
+color:#64b5f6;
 }
 
 /* ================= FOOTER ================= */
@@ -516,10 +551,6 @@ flex-wrap:wrap;
 .nav a{
 margin:6px 10px;
 }
-
-.page-title h1{
-font-size:48px;
-}
 }
 
 </style>
@@ -559,11 +590,14 @@ Cybersecurity • Threat Detection • SOC Operations
 
 <a href="#" class="featured-cert sc900">
 
+<div class="cert-logo">
+<img src="images/microsoft-logo.png">
+</div>
+  
+
 <div class="featured-content">
 
-<h3>
-Security, Compliance, and Identity Fundamentals
-</h3>
+<h3>Security, Compliance, and Identity Fundamentals</h3>
 
 <span>
 Microsoft SC-900 • 2026
@@ -577,11 +611,14 @@ Microsoft SC-900 • 2026
 
 <a href="#" class="featured-cert cismp">
 
+<div class="cert-logo">
+<img src="images/microsoft-logo.png">
+</div>
+  
+
 <div class="featured-content">
 
-<h3>
-Certified Information Security Management Professional
-</h3>
+<h3>Certified Information Security Management Professional</h3>
 
 <span>
 British Computer Society • 2026
@@ -595,11 +632,14 @@ British Computer Society • 2026
 
 <a href="#" class="featured-cert proofpoint">
 
+<div class="cert-logo">
+<img src="images/microsoft-logo.png">
+</div>
+  
+
 <div class="featured-content">
 
-<h3>
-Proofpoint AI Email Security Specialist
-</h3>
+<h3>Proofpoint AI Email Security Specialist</h3>
 
 <span>
 Proofpoint • 2026
@@ -670,3 +710,6 @@ Built for Detection Engineering & SOC Operations
 
 </body>
 </html>
+
+
+chnange the whole code and give fresh one wiht you updattion

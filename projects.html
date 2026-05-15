@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+  <meta name="color-scheme" content="dark">
 <meta charset="utf-8">
 <title>Projects | Yatish W</title>
 
@@ -543,6 +544,91 @@ margin:6px 10px;
 }
 
 }
+
+
+
+
+
+/* ================= DARK MODE COMPATIBILITY ================= */
+
+@media (prefers-color-scheme: dark){
+
+body{
+
+background:
+radial-gradient(
+circle at top,
+#111827,
+#020617 82%
+);
+
+background-color:#020617;
+
+color:#f8fafc;
+}
+
+/* navbar */
+
+.nav{
+
+background:
+rgba(15,23,42,0.72);
+
+border:
+1px solid rgba(255,255,255,0.06);
+}
+
+/* cards */
+
+.featured-cert,
+.mini-cert,
+.project-card,
+.cert-card{
+
+background:
+rgba(15,23,42,0.78);
+
+border:
+1px solid rgba(255,255,255,0.06);
+}
+
+/* marquee */
+
+.stack-marquee{
+
+background:
+rgba(255,255,255,0.01);
+}
+
+/* text */
+
+p{
+color:#cbd5e1;
+}
+
+.stack-track span{
+color:rgba(255,255,255,0.72);
+}
+
+/* glow colors slightly softer */
+
+.nav a::after,
+.stack-track span:nth-child(even){
+
+background:#60a5fa;
+color:#60a5fa;
+}
+}
+
+
+
+
+
+
+
+
+
+  
 
 </style>
 

@@ -593,19 +593,93 @@ scrollbar-color:#42a5f5 #020617;
 
 /* ================= MOBILE ================= */
 
-@media(max-width:1100px){
+@media(max-width:768px){
+
+.page-title{
+
+padding-top:140px;
+
+padding-left:20px;
+padding-right:20px;
+}
+
+.page-title h1{
+
+font-size:40px;
+
+line-height:1.1;
+}
+
+.page-title p{
+
+font-size:15px;
+
+line-height:1.6;
+
+margin-top:12px;
+}
+
+/* featured certs */
 
 .featured-certs{
+
+width:92%;
+
+margin:55px auto 28px;
+
 grid-template-columns:1fr;
+
+gap:20px;
 }
 
-.other-certs{
-grid-template-columns:1fr;
+.featured-cert{
+
+height:165px;
+
+padding:24px;
 }
+
+.featured-content h3{
+
+font-size:22px;
+
+line-height:1.2;
+}
+
+.featured-content span{
+
+font-size:14px;
+}
+
+/* mini certs */
+
+.other-certs{
+
+width:92%;
+
+grid-template-columns:1fr;
+
+gap:14px;
+
+margin-bottom:70px;
+}
+
+.mini-cert{
+
+padding:16px;
+
+font-size:14px;
+}
+
+/* navbar */
 
 .nav{
 
-width:94%;
+width:92%;
+
+padding:12px 18px;
+
+top:18px;
 
 display:flex;
 
@@ -615,7 +689,10 @@ flex-wrap:wrap;
 }
 
 .nav a{
-margin:6px 10px;
+
+font-size:14px;
+
+margin:5px 8px;
 }
 }
 

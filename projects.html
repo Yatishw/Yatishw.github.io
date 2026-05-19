@@ -525,27 +525,105 @@ scrollbar-color:#42a5f5 #020617;
  
 /* ================= MOBILE ================= */
 
-@media(max-width:1100px){
+@media(max-width:768px){
+
+.page-title{
+
+padding-top:140px;
+
+padding-left:20px;
+padding-right:20px;
+}
 
 .page-title h1{
-font-size:52px;
+
+font-size:40px;
+
+line-height:1.1;
 }
+
+.page-title p{
+
+font-size:15px;
+
+line-height:1.6;
+
+margin-top:12px;
+}
+
+/* projects */
 
 .projects{
+
+width:92%;
+
+margin:55px auto 70px;
+
 grid-template-columns:1fr;
+
+gap:24px;
 }
 
+/* cards */
+
+.project-card{
+
+height:auto;
+
+min-height:420px;
+}
+
+.project-content{
+
+padding:22px;
+}
+
+.project-content h3{
+
+font-size:21px;
+
+min-height:auto;
+}
+
+.project-content p{
+
+font-size:14px;
+
+line-height:1.7;
+}
+
+/* tags */
+
+.tags span{
+
+font-size:11px;
+
+padding:6px 10px;
+}
+
+/* navbar */
+
 .nav{
-width:94%;
+
+width:92%;
+
+padding:12px 18px;
+
+top:18px;
+
 display:flex;
+
 justify-content:center;
+
 flex-wrap:wrap;
 }
 
 .nav a{
-margin:6px 10px;
-}
 
+font-size:14px;
+
+margin:5px 8px;
+}
 }
 
 

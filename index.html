@@ -463,65 +463,85 @@ transform:translateX(-50%);
 
 
 
-/* ================= MOBILE OPTIMIZATION ================= */
+/* ================= MOBILE ================= */
 
 @media(max-width:768px){
 
-.hero{
+/* hero */
 
-height:auto;
+.hero{
 
 min-height:100vh;
 
+height:auto;
+
 padding:
-140px 20px 70px;
+130px 20px 60px;
 }
 
-/* profile image */
+/* content */
+
+.hero-content{
+
+max-width:100%;
+
+padding:0;
+}
+
+/* avatar */
 
 .avatar{
 
-width:125px;
-height:125px;
+width:130px;
+height:130px;
 
 transform:none;
 
 object-position:center 20%;
 }
 
-/* heading */
+/* name */
 
 h1{
-font-size:40px;
+
+font-size:42px;
+
 line-height:1.1;
+
+margin-top:8px;
 }
 
 /* typing role */
 
 h2{
+
 font-size:20px;
+
+margin-top:10px;
+
 min-height:24px;
 }
 
-/* intro */
+/* intro text */
 
 .hero-content p{
 
 font-size:15px;
 
-line-height:1.7;
+line-height:1.75;
 
-max-width:95%;
+max-width:100%;
 
-margin:
-18px auto 0;
+margin-top:18px;
+
+padding:0 4px;
 }
 
 /* marquee */
 
 .stack-marquee{
 
-margin-top:40px;
+margin-top:34px;
 
 padding:14px 0;
 }
@@ -534,13 +554,15 @@ gap:14px;
 .stack-track span{
 
 font-size:15px;
+
+font-weight:600;
 }
 
 /* socials */
 
 .social{
 
-margin-top:28px;
+margin-top:26px;
 }
 
 .social a{
@@ -559,6 +581,8 @@ width:92%;
 padding:12px 18px;
 
 top:18px;
+
+display:flex;
 
 justify-content:center;
 

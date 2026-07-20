@@ -104,19 +104,26 @@ body{
     text-align:center;
 }
 
-.check{
-    color:#42a5f5;
-    font-size:34px;
-    margin-bottom:20px;
-    animation:pop .3s ease;
+.metric-top{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:8px;          /* space between number and check */
+    margin-bottom:12px;
 }
 
 .metric-number{
-    font-size:72px;
+    font-size:60px;
     font-weight:700;
     color:#fff;
     line-height:1;
-    transition:.25s;
+}
+
+.metric-check{
+    color:#42a5f5;
+    font-size:28px;
+    margin-left:8px;
+    vertical-align:middle;
 }
 
 .metric-label{
@@ -701,8 +708,9 @@ margin:5px 8px;
 
 <div id="intro-loader">
     <div class="intro-content">
-        <div class="check">✓</div>
-        <div id="metric-number" class="metric-number">500+</div>
+        <div id="metric-number" class="metric-number">
+    500+ <span class="metric-check">✓</span>
+</div
         <div id="metric-label" class="metric-label">Alerts Investigated</div>
     </div>
 </div>
@@ -965,7 +973,7 @@ function showMetric(){
 
     setTimeout(()=>{
 
-        number.innerHTML = metrics[index].number;
+        number.innerHTML = metrics[index].number + ' <span class="check">✓</span>';
         label.innerHTML = metrics[index].label;
 
         number.classList.remove("fade");

@@ -76,6 +76,90 @@ body{
 }
 
 
+<div id="intro-loader">
+    <div class="intro-content">
+        <div class="check">✓</div>
+        <div id="metric-number" class="metric-number">500+</div>
+        <div id="metric-label" class="metric-label">Alerts Investigated</div>
+    </div>
+</div>
+
+
+
+/* ===========================
+   Portfolio Intro Loader
+=========================== */
+
+#intro-loader{
+    position:fixed;
+    inset:0;
+    background:#0b1220;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    z-index:999999;
+    transition:opacity .5s ease, visibility .5s ease;
+}
+
+#intro-loader.hide{
+    opacity:0;
+    visibility:hidden;
+}
+
+.intro-content{
+    text-align:center;
+}
+
+.check{
+    color:#42a5f5;
+    font-size:34px;
+    margin-bottom:20px;
+    animation:pop .3s ease;
+}
+
+.metric-number{
+    font-size:72px;
+    font-weight:700;
+    color:#fff;
+    line-height:1;
+    transition:.25s;
+}
+
+.metric-label{
+    margin-top:12px;
+    font-size:20px;
+    color:#9ca3af;
+    letter-spacing:.5px;
+    transition:.25s;
+}
+
+.fade{
+    opacity:0;
+    transform:translateY(10px);
+}
+
+@keyframes pop{
+    from{
+        transform:scale(.7);
+        opacity:0;
+    }
+    to{
+        transform:scale(1);
+        opacity:1;
+    }
+}
+
+
+
+
+
+
+
+
+ 
+
+ 
+
 /* HERO */  
 .hero{
   height:100vh;
@@ -827,6 +911,83 @@ setTimeout(type, deleting ? 40 : 80);
 
 type();
 </script>
+
+
+
+
+
+
+
+
+
+
+<script>
+const metrics = [
+    {
+        number: "500+",
+        label: "Alerts Investigated"
+    },
+    {
+        number: "15+",
+        label: "Detection Rules"
+    },
+    {
+        number: "7",
+        label: "Enterprise Security Labs"
+    },
+    {
+        number: "2+",
+        label: "Years Experience"
+    },
+    {
+        number: "<5 min",
+        label: "Average MTTR"
+    }
+];
+
+const number = document.getElementById("metric-number");
+const label = document.getElementById("metric-label");
+
+let index = 0;
+
+function showMetric(){
+
+    number.classList.add("fade");
+    label.classList.add("fade");
+
+    setTimeout(()=>{
+
+        number.innerHTML = metrics[index].number;
+        label.innerHTML = metrics[index].label;
+
+        number.classList.remove("fade");
+        label.classList.remove("fade");
+
+        index++;
+
+        if(index < metrics.length){
+
+            setTimeout(showMetric,500);
+
+        }else{
+
+            setTimeout(()=>{
+
+                document.getElementById("intro-loader").classList.add("hide");
+
+            },500);
+
+        }
+
+    },200);
+}
+
+setTimeout(showMetric,500);
+</script>
+
+
+
+
 
  
   

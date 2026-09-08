@@ -80,75 +80,6 @@ body{
 
 
 
-/* ===========================
-   Portfolio Intro Loader
-=========================== */
-
-#intro-loader{
-    position:fixed;
-    inset:0;
-    background:#0b1220;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    z-index:999999;
-    transition:opacity .5s ease, visibility .5s ease;
-}
-
-#intro-loader.hide{
-    opacity:0;
-    visibility:hidden;
-}
-
-.intro-content{
-    text-align:center;
-}
-
-.metric-top{
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    gap:8px;          /* space between number and check */
-    margin-bottom:12px;
-}
-
-.metric-number{
-    font-size:60px;
-    font-weight:700;
-    color:#fff;
-    line-height:1;
-}
-
-.metric-check{
-    color:#42a5f5;
-    font-size:34px;
-    margin-left:8px;
-    vertical-align:middle;
-}
-
-.metric-label{
-    margin-top:12px;
-    font-size:20px;
-    color:#9ca3af;
-    letter-spacing:.5px;
-    transition:.25s;
-}
-
-.fade{
-    opacity:0;
-    transform:translateY(10px);
-}
-
-@keyframes pop{
-    from{
-        transform:scale(.7);
-        opacity:0;
-    }
-    to{
-        transform:scale(1);
-        opacity:1;
-    }
-}
 
 
 
@@ -727,14 +658,6 @@ margin:5px 8px;
 
 <body>
 
-<div id="intro-loader">
-    <div class="intro-content">
-        <div id="metric-number" class="metric-number">
-    500+ <span class="metric-check">✓</span>
-        </div>
-        <div id="metric-label" class="metric-label">Alerts Investigated</div>
-    </div>
-</div>
 
 
 
@@ -953,74 +876,6 @@ type();
 
 
 
-
-
-
-
-
-<script>
-const metrics = [
-    {
-        number: "500+",
-        label: "Alerts Investigated"
-    },
-    {
-        number: "15+",
-        label: "Detection Rules"
-    },
-    {
-        number: "7",
-        label: "Enterprise Security Labs"
-    },
-    {
-        number: "2+",
-        label: "Years Experience"
-    },
-    {
-        number: "<5 min",
-        label: "Average MTTR"
-    }
-];
-
-const number = document.getElementById("metric-number");
-const label = document.getElementById("metric-label");
-
-let index = 1;
-
-function showMetric(){
-
-    number.classList.add("fade");
-    label.classList.add("fade");
-
-    setTimeout(()=>{
-
-        number.innerHTML = metrics[index].number + ' <span class="metric-check">✓</span>';
-        label.innerHTML = metrics[index].label;
-
-        number.classList.remove("fade");
-        label.classList.remove("fade");
-
-        index++;
-
-        if(index < metrics.length){
-
-            setTimeout(showMetric,500);
-
-        }else{
-
-            setTimeout(()=>{
-
-                document.getElementById("intro-loader").classList.add("hide");
-
-            },500);
-
-        }
-
-    },200);
-}
-
-setTimeout(showMetric,500);
-</script>
 
 
 

@@ -516,6 +516,151 @@ scrollbar-color:#42a5f5 #020617;
 
 
 
+/* ================= CAPSTONE PROJECT ================= */
+
+.capstone-card{
+  grid-column: 1 / -1;
+  flex-direction: row;
+  height: auto;
+  min-height: 460px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(66,165,245,0.14),
+      rgba(255,255,255,0.03) 45%,
+      rgba(10,15,30,0.7)
+    ),
+    radial-gradient(
+      circle at 20% 20%,
+      rgba(66,165,245,0.18),
+      transparent 45%
+    );
+
+  border: 1px solid rgba(66,165,245,0.35);
+
+  box-shadow:
+    0 0 35px rgba(66,165,245,0.12),
+    0 20px 60px rgba(0,0,0,0.5);
+}
+
+.capstone-card img{
+  width: 42%;
+  height: auto;
+  min-height: 100%;
+  object-fit: cover;
+  opacity: 0.32;
+}
+
+.capstone-card .project-content{
+  width: 58%;
+  padding: 36px 40px;
+}
+
+.capstone-badge{
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  width: max-content;
+
+  padding: 7px 14px;
+  border-radius: 999px;
+
+  background: linear-gradient(90deg, #42a5f5, #90caf9);
+  color: #02111f;
+
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+
+  margin-bottom: 10px;
+
+  box-shadow: 0 0 18px rgba(66,165,245,0.35);
+}
+
+.capstone-card .project-content h3{
+  font-size: 30px;
+  line-height: 1.15;
+  min-height: auto;
+  margin-bottom: 10px;
+}
+
+.capstone-card .project-content p{
+  font-size: 15.5px;
+  max-width: 780px;
+}
+
+.capstone-metrics{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+
+  margin-top: 8px;
+  margin-bottom: 18px;
+}
+
+.capstone-metrics span{
+  padding: 8px 12px;
+  border-radius: 12px;
+
+  background: rgba(255,255,255,0.055);
+  border: 1px solid rgba(255,255,255,0.12);
+
+  color: #e2e8f0;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.capstone-card .project-btn{
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.capstone-card:hover img{
+  opacity: 0.16;
+  transform: scale(1.03);
+}
+
+@media(max-width:768px){
+  .capstone-card{
+    grid-column: auto;
+    flex-direction: column;
+    min-height: auto;
+  }
+
+  .capstone-card img{
+    width: 100%;
+    height: 210px;
+    min-height: 0;
+  }
+
+  .capstone-card .project-content{
+    width: 100%;
+    padding: 22px;
+  }
+
+  .capstone-card .project-content h3{
+    font-size: 23px;
+  }
+
+  .capstone-card .project-content p{
+    font-size: 14px;
+  }
+}
+
+
+
+
+
+
+
+
+  
+
+
+
 
 
 
@@ -705,6 +850,63 @@ Detection Engineering • Security Labs • SOC Simulations
 <!-- ================= PROJECTS ================= -->
 
 <div class="projects">
+
+
+
+
+
+<!-- ================= CAPSTONE PROJECT ================= -->
+
+<a href="docs/YatishWaghmare_MScThesis.pdf" target="_blank" class="project-card capstone-card">
+
+  <img src="images/UAV.png" alt="UAV penetration testing framework capstone project">
+
+  <div class="project-content">
+
+    <span class="capstone-badge">
+      <i class="fa-solid fa-graduation-cap"></i> MSc Capstone
+    </span>
+
+    <h3>Penetration Testing Framework for UAV Networks</h3>
+
+    <p>
+      Designed and executed a reproducible UAV penetration-testing framework on a PX4 Holybro X500 V2 / Pixhawk 6C platform. Evaluated Wi‑Fi deauthentication, GPS spoofing, MAVLink C2 hijacking, DoS flooding, and battery/resource exhaustion using unified metrics: disruption latency, recovery time, path deviation, CPU/MCU load, and operational continuity. Delivered cross‑attack benchmarks, CIA impact mapping, and practical hardening priorities for UAV operators.
+    </p>
+
+    <div class="capstone-metrics">
+      <span>5 attack vectors</span>
+      <span>3–4s deauth lockout</span>
+      <span>5–7s GPS diversion</span>
+      <span>~5s C2 takeover</span>
+      <span>~100% CPU under flood</span>
+    </div>
+
+    <div class="tags">
+      <span>UAV Security</span>
+      <span>PX4</span>
+      <span>MAVLink</span>
+      <span>Penetration Testing</span>
+      <span>GPS Spoofing</span>
+      <span>DoS</span>
+      <span>Threat Modeling</span>
+      <span>MSc Thesis</span>
+    </div>
+
+    <span class="project-btn">View Thesis</span>
+
+  </div>
+
+</a>
+
+
+
+
+
+
+
+
+
+  
 
 <!-- PROJECT 1 -->
   

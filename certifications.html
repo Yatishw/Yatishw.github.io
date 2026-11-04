@@ -25,58 +25,63 @@ box-sizing:border-box;
 font-family:'Inter',sans-serif;
 }
 
-html {
-  min-height: 100%;
-  background-color: #020617;
-  scrollbar-width: thin;
-  scrollbar-color: #42a5f5 #020617;
-}
+body{
 
-body {
-  background:
-    radial-gradient(circle at top, #0f172a, #020617 80%);
-  color: white;
-  overflow-x: hidden;
-  min-height: 100vh;
-  position: relative;
+background:
+radial-gradient(circle at top,#0f172a,#020617 80%);
+
+color:white;
+
+overflow-x:hidden;
+
+min-height:100vh;
+
+position:relative;
 }
 
 /* ================= GRID BACKGROUND ================= */
 
-body::before {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+body::before{
 
-  mask-image: linear-gradient(
-    to bottom,
-    rgba(0,0,0,0.95) 0%,
-    rgba(0,0,0,0.7) 45%,
-    rgba(0,0,0,0.25) 75%,
-    transparent 100%
-  );
+content:"";
 
-  background:
-    repeating-linear-gradient(
-      to right,
-      rgba(66,165,245,0.25) 0px,
-      rgba(66,165,245,0.25) 1px,
-      transparent 1px,
-      transparent 80px
-    ),
-    repeating-linear-gradient(
-      to bottom,
-      rgba(66,165,245,0.08) 0px,
-      rgba(66,165,245,0.08) 1px,
-      transparent 1px,
-      transparent 80px
-    );
+position:fixed;
 
-  animation: gridMove 8s linear infinite;
-  z-index: -2;
+top:0;
+left:0;
+
+width:100%;
+height:100%;
+
+background:
+
+repeating-linear-gradient(
+to right,
+rgba(66,165,245,0.18) 0px,
+rgba(66,165,245,0.18) 1px,
+transparent 1px,
+transparent 80px
+),
+
+repeating-linear-gradient(
+to bottom,
+rgba(66,165,245,0.08) 0px,
+rgba(66,165,245,0.08) 1px,
+transparent 1px,
+transparent 80px
+);
+
+mask-image:
+linear-gradient(
+to bottom,
+rgba(0,0,0,0.95),
+rgba(0,0,0,0.75),
+transparent
+);
+
+animation:gridMove 10s linear infinite;
+
+z-index:-2;
 }
 
 @keyframes gridMove{

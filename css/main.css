@@ -4,7 +4,7 @@
 html,
 body {
   height: 100%;
-  background-color:#fff;
+  background-color:#020617;
   font-family: 'Source Sans Pro', sans-serif;
   /* The html and body elements cannot have any padding or margin. */
  /* border-top: 4px solid #2361FF;*/
@@ -127,7 +127,7 @@ div.footer{
 
 /* Remove white bg conflict */
 body {
-  background-color: #000;
+  background: radial-gradient(circle at top, #0f172a, #020617 80%);
   overflow-x: hidden;
 }
 

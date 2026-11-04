@@ -25,18 +25,34 @@ box-sizing:border-box;
 font-family:'Inter',sans-serif;
 }
 
-body{
+html {
+  min-height: 100%;
+  background: #020617;
+}
 
-background:
-radial-gradient(circle at top,#0f172a,#020617 80%);
-
-color:white;
-
-overflow-x:hidden;
-
-min-height:100vh;
-
-position:relative;
+body {
+  background:
+    radial-gradient(circle at top, #0f172a, #020617 80%),
+    repeating-linear-gradient(
+      to right,
+      rgba(66,165,245,0.18) 0px,
+      rgba(66,165,245,0.18) 1px,
+      transparent 1px,
+      transparent 80px
+    ),
+    repeating-linear-gradient(
+      to bottom,
+      rgba(66,165,245,0.08) 0px,
+      rgba(66,165,245,0.08) 1px,
+      transparent 1px,
+      transparent 80px
+    );
+  background-attachment: fixed;
+  background-size: auto, 80px 80px, 80px 80px;
+  color: white;
+  overflow-x: hidden;
+  min-height: 100vh;
+  position: relative;
 }
 
 /* ================= GRID BACKGROUND ================= */

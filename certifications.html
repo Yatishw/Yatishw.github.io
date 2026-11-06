@@ -353,16 +353,16 @@ background-size:30%;
 background-position:center;
 }
 
+/* FIXED CLOSING BRACKETS HERE */
 .proofpoint{
-background-image:url('images/Qualys.png');
-
-.micro{
-background-image:url('images/microsoft-logo.png');
-background-size:30%;
-background-position:center  
+    background-image:url('images/Qualys.png');
 }
 
-
+.micro{
+    background-image:url('images/microsoft-logo.png');
+    background-size:30%;
+    background-position:center;  
+}
 
 
 /* ================= HOVER ZOOM ================= */
@@ -379,11 +379,9 @@ background-size:34%;
 background-size:64%;
 }
 
-
 .micro:hover{
 background-size:34%;
-
-
+}
 
 
 /* external link icon */
@@ -412,134 +410,6 @@ color:#90caf9;
 transform:translate(2px,-2px);
 }
 
-
-
-
-
-
-
-
-
-  
-
-  
-
-/* ================= OTHER CERTIFICATIONS ================= */
-
-.other-certs{
-
-width:88%;
-
-margin:0 auto 90px;
-
-display:grid;
-
-grid-template-columns:
-repeat(3,1fr);
-
-gap:16px;
-
-position:relative;
-z-index:2;
-}
-
-.mini-cert{
-
-display:flex;
-align-items:center;
-
-gap:12px;
-
-padding:18px;
-
-border-radius:16px;
-
-background:
-rgba(255,255,255,0.04);
-
-border:
-1px solid rgba(255,255,255,0.08);
-
-backdrop-filter:blur(8px);
-
-transition:0.25s ease;
-
-font-size:14px;
-font-weight:550;
-
-color:#dbeafe;
-}
-
-.mini-cert:hover{
-
-transform:translateY(-2px);
-
-border-color:
-rgba(66,165,245,0.18);
-
-background:
-rgba(255,255,255,0.055);
-}
-
-.mini-cert i{
-
-font-size:14px;
-
-color:#64b5f6;
-}
-
-
-
-
-
-/* mini cert layout */
-
-.mini-cert{
-
-display:flex;
-align-items:center;
-justify-content:space-between;
-
-text-decoration:none;
-}
-
-/* left side */
-
-.mini-cert-left{
-
-display:flex;
-align-items:center;
-
-gap:12px;
-}
-
-/* external icon */
-
-.mini-link{
-
-font-size:12px;
-
-opacity:0.45;
-
-transition:0.25s ease;
-
-color:#94a3b8;
-}
-
-.mini-cert:hover .mini-link{
-
-opacity:1;
-
-transform:translate(2px,-2px);
-
-color:#90caf9;
-}
-
-
-
-
-
-  
 
 /* ================= FOOTER ================= */
 
@@ -662,26 +532,6 @@ line-height:1.2;
 font-size:14px;
 }
 
-/* mini certs */
-
-.other-certs{
-
-width:92%;
-
-grid-template-columns:1fr;
-
-gap:14px;
-
-margin-bottom:70px;
-}
-
-.mini-cert{
-
-padding:16px;
-
-font-size:14px;
-}
-
 /* navbar */
 
 .nav{
@@ -729,14 +579,6 @@ white-space:nowrap;
     })(window, document, "clarity", "script", "xq33eeve80");
 </script>
 
-
-
-
-
-
-
-  
-
 </head>
 
 <body>
@@ -769,165 +611,118 @@ Cybersecurity • Threat Detection • SOC Operations
 <div class="featured-certs">
 
 <!-- SC-900 -->
-
-<a href="docs/Homeland-Security.pdf" target="_blank" class="featured-cert sc900"
-  
-    target="_blank">
-
-<i class="fa-solid fa-arrow-up-right-from-square cert-link"></i>
-
-<div class="featured-content">
-
-<h3>
-ICS Cybersecurity
-</h3>
-
-<span>
-U.S. Department of Homeland Security • 2026
-</span>
-
-</div>
-
+<a href="docs/Homeland-Security.pdf" target="_blank" class="featured-cert sc900">
+    <i class="fa-solid fa-arrow-up-right-from-square cert-link"></i>
+    <div class="featured-content">
+        <h3>ICS Cybersecurity</h3>
+        <span>U.S. Department of Homeland Security • 2026</span>
+    </div>
 </a>
 
 <!-- CISMP -->
-
 <a href="docs/Bcs cismp.pdf" target="_blank" class="featured-cert cismp">
-
- <i class="fa-solid fa-arrow-up-right-from-square cert-link"></i> 
-
-<div class="featured-content">
-
-<h3>
-Certified Information Security Management Professional
-</h3>
-
-<span>
-British Computer Society • 2026
-</span>
-
-</div>
-
+    <i class="fa-solid fa-arrow-up-right-from-square cert-link"></i> 
+    <div class="featured-content">
+        <h3>Certified Information Security Management Professional</h3>
+        <span>British Computer Society • 2026</span>
+    </div>
 </a>
 
 <!-- Qualys -->
-
 <a href="docs/Qualys Certificate.pdf" target="_blank" class="featured-cert proofpoint">
-
     <i class="fa-solid fa-arrow-up-right-from-square cert-link"></i> 
-
     <div class="featured-content">
-
-        <h3>
-            Qualys Certified Specialist – VMDR
-        </h3>
-
-        <span>
-            Qualys • 2026
-</span>
-
-</div>
-
+        <h3>Qualys Certified Specialist – VMDR</h3>
+        <span>Qualys • 2026</span>
+    </div>
 </a>
 
-
-
 <!-- Microsoft -->
-    <a href="https://www.credly.com/badges/bbd2a710-43c0-40e8-9e4b-80d437e04bd6/public_url" target="_blank" class="featured-cert micro">
-        <i class="fa-solid fa-arrow-up-right-from-square cert-link"></i>
-        <div class="featured-content">
-            <h3>Microsoft Security, Compliance, and Identity Fundamentals</h3>
-        </div>
-    </a>
+<a href="https://www.credly.com/badges/bbd2a710-43c0-40e8-9e4b-80d437e04bd6/public_url" target="_blank" class="featured-cert micro">
+    <i class="fa-solid fa-arrow-up-right-from-square cert-link"></i>
+    <div class="featured-content">
+        <h3>Microsoft Security, Compliance, and Identity Fundamentals</h3>
+    </div>
+</a>
 
-    <!-- Proofpoint -->
-    <a href="https://www.credly.com/badges/b06499f8-d69c-4414-a559-46ba6478917c/public_url" target="_blank" class="featured-cert">
-        <i class="fa-solid fa-arrow-up-right-from-square cert-link"></i>
-        <div class="featured-content">
-            <h3>Proofpoint AI Email Security Specialist</h3>
-        </div>
-    </a>
+<!-- Proofpoint -->
+<a href="https://www.credly.com/badges/b06499f8-d69c-4414-a559-46ba6478917c/public_url" target="_blank" class="featured-cert">
+    <i class="fa-solid fa-arrow-up-right-from-square cert-link"></i>
+    <div class="featured-content">
+        <h3>Proofpoint AI Email Security Specialist</h3>
+    </div>
+</a>
 
-    <!-- SailPoint -->
-    <a href="https://www.credly.com/badges/ff4d073c-ae84-4659-8900-928c54cfb451/public_url" target="_blank" class="featured-cert">
-        <i class="fa-solid fa-arrow-up-right-from-square cert-link"></i>
-        <div class="featured-content">
-            <h3>SailPoint Identity Security Leader</h3>
-        </div>
-    </a>
+<!-- SailPoint -->
+<a href="https://www.credly.com/badges/ff4d073c-ae84-4659-8900-928c54cfb451/public_url" target="_blank" class="featured-cert">
+    <i class="fa-solid fa-arrow-up-right-from-square cert-link"></i>
+    <div class="featured-content">
+        <h3>SailPoint Identity Security Leader</h3>
+    </div>
+</a>
 
-    <!-- CNSS -->
-    <a href="https://ondemand.defensityone.com/certificates/ri9jwr5vy1" target="_blank" class="featured-cert">
-        <i class="fa-solid fa-arrow-up-right-from-square cert-link"></i>
-        <div class="featured-content">
-            <h3>Certified Network Security Specialist (CNSS)</h3>
-        </div>
-    </a>
+<!-- CNSS -->
+<a href="https://ondemand.defensityone.com/certificates/ri9jwr5vy1" target="_blank" class="featured-cert">
+    <i class="fa-solid fa-arrow-up-right-from-square cert-link"></i>
+    <div class="featured-content">
+        <h3>Certified Network Security Specialist (CNSS)</h3>
+    </div>
+</a>
 
-    <!-- ISO -->
-    <a href="https://www.skillfront.com/Badges/32497731755258" target="_blank" class="featured-cert">
-        <i class="fa-solid fa-arrow-up-right-from-square cert-link"></i>
-        <div class="featured-content">
-            <h3>ISO/IEC 27001 Information Security Associate</h3>
-        </div>
-    </a>
+<!-- ISO -->
+<a href="https://www.skillfront.com/Badges/32497731755258" target="_blank" class="featured-cert">
+    <i class="fa-solid fa-arrow-up-right-from-square cert-link"></i>
+    <div class="featured-content">
+        <h3>ISO/IEC 27001 Information Security Associate</h3>
+    </div>
+</a>
 
-    <!-- Arcx -->
-    <a href="https://arcx.io/verify-certificate?id=b89d507d616e42e2e4e985c7f6fbc791b1961804&k=2d405b2c38d14100a7f5d690a34505da" target="_blank" class="featured-cert">
-        <i class="fa-solid fa-arrow-up-right-from-square cert-link"></i>
-        <div class="featured-content">
-            <h3>Cyber Threat Intelligence Analyst</h3>
-        </div>
-    </a>
+<!-- Arcx -->
+<a href="https://arcx.io/verify-certificate?id=b89d507d616e42e2e4e985c7f6fbc791b1961804&k=2d405b2c38d14100a7f5d690a34505da" target="_blank" class="featured-cert">
+    <i class="fa-solid fa-arrow-up-right-from-square cert-link"></i>
+    <div class="featured-content">
+        <h3>Cyber Threat Intelligence Analyst</h3>
+    </div>
+</a>
 
-    <!-- PwC -->
-    <a href="https://www.theforage.com/completion-certificates/CA4pBqsy4b4PdyaBP/4KqDALSkyRNPXjQGa_CA4pBqsy4b4PdyaBP_fCichwQGFxbxasX4z_1770498147057_completion_certificate.pdf" target="_blank" class="featured-cert">
-        <i class="fa-solid fa-arrow-up-right-from-square cert-link"></i>
-        <div class="featured-content">
-            <h3>PwC Cyber Security Consulting Simulation</h3>
-        </div>
-    </a>
+<!-- PwC -->
+<a href="https://www.theforage.com/completion-certificates/CA4pBqsy4b4PdyaBP/4KqDALSkyRNPXjQGa_CA4pBqsy4b4PdyaBP_fCichwQGFxbxasX4z_1770498147057_completion_certificate.pdf" target="_blank" class="featured-cert">
+    <i class="fa-solid fa-arrow-up-right-from-square cert-link"></i>
+    <div class="featured-content">
+        <h3>PwC Cyber Security Consulting Simulation</h3>
+    </div>
+</a>
 
-    <!-- Google -->
-    <a href="https://www.coursera.org/account/accomplishments/certificate/AM7U6J5WQQ78" target="_blank" class="featured-cert">
-        <i class="fa-solid fa-arrow-up-right-from-square cert-link"></i>
-        <div class="featured-content">
-            <h3>Google Data Analytics</h3>
-        </div>
-    </a>
+<!-- Google -->
+<a href="https://www.coursera.org/account/accomplishments/certificate/AM7U6J5WQQ78" target="_blank" class="featured-cert">
+    <i class="fa-solid fa-arrow-up-right-from-square cert-link"></i>
+    <div class="featured-content">
+        <h3>Google Data Analytics</h3>
+    </div>
+</a>
 
-    <!-- Cisco -->
-    <a href="https://www.credly.com/badges/56678c86-3297-44b3-81d3-ac345a11e1e8/public_url" target="_blank" class="featured-cert">
-        <i class="fa-solid fa-arrow-up-right-from-square cert-link"></i>
-        <div class="featured-content">
-            <h3>Cisco Introduction to Cybersecurity</h3>
-        </div>
-    </a>
+<!-- Cisco -->
+<a href="https://www.credly.com/badges/56678c86-3297-44b3-81d3-ac345a11e1e8/public_url" target="_blank" class="featured-cert">
+    <i class="fa-solid fa-arrow-up-right-from-square cert-link"></i>
+    <div class="featured-content">
+        <h3>Cisco Introduction to Cybersecurity</h3>
+    </div>
+</a>
 
-    <!-- UK CAA -->
-    <a href="docs/View user certificate _ UK Civil Aviation Authority.pdf" target="_blank" rel="noopener noreferrer" class="featured-cert">
-        <i class="fa-solid fa-arrow-up-right-from-square cert-link"></i>
-        <div class="featured-content">
-            <h3>UK Civil Aviation Authority Flyer ID</h3>
-        </div>
-    </a>
+<!-- UK CAA -->
+<a href="docs/View user certificate _ UK Civil Aviation Authority.pdf" target="_blank" rel="noopener noreferrer" class="featured-cert">
+    <i class="fa-solid fa-arrow-up-right-from-square cert-link"></i>
+    <div class="featured-content">
+        <h3>UK Civil Aviation Authority Flyer ID</h3>
+    </div>
+</a>
 
-</div>
-
-
-
-
-
-
-
-
-
-
-  
-</div>
+</div> <!-- THIS PROPERLY CLOSES THE GRID -->
 
 <!-- ================= FOOTER ================= -->
-
+<footer>
+    <p>&copy; 2026 Yatish W. All rights reserved.</p>
+</footer>
 
 </body>
 </html>

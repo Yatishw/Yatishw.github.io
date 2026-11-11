@@ -78,6 +78,84 @@
     el.style.transitionDelay = (i * 120) + 'ms';
   });
 
+  // Analyst console — type the profile live
+  (function () {
+    var body = document.getElementById('consoleBody');
+    if (!body) return;
+    if (reduceMotion) {
+      body.textContent = 'yatish@soc-01$ ./evaluate candidate\nyatish waghmare — SOC Analyst · Detection Engineer\ncerts: CISMP · VMDR · DHS ICS · SC-900 · ISO/IEC 27001 · CTI · PwC\nsentinelforge: 12 versioned detections, SF-CORR-EXEC-001 validated\nstatus: OPEN_TO_WORK=true · location=bristol · urgency=high';
+      return;
+    }
+
+    var script = [
+      { p: 'yatish@soc-01 ~ $ ./evaluate candidate', c: 'info', d: 70, pre: true },
+      { p: 'Entering secure evaluator...', c: 'dim', d: 120 },
+      { p: '', d: 350, blank: true },
+      { p: 'whoami', c: 'info', d: 400, cmd: true },
+      { p: 'yatish waghmare — SOC ANALYST · DETECTION ENGINEER', c: 'ok', d: 520 },
+      { p: 'education: MSc Cyber Security (UK) · SOC since 2023 · Bristol', c: 'dim', d: 560 },
+      { p: '', d: 260, blank: true },
+      { p: 'grep -i certs /var/log/me', c: 'info', d: 450, cmd: true },
+      { p: '[BCS-CISMP] ✓ [Qualys-VMDR] ✓ [DHS-ICS] ✓ [SC-900] ✓ [ISO-27001] ✓ [CTI] ✓ [PwC sim] ✓', c: 'ok', d: 650 },
+      { p: '', d: 260, blank: true },
+      { p: 'tail -f /var/log/incidents.log', c: 'info', d: 450, cmd: true },
+      { p: '[2025-11] SF-DET-SVC-INSTALL-001  → WKSTN-07 detected', c: 'warn', d: 520 },
+      { p: '[2025-11] SF-DET-PWRSH-ENC-002    → WKSTN-07 detected', c: 'warn', d: 440 },
+      { p: '[2025-11] SF-CORR-EXEC-001       → INC-0042 correlated+contained', c: 'warn', d: 600 },
+      { p: '[2025-09] UAV pentest framework — 5 attack vectors benchmarked', c: 'accent', d: 500 },
+      { p: '', d: 260, blank: true },
+      { p: 'status --availability', c: 'info', d: 380, cmd: true },
+      { p: 'OPEN_TO_WORK=true · SOC_ANALYST · DETECTION_ENGINEER · BRISTOL', c: 'ok', d: 700 },
+      { p: '', d: 260, blank: true },
+      { p: 'yatish@soc-01 ~ $ <span class="cursor"></span>', c: 'info', d: 999999, pre: true, html: true }
+    ];
+
+    var i = 0;
+    var started = false;
+    function typeLine() {
+      var line = script[i];
+      if (!line) return;
+      var div = document.createElement('div');
+      div.className = line.c || '';
+      body.appendChild(div);
+      var text = line.p;
+      var html = line.html ? text : text;
+      if (line.blank) { div.innerHTML = '&nbsp;'; i++; return setTimeout(typeLine, line.d); }
+      if (line.pre) { div.innerHTML = html; i++; return setTimeout(typeLine, line.d); }
+      var out = '';
+      var j = 0;
+      var step = function () {
+        if (j < text.length) {
+          out += text[j++];
+          div.innerHTML = line.c === 'info' ? '<span class="info">' + out + '</span>' : '<span class="' + (line.c || '') + '">' + out + '</span>';
+          setTimeout(step, 9 + Math.random() * 22);
+        } else {
+          i++;
+          var pause = line.cmd ? 380 : 140;
+          setTimeout(typeLine, pause);
+        }
+      };
+      step();
+    }
+    var consoleStarted = false;
+    function start() {
+      if (consoleStarted) return;
+      consoleStarted = true;
+      typeLine();
+    }
+
+    if ('IntersectionObserver' in window) {
+      var cio = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) { cio.disconnect(); start(); }
+        });
+      }, { threshold: 0.2 });
+      cio.observe(body);
+    } else {
+      start();
+    }
+  })();
+
   // Back to top button
   var toTop = document.getElementById('toTop');
   if (toTop) {

@@ -3,7 +3,7 @@
 Personal portfolio of **Yatish Waghmare** — Cyber Security Analyst (SOC · Threat Hunting · Detection Engineering).
 Live at **https://yatishw.github.io/**
 
-Static single-page site (HTML/CSS/JS, no build step) hosted on GitHub Pages.
+Static single-page site (HTML/CSS/JS, no build step) hosted on static Pages hosting.
 
 ## Structure
 
@@ -22,4 +22,4 @@ python -m http.server 8080
 
 ## Deploy
 
-Push to `main` on `Yatishw/Yatishw.github.io` — GitHub Pages serves it automatically.
+Push to `main` on the portfolio repo — the static build refreshes automatically.

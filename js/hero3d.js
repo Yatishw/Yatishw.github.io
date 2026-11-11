@@ -216,44 +216,33 @@
     }
   }
 
-  /* ---------- Hotspots (origin + targets) ---------- */
-  var pulses = [];
-
-  function addPulse(lat, lon, color, scale) {
-    var dot = new THREE.Sprite(new THREE.SpriteMaterial({ map: glowTex, color: color, transparent: true, depthWrite: false, blending: THREE.AdditiveBlending }));
-    dot.position.copy(surfacePoint(lat, lon, R * 1.03));
-    dot.scale.set(scale, scale, 1);
-    dot.userData.base = scale;
-    globe.add(dot);
-
-    var ring = new THREE.Mesh(
-      new THREE.RingGeometry(0.22, 0.27, 40),
-      new THREE.MeshBasicMaterial({ color: color, transparent: true, opacity: 0.9, side: THREE.DoubleSide, depthWrite: false })
-    );
-    ring.position.copy(dot.position);
-    ring.lookAt(0, 0, 0);
-    ring.userData.phase = Math.random() * Math.PI * 2;
-    globe.add(ring);
-    pulses.push([dot, ring]);
-    return dot;
-  }
-
-  // ONE aggressor origin — continental US
-  var ORIGIN = { lat: 39.5, lon: -98.35 };
-  var TARGETS = [
-    { lat: 35.7,  lon: 139.7, city: 'Tokyo' },
-    { lat: 31.2,  lon: 121.5, city: 'Shanghai' },
-    { lat: 39.9,  lon: 116.4, city: 'Beijing' },
-    { lat: 37.5,  lon: 127.0, city: 'Seoul' },
-    { lat: 1.35,  lon: 103.8, city: 'Singapore' },
-    { lat: -33.9, lon: 151.2, city: 'Sydney' }
+  /* ---------- Random worldwide threat feed ---------- */
+  // Anywhere can strike anywhere — no fixed aggressor or target list.
+  var CITIES = [
+    { lat: 51.5,  lon: -0.1,   city: 'London' },   { lat: 48.85, lon: 2.35,   city: 'Paris' },
+    { lat: 52.5,  lon: 13.4,   city: 'Berlin' },   { lat: 40.4,  lon: -3.7,   city: 'Madrid' },
+    { lat: 41.0,  lon: 28.9,   city: 'Istanbul' }, { lat: 55.75, lon: 37.6,   city: 'Moscow' },
+    { lat: 38.9,  lon: -77.0,  city: 'Washington' }, { lat: 40.7, lon: -74.0,  city: 'New York' },
+    { lat: 43.65, lon: -79.4,  city: 'Toronto' },  { lat: 19.4,  lon: -99.1,  city: 'Mexico City' },
+    { lat: 34.05, lon: -118.2, city: 'Los Angeles' }, { lat: -23.55, lon: -46.6, city: 'São Paulo' },
+    { lat: 39.5,  lon: -98.35, city: 'US-Central' }, { lat: 6.5,  lon: 3.4,    city: 'Lagos' },
+    { lat: -26.2, lon: 28.05,  city: 'Johannesburg' }, { lat: 25.2, lon: 55.3,   city: 'Dubai' },
+    { lat: 28.6,  lon: 77.2,   city: 'Delhi' },    { lat: 19.08, lon: 72.88,  city: 'Mumbai' },
+    { lat: 39.9,  lon: 116.4,  city: 'Beijing' },  { lat: 31.2,  lon: 121.5,  city: 'Shanghai' },
+    { lat: 22.3,  lon: 114.2,  city: 'Hong Kong' }, { lat: 35.7, lon: 139.7,   city: 'Tokyo' },
+    { lat: 37.5,  lon: 127.0,  city: 'Seoul' },    { lat: 1.35,  lon: 103.8,  city: 'Singapore' },
+    { lat: -6.2,  lon: 106.8,  city: 'Jakarta' },  { lat: -33.9, lon: 151.2,  city: 'Sydney' }
   ];
 
-  var originDot = addPulse(ORIGIN.lat, ORIGIN.lon, 0xf43f5e, 1.3);
-  TARGETS.forEach(function (t) { addPulse(t.lat, t.lon, 0xc084fc, 0.62); }); // violet = under fire
-
-  /* ---------- Strike arcs (magenta) ---------- */
   var attacks = [];
+  var impacts = [];
+  var nextSpawn = 0;
+
+  function randomCity(except) {
+    var c;
+    do { c = CITIES[Math.floor(Math.random() * CITIES.length)]; } while (c === except);
+    return c;
+  }
 
   function arcBetween(aLat, aLon, bLat, bLon) {
     var a = surfacePoint(aLat, aLon, R * 1.03);
@@ -264,21 +253,58 @@
     return new THREE.QuadraticBezierCurve3(a, mid, b);
   }
 
-  TARGETS.forEach(function (target, index) {
-    var curve = arcBetween(ORIGIN.lat, ORIGIN.lon, target.lat, target.lon);
+  function makeGlowSprite(color, scale) {
+    var s = new THREE.Sprite(new THREE.SpriteMaterial({ map: glowTex, color: color, transparent: true, depthWrite: false, blending: THREE.AdditiveBlending, opacity: 0.95 }));
+    s.scale.set(scale, scale, 1);
+    return s;
+  }
+
+  function addImpactRing(position, color) {
+    var ring = new THREE.Mesh(
+      new THREE.RingGeometry(0.2, 0.26, 40),
+      new THREE.MeshBasicMaterial({ color: color, transparent: true, opacity: 0.9, side: THREE.DoubleSide, depthWrite: false, blending: THREE.AdditiveBlending })
+    );
+    ring.position.copy(position);
+    ring.lookAt(0, 0, 0);
+    globe.add(ring);
+    impacts.push({ obj: ring, age: 0, maxAge: 1.4, grow: 2.6, baseOpacity: 0.9 });
+  }
+
+  function spawnAttack() {
+    var from = randomCity(null);
+    var to = randomCity(from);
+    var curve = arcBetween(from.lat, from.lon, to.lat, to.lon);
 
     var tube = new THREE.Mesh(
-      new THREE.TubeGeometry(curve, 72, 0.024, 6, false),
-      new THREE.MeshBasicMaterial({ color: 0xec4899, transparent: true, opacity: 0.45, blending: THREE.AdditiveBlending, depthWrite: false })
+      new THREE.TubeGeometry(curve, 72, 0.022, 6, false),
+      new THREE.MeshBasicMaterial({ color: 0xec4899, transparent: true, opacity: 0.0, blending: THREE.AdditiveBlending, depthWrite: false })
     );
     globe.add(tube);
 
-    var packet = new THREE.Sprite(new THREE.SpriteMaterial({ map: glowTex, color: 0xff6ec7, transparent: true, depthWrite: false, blending: THREE.AdditiveBlending }));
-    packet.scale.set(0.55, 0.55, 1);
+    var packet = makeGlowSprite(0xff6ec7, 0.5);
     globe.add(packet);
 
-    attacks.push({ curve: curve, packet: packet, t: index * 0.16, speed: 0.0032 + Math.random() * 0.0016, tube: tube });
-  });
+    // Aggressor flash at the launch site
+    var origin = makeGlowSprite(0xfb7185, 0.9);
+    origin.position.copy(surfacePoint(from.lat, from.lon, R * 1.04));
+    globe.add(origin);
+    impacts.push({ obj: origin, age: 0, maxAge: 1.1, grow: 0.5, baseOpacity: 0.95 });
+
+    attacks.push({
+      curve: curve,
+      packet: packet,
+      tube: tube,
+      target: to,
+      t: 0,
+      speed: 0.0034 + Math.random() * 0.0018
+    });
+  }
+
+  function disposeObject(obj) {
+    globe.remove(obj);
+    if (obj.geometry && !obj.isSprite) obj.geometry.dispose(); // Sprite geometry is shared — never dispose it
+    if (obj.material) obj.material.dispose();
+  }
 
   /* ---------- Ambient starfield ---------- */
   var starCount = 160;
@@ -323,21 +349,21 @@
 
     globe.rotation.y += 0.0042;              // the roll never stops
 
-    var ob = originDot.userData.base;
-    var breathe = ob * (1 + 0.3 * Math.sin(t * 3.4));
-    originDot.scale.set(breathe, breathe, 1);
+    // Spawn random strikes on a loose rhythm
+    if (t >= nextSpawn && attacks.length < 6) {
+      spawnAttack();
+      nextSpawn = t + 0.55 + Math.random() * 1.2;
+    }
 
-    for (var i = 0; i < pulses.length; i++) {
-      var dot = pulses[i][0], ring = pulses[i][1];
-      var phase = ring.userData.phase;
-      var wave = (t * 0.9 + phase) % 2;
-      if (dot !== originDot) {
-        var s = dot.userData.base * (1 + 0.16 * Math.sin(t * 2.4 + phase));
-        dot.scale.set(s, s, 1);
-      }
-      var rs = 0.5 + wave * 1.7;
-      ring.scale.set(rs, rs, rs);
-      ring.material.opacity = Math.max(0, 0.85 - wave * 0.5);
+    // Origin flashes + impact rings fade out
+    for (var i = impacts.length - 1; i >= 0; i--) {
+      var im = impacts[i];
+      im.age += 0.016;
+      var k = im.age / im.maxAge;
+      if (k >= 1) { disposeObject(im.obj); impacts.splice(i, 1); continue; }
+      var rs = 1 + k * im.grow;
+      im.obj.scale.set(rs, rs, rs);
+      im.obj.material.opacity = im.baseOpacity * (1 - k);
     }
 
     // Intrusion blips blink on/off across continents
@@ -350,15 +376,22 @@
     }
 
     // Strikes in flight
-    for (var j = 0; j < attacks.length; j++) {
+    for (var j = attacks.length - 1; j >= 0; j--) {
       var atk = attacks[j];
-      atk.t = (atk.t + atk.speed) % 1;
+      atk.t += atk.speed;
+      if (atk.t >= 1) {
+        addImpactRing(atk.curve.getPointAt(1), 0xc084fc); // violet bloom on the target
+        disposeObject(atk.tube);
+        disposeObject(atk.packet);
+        attacks.splice(j, 1);
+        continue;
+      }
       var pos = atk.curve.getPointAt(atk.t);
       atk.packet.position.copy(pos);
       var env = Math.sin(Math.PI * atk.t);
       var ps = 0.34 + 0.4 * env;
       atk.packet.scale.set(ps, ps, 1);
-      atk.tube.material.opacity = 0.28 + 0.32 * env;
+      atk.tube.material.opacity = 0.26 + 0.34 * env;
     }
 
     camera.position.x += (pointer.x * 1.4 - camera.position.x) * 0.03;

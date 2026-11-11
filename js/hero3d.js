@@ -126,33 +126,16 @@
 
     for (var i = 0; i < px.length; i += 4) {
       var r = px[i], g = px[i + 1], b = px[i + 2];
-      var height = tp[i]; // topology luminance (white = high)
 
-      // Ocean = strongly blue; everything else = land
+      // Ocean = strongly blue; everything else = land — used for blip placement
       var isOcean = (b > r + 14 && b > g + 6 && b > 55) || (r < 14 && g < 18 && b < 30);
 
-      if (isOcean) {
-        px[i] = 47; px[i + 1] = 51; px[i + 2] = 57;
-      } else {
-        // Grey landmasses with shaded relief — mountains lighten, lowlands darken
-        var shade = 0.62 + (height / 255) * 0.95;
-        px[i] = Math.min(255, 88 * shade + 16);
-        px[i + 1] = Math.min(255, 92 * shade + 16);
-        px[i + 2] = Math.min(255, 97 * shade + 17);
-        if ((i & 1023) === 0 && landSamples.length < 40000) {
-          var p = i / 4;
-          landSamples.push((p % W) / W, Math.floor(p / W) / H);
-        }
+      // Keep the true satellite pixels — real blue oceans, real continents
+      if (!isOcean && (i & 1023) === 0 && landSamples.length < 40000) {
+        var p = i / 4;
+        landSamples.push((p % W) / W, Math.floor(p / W) / H);
       }
     }
-    dctx.putImageData(d, 0, 0);
-
-    // Thin luminous coastline: redraw with a blurred rim of the land mask
-    dctx.save();
-    dctx.globalAlpha = 0.5;
-    dctx.filter = 'blur(2px)';
-    dctx.drawImage(dc, 0, 0);
-    dctx.restore();
 
     var tex = new THREE.CanvasTexture(dc);
     tex.encoding = THREE.sRGBEncoding;

@@ -813,3 +813,10 @@ a.project-wide:hover .project-btn { text-decoration: underline; }
 .anatomy__rows span { flex: 0 0 4.6rem; color: #5b7699; text-transform: lowercase; letter-spacing: .06em; }
 .anatomy__rows b { color: #94f0c0; font-weight: 500; }
 .anatomy__note { margin: .55rem 0 0; font-size: .68rem; color: #41607f; font-style: italic; }
+
+/* ---------- About — technical brief (techy + easy) ---------- */
+.brief { list-style: none; margin: 0 0 1.1rem; padding: 0; display: grid; gap: .42rem; font-size: .74rem; }
+.brief li { display: grid; grid-template-columns: 8.4rem 1fr; gap: .6rem; padding: .32rem .55rem; background: rgba(14,165,233,.04); border-left: 2px solid rgba(56,189,248,.35); border-radius: 4px; }
+.brief__k { color: #7dd3fc; letter-spacing: .09em; text-transform: lowercase; }
+.brief__v { color: #e2e8f0; letter-spacing: .01em; }
+@media (max-width: 640px) { .brief li { grid-template-columns: 1fr; gap: .15rem; } .brief__k { font-size: .62rem; } }

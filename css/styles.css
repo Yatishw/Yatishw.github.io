@@ -749,3 +749,23 @@ a.project-wide:hover .project-btn { text-decoration: underline; }
   .radar::after { animation: none; }
 }
 @media (max-width: 980px) { .radar { display: none; } }
+
+/* ---------- About — why-me differentiators ---------- */
+.diff-grid {
+  list-style: none; margin: 0 0 1.3rem; padding: 0;
+  display: grid; grid-template-columns: 1fr 1fr; gap: .8rem;
+}
+.diff-item {
+  display: grid; grid-template-columns: auto 1fr; gap: .8rem; align-items: start;
+  padding: .85rem .9rem;
+  background: linear-gradient(160deg, rgba(18,29,52,.85), rgba(16,26,46,.6));
+  border: 1px solid rgba(148,197,255,.13);
+  border-radius: 12px;
+  transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+}
+.diff-item:hover { transform: translateY(-3px); border-color: rgba(125,211,252,.4); box-shadow: 0 16px 38px rgba(0,0,0,.4), 0 0 0 1px rgba(125,211,252,.25); }
+.diff-num { font-size: 1.05rem; color: var(--accent); font-weight: 600; padding-top: .1rem; opacity: .9; }
+.diff-item h3 { margin: 0 0 .3rem; font-size: .87rem; color: var(--ink); letter-spacing: -.01em; line-height: 1.35; }
+.diff-item p { margin: 0; font-size: .74rem; color: var(--body); line-height: 1.5; }
+.diff-item p strong { color: var(--ink); }
+@media (max-width: 1100px) { .diff-grid { grid-template-columns: 1fr; } }

@@ -138,4 +138,20 @@
     });
   }, { threshold: 0.3 });
   io.observe(card);
+
+  // Also start immediately if the card is already visible on load
+  window.addEventListener('load', function () {
+    var r = card.getBoundingClientRect();
+    if (r.top < window.innerHeight && r.bottom > 0) startCounters();
+  });
+
+  // Test-render safety net: never show raw zeros on a static capture
+  setTimeout(function () {
+    if (!started) {
+      nums.forEach(function (el) {
+        var target = +el.dataset.target;
+        el.textContent = target + (el.dataset.suffix || '');
+      });
+    }
+  }, 1200);
 })();

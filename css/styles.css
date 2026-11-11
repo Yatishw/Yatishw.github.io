@@ -684,3 +684,28 @@ a.project-wide:hover .project-btn { text-decoration: underline; }
   from { background-position: 0 0, 0 0, 0 0, 0 0, 0 0, 0 0, 0 0, 0 0; }
   to   { background-position: 300px 120px, 240px 96px, 380px 152px, 340px 136px, 280px 112px, 300px 120px, 200px 80px, 0 0; }
 }
+
+/* ---------- Coverage map (ATT&CK bars) ---------- */
+.coverage { margin-top: 1.2rem; border-top: 1px solid rgba(148,197,255,.1); padding-top: 1rem; }
+.bars { list-style: none; margin: 0 0 .9rem; padding: 0; display: grid; gap: .4rem; }
+.bars li { display: grid; grid-template-columns: 1fr auto; gap: .5rem .6rem; align-items: center; }
+.bar-label { font-size: .6rem; letter-spacing: .08em; color: #7c93b5; }
+.bars b { font-family: var(--font-mono); font-size: .62rem; color: var(--accent-strong); font-weight: 500; }
+.bar { grid-column: 1 / -1; height: 3px; background: rgba(148,197,255,.1); border-radius: 2px; overflow: hidden; }
+.bar i {
+  display: block; height: 100%; width: 0;
+  background: linear-gradient(90deg, #0ea5e9, #38bdf8);
+  border-radius: 2px;
+  transition: width 1.4s cubic-bezier(.22,.61,.36,1);
+}
+.metrics.is-visible .bar i { width: var(--w); }
+.casefile {
+  border: 1px solid rgba(125,211,252,.18);
+  background: rgba(14,165,233,.05);
+  border-radius: 10px;
+  padding: .65rem .8rem;
+}
+.casefile__tag { margin: 0 0 .3rem; font-size: .6rem; letter-spacing: .16em; color: #fb7185; }
+.casefile__body { margin: 0; font-size: .78rem; color: #b9c8e4; line-height: 1.55; }
+.casefile__body strong { color: #f4f8ff; }
+@media (prefers-reduced-motion: reduce) { .bar i { transition: none; width: var(--w); } }

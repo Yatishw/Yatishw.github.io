@@ -800,3 +800,16 @@ a.project-wide:hover .project-btn { text-decoration: underline; }
   color: #3f6186;
   text-align: right;
 }
+
+/* ---------- Incident anatomy (About, BY THE NUMBERS) ---------- */
+.anatomy {
+  margin-top: 1.1rem; padding: .8rem .9rem; border-radius: 12px;
+  background: #050c16; border: 1px solid rgba(125,211,252,.18);
+  box-shadow: inset 0 0 40px rgba(14,165,233,.06);
+}
+.anatomy__tag { margin: 0 0 .5rem; font-size: .6rem; letter-spacing: .14em; color: #fb7185; }
+.anatomy__rows { list-style: none; margin: 0; padding: 0; display: grid; gap: .38rem; }
+.anatomy__rows li { display: flex; gap: .8rem; font-size: .68rem; line-height: 1.4; }
+.anatomy__rows span { flex: 0 0 4.6rem; color: #5b7699; text-transform: lowercase; letter-spacing: .06em; }
+.anatomy__rows b { color: #94f0c0; font-weight: 500; }
+.anatomy__note { margin: .55rem 0 0; font-size: .68rem; color: #41607f; font-style: italic; }

@@ -432,3 +432,21 @@ a.project-wide:hover .project-btn { text-decoration: underline; }
   padding-top: 2rem;
   padding-bottom: 2rem;
 }
+
+/* ---------- Tool logo marquee ---------- */
+.marquee__track { align-items: center; gap: 1.6rem; animation-duration: 60s; }
+.marquee__track .tool {
+  display: inline-flex; align-items: center; gap: .5rem;
+  font-size: .82rem; font-weight: 600; color: rgba(219,231,255,.78); white-space: nowrap;
+}
+.tool__chip {
+  width: 26px; height: 26px; border-radius: 7px; display: grid; place-items: center;
+  background: rgba(125, 211, 252, 0.07); border: 1px solid rgba(125, 211, 252, 0.2);
+  flex: 0 0 26px;
+}
+.tool__chip img { width: 15px; height: 15px; display: block; }
+.tool__chip--mono { font-family: var(--font-mono); font-size: .6rem; font-weight: 700; letter-spacing: .04em; }
+.tool:hover { color: #fff; }
+.tool:hover .tool__chip { border-color: rgba(125,211,252,.5); background: rgba(125,211,252,.14); }
+.tool { transition: color .2s ease; }
+.tool__chip { transition: border-color .2s ease, background .2s ease; }

@@ -336,7 +336,7 @@
       globe.scale.setScalar(0.95);
     } else {
       globe.position.set(8.3, 0.15, -3.6);  // anchored right, centered on the portrait row
-      globe.scale.setScalar(1.15);          // present but with room to breathe
+      globe.scale.setScalar(1.32);          // a touch bigger
     }
   }
   layout();

@@ -489,3 +489,8 @@ a.project-wide:hover .project-btn { text-decoration: underline; }
   .logo-track { animation: none !important; }
 }
 .footer__inner { padding: 1.3rem 0 1.5rem; }
+
+/* Colored official deal: light cells for dark-native logos, hero logo wall */
+.logo-cell--light { background: #eef2f7; border-color: rgba(255,255,255,.4); }
+.logo-cell--light .logo-img { filter: none; }
+.logo-marquee .logo-img { height: 46px; max-width: 64px; width: auto; }

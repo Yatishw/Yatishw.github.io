@@ -573,3 +573,31 @@ a.project-wide:hover .project-btn { text-decoration: underline; }
   .dossier__stamp { transform: none; }
   .dossier__cipher { font-size: .66rem; }
 }
+
+/* ---------- About — attack path track ---------- */
+.attack-path { margin-top: 3.2rem; max-width: 880px; }
+.attack-path__track {
+  list-style: none; margin: 0; padding: 0 0 0 2.2rem;
+  border-left: 2px solid #1e3a5f;
+}
+.attack-node {
+  position: relative;
+  margin-bottom: 1.1rem;
+  padding: .9rem 1.3rem;
+  background: #101a2e;
+  border: 1px solid rgba(125,211,252,.16);
+  border-radius: 12px;
+}
+.attack-node::before {
+  content: "";
+  position: absolute; left: calc(-2.2rem - 8px); top: 1.15rem;
+  width: 14px; height: 14px; border-radius: 50%;
+  background: #38bdf8; border: 2px solid var(--bg);
+  box-shadow: 0 0 12px rgba(56,189,248,.8);
+}
+.attack-node--final::before { background: #f43f5e; box-shadow: 0 0 14px rgba(244,63,94,.8); }
+.attack-node__stage { display: block; font-size: .62rem; letter-spacing: .2em; color: #38bdf8; }
+.attack-node--final .attack-node__stage { color: #fb7185; }
+.attack-node h3 { margin: .25rem 0 .3rem; font-size: 1.02rem; color: #f4f8ff; letter-spacing: -.01em; }
+.attack-node p { margin: 0; font-size: .85rem; color: #9fb4d8; line-height: 1.6; }
+.attack-node p strong { color: #e2e8f0; }

@@ -78,6 +78,79 @@
     el.style.transitionDelay = (i * 120) + 'ms';
   });
 
+  // About — decrypt dossier (scramble reveal, once, on scroll into view)
+  (function () {
+    var el = document.getElementById('aboutCipher');
+    if (!el) return;
+
+    var lines = [
+      '> SUBJECT....CYBER SECURITY ANALYST',
+      '> EDUCATION..MSc CYBER SECURITY (UK)',
+      '> EXPERIENCE.2+ YRS — SOC & IR · ENTERPRISE + OT/ICS',
+      '> STACK......FALCON · SPLUNK ES · ELASTIC · SENTINEL · QUALYS VMDR · WAZUH',
+      '> METHOD.....MALWARE DETONATED · ATT&CK-MAPPED DETECTION',
+      '> RESEARCH...UAV PENTEST FRAMEWORK · SENTINELFORGE',
+      '> STATUS.....OPEN TO SOC / DETECTION ROLES'
+    ];
+    var glyphs = '!<>-_\\/[]{}=+*^?#________';
+
+    if (reduceMotion) {
+      el.textContent = lines.join('\n');
+      return;
+    }
+
+    var lineIndex = 0;
+
+    function renderFrame(progress) {
+      var html = '';
+      for (var i = 0; i < lineIndex; i++) html += lines[i] + '\n';
+      if (lineIndex < lines.length) {
+        var line = lines[lineIndex];
+        var reveal = Math.floor(line.length * progress);
+        for (var j = 0; j < line.length; j++) {
+          html += j < reveal ? line[j] : glyphs[Math.floor(Math.random() * glyphs.length)];
+        }
+      } else {
+        html += '<span class="end">\n> END OF FILE </span><span class="caret">▋</span>';
+      }
+      el.innerHTML = html;
+    }
+
+    function decryptLine(done) {
+      var frame = 0, total = 30;
+      var iv = setInterval(function () {
+        frame++;
+        renderFrame(frame / total);
+        if (frame >= total) {
+          clearInterval(iv);
+          lineIndex++;
+          if (done) done();
+        }
+      }, 26);
+    }
+
+    function start() {
+      (function chain() {
+        if (lineIndex < lines.length) decryptLine(chain);
+        else renderFrame(1);
+      })();
+    }
+
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            io.disconnect();
+            start();
+          }
+        });
+      }, { threshold: 0.35 });
+      io.observe(el);
+    } else {
+      el.textContent = lines.join('\n');
+    }
+  })();
+
   // Back to top button
   var toTop = document.getElementById('toTop');
   if (toTop) {

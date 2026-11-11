@@ -60,14 +60,14 @@
   /* ---------- Placeholder body until textures arrive ---------- */
   var hull = new THREE.Mesh(
     new THREE.SphereGeometry(R, 96, 64),
-    new THREE.MeshStandardMaterial({ color: 0x121a17, roughness: 0.95, metalness: 0.02, displacementScale: 0 })
+    new THREE.MeshStandardMaterial({ color: 0x3a3f46, roughness: 0.95, metalness: 0.02, displacementScale: 0 })
   );
   globe.add(hull);
 
   // Atmosphere glow
   var atmosphere = new THREE.Mesh(
     new THREE.SphereGeometry(R * 1.07, 32, 24),
-    new THREE.MeshBasicMaterial({ color: 0x34d399, transparent: true, opacity: 0.055, side: THREE.BackSide })
+    new THREE.MeshBasicMaterial({ color: 0xcfd8e3, transparent: true, opacity: 0.05, side: THREE.BackSide })
   );
   globe.add(atmosphere);
 
@@ -79,7 +79,7 @@
       .then(function (world) {
         var countries = topojson.feature(world, world.objects.countries).features;
         ctx.save();
-        ctx.strokeStyle = 'rgba(154, 196, 181, 0.62)';
+        ctx.strokeStyle = 'rgba(228, 235, 242, 0.55)';
         ctx.lineWidth = Math.max(1.3, W / 1250);
         ctx.lineJoin = 'round';
         countries.forEach(function (f) {
@@ -132,13 +132,13 @@
       var isOcean = (b > r + 14 && b > g + 6 && b > 55) || (r < 14 && g < 18 && b < 30);
 
       if (isOcean) {
-        px[i] = 7; px[i + 1] = 11; px[i + 2] = 13;
+        px[i] = 47; px[i + 1] = 51; px[i + 2] = 57;
       } else {
-        // Dark slate-green landmasses with shaded relief
-        var shade = 0.55 + (height / 255) * 0.9;
-        px[i] = Math.min(255, 26 * shade + 8);
-        px[i + 1] = Math.min(255, 36 * shade + 10);
-        px[i + 2] = Math.min(255, 30 * shade + 9);
+        // Grey landmasses with shaded relief — mountains lighten, lowlands darken
+        var shade = 0.62 + (height / 255) * 0.95;
+        px[i] = Math.min(255, 88 * shade + 16);
+        px[i + 1] = Math.min(255, 92 * shade + 16);
+        px[i + 2] = Math.min(255, 97 * shade + 17);
         if ((i & 1023) === 0 && landSamples.length < 40000) {
           var p = i / 4;
           landSamples.push((p % W) / W, Math.floor(p / W) / H);

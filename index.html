@@ -130,19 +130,19 @@
       <h2>About me</h2>
     </div>
     <div class="about__grid">
-      <div class="dossier reveal" aria-label="Subject dossier — cyber security analyst">
-        <div class="dossier__bar mono">
-          <span class="dossier__dots" aria-hidden="true"><i></i><i></i><i></i></span>
-          ▓▓ THREAT-INTEL BRIEF // SUBJECT: YATISH W
-          <span class="dossier__stamp">CONFIDENTIAL</span>
-        </div>
-        <div class="dossier__body">
-          <p class="dossier__prompt mono">analyst@yatish:~$ cat profile.txt --decrypt</p>
-          <div class="dossier__cipher mono" id="aboutCipher" aria-hidden="true"></div>
-          <p class="dossier__foot">I hunt threats, not just alerts — triage it, investigate it, engineer the fix.</p>
-          <p class="sr-only">I am a Cyber Security Analyst specialising in SOC work — monitoring SIEM telemetry, investigating alerts and reducing mean-time-to-respond through triage, detection tuning and root-cause analysis. My day-to-day spans CrowdStrike Falcon, Splunk ES, Elastic SIEM, Microsoft Sentinel and Qualys VMDR, with MITRE ATT&amp;CK mapping across enterprise and OT/ICS environments (ISA/IEC 62443, Siemens S7, Modbus, DNP3). Postgraduate research produced a UAV penetration-testing framework; SentinelForge delivers the full detection-to-incident pipeline with versioned detections and a gated Wazuh response.</p>
-        </div>
-        <div class="dossier__footbar mono"><span>FILE-0042 // REF-SEC-2026</span><span>DECRYPTED BY SUBJECT</span></div>
+      <div class="about__text reveal">
+        <p class="about__lead">
+          Cyber Security Analyst with an <strong>MSc in Cyber Security</strong> and <strong>2+ years</strong> of hands-on SOC experience.
+          I monitor and investigate security alerts across <strong>CrowdStrike Falcon, Splunk ES, Elastic SIEM</strong> and
+          <strong>Microsoft Sentinel</strong> — then tune the detections so the team sees less noise next time.
+        </p>
+        <ul class="about__points">
+          <li><strong>2+ years SOC &amp; IR</strong> across enterprise and OT/ICS (Siemens S7, Modbus, DNP3, ISA/IEC 62443)</li>
+          <li><strong>Detection engineering</strong> — correlation content, false-positive reduction, MITRE ATT&amp;CK mapping, NIST / ISO/IEC 27001</li>
+          <li><strong>Vulnerability management</strong> — Qualys VMDR, risk-based prioritisation and remediation tracking</li>
+          <li><strong>Builder mindset</strong> — SentinelForge (detection-to-incident platform) and an MSc UAV penetration-testing framework as published research</li>
+        </ul>
+        <p class="about__cta">Open to <strong>SOC Analyst and Detection Engineering</strong> roles — hybrid or remote, UK.</p>
       </div>
       <aside class="about__card reveal" aria-label="Quick facts">
         <h3 class="mono">quick_facts.yml</h3>
@@ -157,38 +157,6 @@
           <li><span>status</span><span class="facts__open"><span class="status-dot"></span> Open to opportunities</span></li>
         </ul>
       </aside>
-    </div>
-
-    <!-- Attack path — career as a kill chain -->
-    <div class="attack-path reveal" aria-label="Career trajectory as an attack path">
-      <p class="section__eyebrow mono">01-B / THE PATH</p>
-      <ol class="attack-path__track">
-        <li class="attack-node reveal" style="transition-delay:.05s">
-          <span class="attack-node__stage mono">PHASE 01 — RECON</span>
-          <h3>MSc Cyber Security</h3>
-          <p>Cryptography, forensics, adversary tradecraft — the foundation.</p>
-        </li>
-        <li class="attack-node reveal" style="transition-delay:.15s">
-          <span class="attack-node__stage mono">PHASE 02 — INITIAL ACCESS</span>
-          <h3>SOC Analyst — 2023</h3>
-          <p>Hundreds of alerts triaged across <strong>Splunk &amp; Elastic</strong> — escalation, case notes, playbook discipline.</p>
-        </li>
-        <li class="attack-node reveal" style="transition-delay:.25s">
-          <span class="attack-node__stage mono">PHASE 03 — PERSISTENCE</span>
-          <h3>Detection Engineering</h3>
-          <p>Killed the false positives, tuned correlation content, mapped coverage to <strong>MITRE ATT&amp;CK</strong>.</p>
-        </li>
-        <li class="attack-node reveal" style="transition-delay:.35s">
-          <span class="attack-node__stage mono">PHASE 04 — IMPACT</span>
-          <h3>SentinelForge — built solo</h3>
-          <p><strong>12 versioned detections</strong>, auto-investigations, gated Wazuh response — end to end.</p>
-        </li>
-        <li class="attack-node attack-node--final reveal" style="transition-delay:.45s">
-          <span class="attack-node__stage mono">PHASE 05 — EXFILTRATION → TARGET ACQUIRED</span>
-          <h3>Ready for your blue team</h3>
-          <p>Hunt, tune, build, document — <strong>Bristol, UK</strong>.</p>
-        </li>
-      </ol>
     </div>
   </div>
 </section>

@@ -601,3 +601,36 @@ a.project-wide:hover .project-btn { text-decoration: underline; }
   .about__card .facts li, .about__card.is-visible .facts li { opacity: 1; transform: none; animation: none; }
   .about__card::after, .about__card.is-visible::after { display: none; }
 }
+
+/* ---------- Cinematic film overlay (CRT scanlines + vignette) ---------- */
+body::after {
+  content: "";
+  position: fixed; inset: 0; z-index: 2147483647; pointer-events: none;
+  background:
+    repeating-linear-gradient(0deg, rgba(255,255,255,.018) 0 1px, transparent 1px 3px);
+  opacity: .55;
+}
+body::before {
+  content: "";
+  position: fixed; inset: 0; z-index: 2147483646; pointer-events: none;
+  background: radial-gradient(ellipse 120% 90% at 50% 40%, transparent 55%, rgba(2,6,23,.5) 100%);
+}
+
+/* ---------- Availability halo orbit ---------- */
+.status-dot { position: relative; }
+.status-dot::after {
+  content: "";
+  position: absolute; left: 50%; top: 50%;
+  width: 22px; height: 22px; margin: -11px 0 0 -11px;
+  border-radius: 50%;
+  border: 1px solid rgba(34,197,94,.5);
+  animation: haloOrbit 2.6s linear infinite;
+}
+@keyframes haloOrbit {
+  0% { transform: rotate(0deg) scale(1); opacity: .9; }
+  100% { transform: rotate(360deg) scale(1.65); opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  body::after, body::before { display: none; }
+  .status-dot::after { display: none; }
+}

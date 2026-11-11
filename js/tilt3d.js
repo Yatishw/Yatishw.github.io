@@ -39,5 +39,5 @@
     });
   }
 
-  document.querySelectorAll('.project-card, .cert-card, .skill-card').forEach(attach);
+  document.querySelectorAll('.project-card, .cert-card, .skill-card, .about__card').forEach(attach);
 })();

@@ -498,3 +498,9 @@ a.project-wide:hover .project-btn { text-decoration: underline; }
 .logo-marquee { padding: .9rem 0; }
 .logo-track { gap: 2.4rem; }
 .logo-cell--light { background: transparent; border: none; }
+
+/* Chunky fix — slimmer wall */
+.logo-marquee { padding: .45rem 0; }
+.logo-track { gap: 1.7rem; }
+.logo-img { height: 31px !important; max-width: 66px !important; opacity: .92; }
+.logo-cell { padding: 0 .15rem; opacity: .9; }

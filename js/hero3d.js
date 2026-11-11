@@ -335,8 +335,8 @@
       globe.position.set(3.1, 3.6, -6.6);
       globe.scale.setScalar(0.95);
     } else {
-      globe.position.set(5.1, 0.9, -3.4);  // centered behind the portrait
-      globe.scale.setScalar(1.38);         // a touch bigger
+      globe.position.set(6.5, -0.9, -3.4); // world-space center of the portrait column
+      globe.scale.setScalar(1.38);
     }
   }
   layout();

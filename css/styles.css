@@ -123,9 +123,9 @@ body {
 @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(34,197,94,.55); } 70% { box-shadow: 0 0 0 9px rgba(34,197,94,0); } 100% { box-shadow: 0 0 0 0 rgba(34,197,94,0); } }
 
 .hero__name { font-size: clamp(2.6rem, 6vw, 4rem); line-height: 1.05; letter-spacing: -0.03em; margin: 0 0 .6rem; color: #f4f8ff; font-weight: 800; }
-.hero__role { font-size: clamp(1.02rem, 2vw, 1.28rem); color: #9fb4d8; margin: 0 0 1.4rem; font-weight: 500; }
+.hero__role { font-size: clamp(1.02rem, 2vw, 1.28rem); color: #9fb4d8; margin: 0 0 .3rem; font-weight: 500; }
 .hero__role-sep { color: var(--accent); padding: 0 .35rem; }
-.hero__typed { color: #7dd3fc; }
+.hero__typed { display: block; color: #7dd3fc; font-size: clamp(.92rem, 1.6vw, 1.02rem); font-weight: 500; margin: 0 0 1.4rem; min-height: 1.5em; letter-spacing: .01em; }
 .hero__lede { font-size: 1.05rem; color: #b9c8e4; max-width: 36rem; margin: 0 0 1.8rem; }
 .hero__lede strong { color: #fff; }
 .hero__ctas { display: flex; gap: .9rem; flex-wrap: wrap; margin-bottom: 1.7rem; }

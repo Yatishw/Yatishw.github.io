@@ -124,34 +124,43 @@
 
 <!-- ══════════ ABOUT ══════════ -->
 <section class="section section--alt" id="about">
-  <div class="container exec reveal">
-    <div class="exec__copy">
+  <div class="container">
+    <div class="section__head reveal">
       <p class="section__eyebrow mono">01 / PROFILE</p>
-      <h2 class="exec__headline">I turn noisy alerts into <span class="exec__accent">prioritised, actionable incidents</span>.</h2>
-      <p class="exec__lede">
-        MSc Cyber Security graduate with 2+ years in SOC &amp; incident response across enterprise and OT.
-        I monitor and investigate hundreds of alerts across <strong>CrowdStrike Falcon</strong>, <strong>Splunk ES</strong>
-        and <strong>Elastic SIEM</strong> — and I close the loop: tuning detections so the next alert is easier to
-        read, with every investigation mapped to <strong>MITRE ATT&amp;CK</strong>.
-      </p>
-      <div class="exec__props">
-        <div class="exec__prop"><span class="exec__prop-num">100s</span><small>alerts investigated &amp; triaged across SIEMs and EDRs</small></div>
-        <div class="exec__prop"><span class="exec__prop-num">12</span><small>versioned detections engineered, tuned and documented</small></div>
-        <div class="exec__prop"><span class="exec__prop-num">MSc</span><small>+ CISMP · Qualys VMDR · DHS ICS · SC-900 · ISO/IEC 27001</small></div>
-      </div>
+      <h2>About me</h2>
     </div>
-    <aside class="exec__card" aria-label="Quick facts">
-      <h3 class="mono">QUICK_FACTS</h3>
-      <ul class="exec__facts">
-        <li><span>ROLE</span><span>SOC / Detection Analyst</span></li>
-        <li><span>EXP</span><span>2+ yrs · SOC, IR, OT/ICS</span></li>
-        <li><span>STACK</span><span>Falcon · Splunk ES · Elastic · Sentinel</span></li>
-        <li><span>FRAMEWORKS</span><span>MITRE ATT&amp;CK · NIST · ISO/IEC 27001 · 62443</span></li>
-        <li><span>PROOF</span><span>SentinelForge · 7 lab reports</span></li>
-        <li><span>LOCATION</span><span>Bristol, UK · Right to work</span></li>
-      </ul>
-      <span class="exec__open"><span class="exec__dot"></span> Open to SOC &amp; detection roles</span>
-    </aside>
+    <div class="about__grid">
+      <div class="about__text reveal">
+        <p>
+          I’m a Cyber Security Analyst specialising in <strong>Security Operations Center (SOC)</strong> work:
+          monitoring SIEM telemetry, investigating alerts, and reducing mean-time-to-respond through
+          disciplined triage, detection tuning, and root-cause analysis.
+        </p>
+        <p>
+          My day-to-day spans <strong>Splunk</strong> and <strong>Elastic SIEM</strong> — building and refining
+          detection content, correlating events across hosts, and feeding findings back into the detection
+          engineering loop. I map adversary behaviour to <strong>MITRE ATT&amp;CK</strong>, and work within
+          <strong>NIST</strong> and <strong>ISO/IEC 27001</strong> control frameworks.
+        </p>
+        <p>
+          Beyond the console, I build security tooling. My flagship project, <strong>SentinelForge</strong>, is a
+          local-first endpoint telemetry and alerting platform (Python · FastAPI · Sysmon · SQLite · Wazuh)
+          with a full detection-to-incident pipeline — designed, built and validated by me end to end.
+        </p>
+      </div>
+      <aside class="about__card reveal" aria-label="Quick facts">
+        <h3 class="mono">quick_facts.yml</h3>
+        <ul class="facts">
+          <li><span>role</span>SOC / Cyber Security Analyst</li>
+          <li><span>education</span>MSc Cyber Security</li>
+          <li><span>experience</span>2+ years · SOC &amp; IR</li>
+          <li><span>siem</span>Splunk · Elastic SIEM</li>
+          <li><span>frameworks</span>MITRE ATT&amp;CK · NIST · ISO/IEC 27001</li>
+          <li><span>location</span>Bristol, UK · Right to work</li>
+          <li><span>status</span><span class="facts__open"><span class="status-dot"></span> Open to opportunities</span></li>
+        </ul>
+      </aside>
+    </div>
   </div>
 </section>
 

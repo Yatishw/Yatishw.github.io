@@ -64,19 +64,49 @@
   );
   globe.add(hull);
 
-  // Faint graticule over the relief
-  var latLong = new THREE.Mesh(
-    new THREE.SphereGeometry(R + 0.13, 40, 28),
-    new THREE.MeshBasicMaterial({ color: 0x2dd4bf, wireframe: true, transparent: true, opacity: 0.10 })
-  );
-  globe.add(latLong);
-
   // Atmosphere glow
   var atmosphere = new THREE.Mesh(
     new THREE.SphereGeometry(R * 1.07, 32, 24),
     new THREE.MeshBasicMaterial({ color: 0x34d399, transparent: true, opacity: 0.055, side: THREE.BackSide })
   );
   globe.add(atmosphere);
+
+  /* ---------- World borders (Natural Earth via world-atlas) ---------- */
+  function drawBorders(ctx, tex, W, H) {
+    if (typeof topojson === 'undefined') return;
+    fetch('https://cdn.jsdelivr.net/npm/world-atlas@2.0.2/countries-110m.json')
+      .then(function (r) { return r.json(); })
+      .then(function (world) {
+        var countries = topojson.feature(world, world.objects.countries).features;
+        ctx.save();
+        ctx.strokeStyle = 'rgba(154, 196, 181, 0.62)';
+        ctx.lineWidth = Math.max(1.3, W / 1250);
+        ctx.lineJoin = 'round';
+        countries.forEach(function (f) {
+          var geom = f.geometry;
+          var polys = geom.type === 'Polygon' ? [geom.coordinates]
+                    : geom.type === 'MultiPolygon' ? geom.coordinates : [];
+          polys.forEach(function (poly) {
+            poly.forEach(function (ring) {
+              ctx.beginPath();
+              var prevX = null;
+              for (var i = 0; i < ring.length; i++) {
+                var x = (ring[i][0] + 180) / 360 * W;
+                var y = (90 - ring[i][1]) / 180 * H;
+                if (prevX === null || Math.abs(x - prevX) > W / 2) ctx.moveTo(x, y);
+                else ctx.lineTo(x, y);
+                prevX = x;
+              }
+              ctx.closePath();
+              ctx.stroke();
+            });
+          });
+        });
+        ctx.restore();
+        tex.needsUpdate = true;
+      })
+      .catch(function () { /* borders are cosmetic — never fatal */ });
+  }
 
   /* ---------- Build the dark "threat map" from NASA imagery ---------- */
   function buildMapTexture(dayImg, topoImg) {
@@ -127,6 +157,7 @@
     var tex = new THREE.CanvasTexture(dc);
     tex.encoding = THREE.sRGBEncoding;
     tex.anisotropy = renderer.capabilities.getMaxAnisotropy();
+    drawBorders(dctx, tex, W, H); // paint Natural Earth country outlines on top
     return { tex: tex, landSamples: landSamples };
   }
 
@@ -266,29 +297,6 @@
     attacks.push({ curve: curve, packet: packet, t: index * 0.16, speed: 0.0032 + Math.random() * 0.0016, tube: tube });
   });
 
-  /* ---------- Twin orbital rings (teal, dimmed) ---------- */
-  var ringGroup = new THREE.Group();
-  scene.add(ringGroup);
-
-  function orbitRing(radius, tube, color, opacity, rx, rz) {
-    var ring = new THREE.Mesh(
-      new THREE.TorusGeometry(radius, tube, 8, 160),
-      new THREE.MeshBasicMaterial({ color: color, transparent: true, opacity: opacity })
-    );
-    ring.rotation.set(rx, 0, rz);
-    ringGroup.add(ring);
-    return ring;
-  }
-  var orbit1 = orbitRing(R * 1.42, 0.016, 0x2dd4bf, 0.4, Math.PI / 2.6, 0.25);
-  var orbit2 = orbitRing(R * 1.78, 0.012, 0x0ea5e9, 0.28, Math.PI / 1.75, -0.35);
-
-  var sweep = new THREE.Mesh(
-    new THREE.TorusGeometry(R * 1.6, 0.05, 6, 40, Math.PI / 4.2),
-    new THREE.MeshBasicMaterial({ color: 0x5eead4, transparent: true, opacity: 0.85, blending: THREE.AdditiveBlending, depthWrite: false })
-  );
-  sweep.rotation.x = Math.PI / 2.6;
-  ringGroup.add(sweep);
-
   /* ---------- Ambient starfield ---------- */
   var starCount = 160;
   var starPos = new Float32Array(starCount * 3);
@@ -321,8 +329,6 @@
       globe.position.set(8.6, 1.6, -3.2);
       globe.scale.setScalar(1.25);
     }
-    ringGroup.position.copy(globe.position);
-    ringGroup.scale.setScalar(globe.scale.x);
   }
   layout();
   window.addEventListener('resize', layout, { passive: true });
@@ -371,10 +377,6 @@
       atk.packet.scale.set(ps, ps, 1);
       atk.tube.material.opacity = 0.28 + 0.32 * env;
     }
-
-    orbit1.rotation.z += 0.0035;
-    orbit2.rotation.z -= 0.0026;
-    sweep.rotation.y -= 0.03;
 
     camera.position.x += (pointer.x * 1.4 - camera.position.x) * 0.03;
     camera.position.y += (0.6 - pointer.y * 1.0 - camera.position.y) * 0.03;

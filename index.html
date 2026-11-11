@@ -1,874 +1,452 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-
-<meta charset="utf-8">
-<title>Yatish W</title>
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<meta name="description" content="Cyber Security Analyst — threat hunting, SOC operations, detection engineering across enterprise and OT environments.">
-<meta property="og:title" content="Yatish W — Cyber Security Analyst">
-<meta property="og:description" content="Threat hunting, SOC operations, and detection engineering across enterprise and OT environments.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://yatishw.pages.dev/">
-<meta property="og:image" content="https://yatishw.pages.dev/images/avatar.jpg">
-<meta name="twitter:card" content="summary_large_image">
-
-
-<!-- FONT -->
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-
-<!-- ICONS -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
-<style>
-
-/* =================SCROLLBAR ================= */
-
-/* Chrome, Edge, Safari */
-::-webkit-scrollbar{
-width:12px;
-}
-
-::-webkit-scrollbar-track{
-background:#020617;
-}
-
-::-webkit-scrollbar-thumb{
-background:
-linear-gradient(
-180deg,
-#1e3a8a,
-#42a5f5
-);
-
-border-radius:20px;
-
-border:2px solid #020617;
-
-box-shadow:
-0 0 10px rgba(66,165,245,0.35);
-}
-
-::-webkit-scrollbar-thumb:hover{
-background:
-linear-gradient(
-180deg,
-#42a5f5,
-#90caf9
-);
-
-box-shadow:
-0 0 14px rgba(66,165,245,0.6);
-}
-
-/* Firefox */
-html{
-scrollbar-width:thin;
-scrollbar-color:#42a5f5 #020617;
-}
-
- 
-
-/* RESET */
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Inter',sans-serif;
-}
-
-body{
-  background: radial-gradient(circle at top, #0f172a, #020617 80%);
-  color: white;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
-
- 
-
-/* HERO */  
-.hero{
-  height:100vh;
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-
-  position: relative;
-  z-index: 1;
-  overflow: hidden;
-}
-
-/* CONTENT */
-.hero-content{
-max-width:800px;
-padding:20px;
-position: relative;
-z-index: 2;  
-margin-top:85px;
-}
-
-/* AVATAR */
-.avatar-wrapper {
-  position: relative;
-  margin-bottom: 30px;
-  display: inline-block;
-}
-
-.avatar {
-  width: 160px;
-  height: 160px;
-  border-radius: 50%;
-
-  transform: scale(1.35);
-  object-fit: cover;
-  object-position: 50% 25%;
-}
-
-
-
- 
-
-
-/* TEXT */
-h1{
-font-size:52px;
-font-weight:700;
-}
-
-h2{
-font-size:26px;
-color:#64b5f6;
-margin-top:8px;
-margin-bottom:10px;
-min-height:30px;
-}
-
-p{
-margin-top:20px;
-font-size:18px;
-color:#cfd8dc;
-line-height:1.65;
-}
-
-/* BUTTONS */
-.buttons{
-margin-top:30px;
-}
-
-.buttons a{
-display:inline-block;
-padding:12px 24px;
-margin:10px;
-border-radius:6px;
-background:#2196f3;
-color:white;
-text-decoration:none;
-transition:0.3s;
-}
-
-.buttons a:hover{
-transform:translateY(-3px);
-background:#1976d2;
-}
-
-.secondary{
-background:transparent;
-border:1px solid #aaa;
-}
-
-.secondary:hover{
-background:white;
-color:black;
-}
-
-/* SOCIAL */
-.social{
-margin-top:35px;
-}
-
-.social a{
-font-size:28px;
-margin:0 10px;
-color:white;
-transition:0.3s;
-}
-
-.social a:hover{
-color:#64b5f6;
-}
-
-.highlight{
-color:#64b5f6;
-font-weight:600;
-}
-
-/* FADE */
-@keyframes fadeUp{
-from{opacity:0;transform:translateY(40px);}
-to{opacity:1;transform:translateY(0);}
-}
-
-
-
-
-#particles-js {
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  z-index: 0;
-  pointer-events: none; /* 🔥 important */
-}
-
-
-/* ===== CYBER GRID BACKGROUND ===== */
-.hero::before {
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  mask-image: linear-gradient(
-    to bottom,
-    rgba(0,0,0,0.9) 0%,
-    rgba(0,0,0,0.6) 40%,
-    rgba(0,0,0,0.2) 70%,
-    transparent 100%
-  );
-
-
-  background:
-    repeating-linear-gradient(
-      to right,
-      rgba(66,165,245,0.25) 0px,
-      rgba(66,165,245,0.25) 1px,
-      transparent 1px,
-      transparent 80px
-    ),
-    repeating-linear-gradient(
-      to bottom,
-      rgba(66,165,245,0.08) 0px,   /* 👈 lighter */
-      rgba(66,165,245,0.08) 1px,
-      transparent 1px,
-      transparent 80px
-    );
-
-  z-index: 0;
-  animation: scan 8s linear infinite;
-}
-
-/* ===== LIGHT SWEEP ===== */
-.hero::after {
-  content: "";
-  position: absolute;
-  width: 200%;
-  height: 100%;
-  top: 0;
-  left: -50%;
-
-  background: linear-gradient(
-    120deg,
-    transparent,
-    rgba(255,255,255,0.08),
-    transparent
-  );
-
-  animation: sweep 6s infinite;
-}
-
-/* ANIMATIONS */
-@keyframes scan {
-  0% { background-position: 0 0; }
-  100% { background-position: 0 80px; }
-}
-
-@keyframes sweep {
-  0% { transform: translateX(-100%); }
-  100% { transform: translateX(100%); }
-}
-
-
-
-.nav{
-  position: fixed;
-  top: 30px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 100;
-
-  background: rgba(10,15,30,0.6);
-  padding: 14px 30px;
-  border-radius: 40px;
-
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(255,255,255,0.08);
-
-  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
-}
-
-.nav a{
-  margin: 0 18px;
-  color: #e0e0e0;
-  text-decoration: none;
-  font-size: 16px;   /* 👈 bigger */
-  font-weight: 500;
-  letter-spacing: 0.5px;
-
-  transition: 0.3s;
-  position: relative;
-}
-
-
-
-.nav a::after{
-  content:"";
-  position:absolute;
-  bottom:-6px;
-  left:0;
-  width:0%;
-  height:2px;
-  background:#42a5f5;
-  transition:0.3s;
-}
-
-.nav a:hover::after{
-  width:100%;
-}
-
-.nav a:hover{
-  color:#ffffff;
-}
-
-
-
-
-
-
-/* ================= TECH STACK MARQUEE ================= */
-
-.stack-marquee{
-
-width:100%;
-
-overflow:hidden;
-
-padding:12px 0;
-margin-top:34px;
-
-position:relative;
-z-index:2;
-
-background:
-linear-gradient(
-90deg,
-rgba(255,255,255,0.01),
-rgba(255,255,255,0.025),
-rgba(255,255,255,0.01)
-);
-
-border:none;
-
-box-shadow:
-inset 0 0 40px rgba(0,0,0,0.35);
-
-backdrop-filter:blur(10px);
-}
-
-/* fade edges */
-
-.stack-marquee::before,
-.stack-marquee::after{
-
-content:"";
-
-position:absolute;
-
-top:0;
-
-width:220px;
-height:100%;
-
-z-index:3;
-
-pointer-events:none;
-}
-
-/* LEFT FADE */
-
-.stack-marquee::before{
-
-left:0;
-
-background:
-linear-gradient(
-to right,
-rgba(2,6,23,1) 0%,
-rgba(2,6,23,0.92) 35%,
-rgba(2,6,23,0.55) 65%,
-transparent 100%
-);
-}
-
-/* RIGHT FADE */
-
-.stack-marquee::after{
-
-right:0;
-
-background:
-linear-gradient(
-to left,
-rgba(2,6,23,1) 0%,
-rgba(2,6,23,0.92) 35%,
-rgba(2,6,23,0.55) 65%,
-transparent 100%
-);
-}
-.stack-track{
-
-display:flex;
-align-items:center;
-
-gap:16px;
-
-width:max-content;
-
-animation:
-marqueeScroll 36s linear infinite;
-}
-
-.stack-track span{
-
-font-size:17px;
-
-font-weight:580;
-
-letter-spacing:-0.2px;
-
-white-space:nowrap;
-
-color:
-rgba(255,255,255,0.72);
-}
-
-/* separator dots */
-
-.stack-track span:nth-child(even){
-
-font-size:14px;
-
-color:#64b5f6;
-}
-
-@keyframes marqueeScroll{
-
-0%{
-transform:translateX(0%);
-}
-
-100%{
-transform:translateX(-50%);
-}
-}
-
-
-
-
-
-/* ================= MOBILE ================= */
-
-@media(max-width:768px){
-
-/* hero */
-
-.hero{
-
-min-height:100vh;
-
-height:auto;
-
-padding:
-130px 20px 60px;
-}
-
-/* content */
-
-.hero-content{
-
-max-width:100%;
-
-padding:0;
-}
-
-/* avatar */
-
-.avatar{
-
-width:130px;
-height:130px;
-
-transform:none;
-
-object-position:center 20%;
-}
-
-/* name */
-
-h1{
-
-font-size:42px;
-
-line-height:1.1;
-
-margin-top:8px;
-}
-
-/* typing role */
-
-h2{
-
-font-size:20px;
-
-margin-top:10px;
-
-min-height:24px;
-}
-
-/* intro text */
-
-.hero-content p{
-
-font-size:15px;
-
-line-height:1.75;
-
-max-width:100%;
-
-margin-top:18px;
-
-padding:0 4px;
-}
-
-/* marquee */
-
-.stack-marquee{
-
-margin-top:34px;
-
-padding:14px 0;
-}
-
-.stack-track{
-
-gap:14px;
-}
-
-.stack-track span{
-
-font-size:15px;
-
-font-weight:600;
-}
-
-/* socials */
-
-.social{
-
-margin-top:26px;
-}
-
-.social a{
-
-font-size:24px;
-
-margin:0 8px;
-}
-
-/* navbar */
-
-.nav{
-
-width:92%;
-
-padding:12px 18px;
-
-top:18px;
-
-display:flex;
-
-justify-content:center;
-
-flex-wrap:wrap;
-}
-
-.nav a{
-
-font-size:14px;
-
-margin:5px 8px;
-}
-}
-
-
-
-
-
-
-
-
-
-
- 
-
-
-
-  
-
-
-
-  
-</style>
-
-
-
-
-
-<script type="text/javascript">
-    (function(c,l,a,r,i,t,y){
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "xq33eeve80");
-</script>
-
-
-
-
-
-
-
-
-
- 
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Yatish Waghmare | Cyber Security Analyst — SOC · Threat Hunting · Detection Engineering</title>
+<meta name="description" content="Cyber Security Analyst hunting threats, not just alerts. MSc Cyber Security, 2+ years SOC experience across enterprise and OT environments — CrowdStrike Falcon, Splunk ES, Elastic SIEM, Microsoft Sentinel, Qualys VMDR, MITRE ATT&CK. Bristol, UK." />
+<meta name="keywords" content="SOC Analyst, Cyber Security, Threat Hunting, Detection Engineering, CrowdStrike Falcon, Splunk, Elastic SIEM, Microsoft Sentinel, Qualys VMDR, MITRE ATT&CK, OT/ICS Security, Incident Response, Bristol UK" />
+<meta name="author" content="Yatish Waghmare" />
+<link rel="canonical" href="https://yatishw.github.io/" />
+
+<!-- Open Graph / social -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://yatishw.github.io/" />
+<meta property="og:title" content="Yatish Waghmare | Cyber Security Analyst" />
+<meta property="og:description" content="Threat detection and SOC operations across enterprise and OT environments. CrowdStrike Falcon · Splunk ES · Elastic SIEM · Microsoft Sentinel · Qualys VMDR · MITRE ATT&CK." />
+<meta property="og:image" content="https://yatishw.github.io/images/avatar.jpg" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="theme-color" content="#0b1220" />
+
+<link rel="icon" type="image/jpeg" href="images/avatar.jpg" />
+<link rel="apple-touch-icon" href="images/avatar.jpg" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+<link rel="stylesheet" href="css/styles.css" />
 </head>
-
 <body>
 
+<!-- ══════════ NAV ══════════ -->
+<header class="nav" id="top">
+  <div class="container nav__inner">
+    <a class="brand" href="#home" aria-label="Yatish Waghmare — home">
+      <span class="brand__mark">YW</span>
+      <span class="brand__text">Yatish<span> Waghmare</span></span>
+    </a>
+    <nav class="nav__links" id="navLinks" aria-label="Primary navigation">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#certifications">Certifications</a>
+      <a href="#contact" class="nav__cta">Contact</a>
+    </nav>
+    <button class="nav__toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
 
+<main>
 
+<!-- ══════════ HERO ══════════ -->
+<section class="hero" id="home">
+  <div class="hero__grid" aria-hidden="true"></div>
+  <div class="container hero__inner">
+    <div class="hero__content">
+      <p class="hero__eyebrow reveal"><span class="status-dot"></span> Open to SOC / Detection roles · Bristol, UK · Right to work</p>
+      <h1 class="hero__name reveal">Yatish <span class="accent">Waghmare</span></h1>
+      <p class="hero__role reveal">Cyber Security Analyst <span class="hero__role-sep">·</span> SOC Operations<span class="hero__typed"> — <span id="typing"></span><span class="caret">▋</span></span></p>
+      <p class="hero__lede reveal">
+        I hunt threats, not just alerts. Threat detection and SOC operations across
+        <strong>enterprise and OT environments</strong> — CrowdStrike Falcon, Splunk ES, Elastic SIEM,
+        Qualys VMDR. Detonated malware in CrowdStrike QuickScan Pro. MITRE ATT&amp;CK-mapped detection.
+        I identify, analyse, respond and document <strong>real-world threats</strong>.
+      </p>
+      <div class="hero__ctas reveal">
+        <a class="btn btn--primary" href="#projects">View my work <span aria-hidden="true">→</span></a>
+        <a class="btn btn--ghost" href="#contact">Get in touch</a>
+      </div>
+      <div class="hero__socials reveal">
+        <a href="https://github.com/Yatishw" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.55 0-.27-.01-1.17-.02-2.12-3.2.7-3.87-1.36-3.87-1.36-.52-1.33-1.28-1.68-1.28-1.68-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.72-1.54-2.55-.29-5.24-1.28-5.24-5.7 0-1.26.45-2.29 1.18-3.1-.12-.29-.51-1.46.11-3.05 0 0 .96-.31 3.15 1.18a10.9 10.9 0 0 1 5.78 0c2.19-1.49 3.15-1.18 3.15-1.18.62 1.59.23 2.76.11 3.05.73.81 1.18 1.84 1.18 3.1 0 4.43-2.7 5.4-5.27 5.69.41.36.78 1.08.78 2.18 0 1.57-.01 2.84-.01 3.23 0 .3.21.66.8.55A10.52 10.52 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5z"/></svg>
+        </a>
+        <a href="https://www.linkedin.com/in/yatish28" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM4.5 9h1v12h-1zM9.5 9h.96v1.7h.01c.13-.25.46-.9 1.6-.9 1.7 0 2.4 1.1 2.4 2.9V21h-1v-7.6c0-1.3 0-2.9-1.9-2.9-1.9 0-2.1 1.4-2.1 2.8V21h-1z"/></svg>
+        </a>
+        <a href="mailto:yatiwaghmare@gmail.com" aria-label="Email">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true"><path d="M2 5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5zm2.3.5L12 11l7.7-5.5H4.3zM4 7.9V18h16V7.9l-8 5.7-8-5.7z"/></svg>
+        </a>
+        <a href="tel:+447443208996" aria-label="Phone">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.8-.4 1.2-.2 1.3.4 2.8.7 4.3.7.7 0 1.1.5 1.1 1.1V20c0 .6-.5 1.1-1.1 1.1C10.6 21.1 2.9 13.4 2.9 3.1 2.9 2.5 3.4 2 4 2h3.2c.6 0 1.1.4 1.1 1.1 0 1.5.2 3 .7 4.3.1.4 0 .8-.3 1.2l-2.1 2.2z"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="hero__portrait reveal">
+      <div class="portrait-ring">
+        <img src="images/avatar.jpg" alt="Portrait of Yatish Waghmare" width="350" height="396" fetchpriority="high" />
+      </div>
+      <div class="hero__badge mono" aria-hidden="true">
+        <span class="mono-prompt">$</span> triage --severity high --status open<span class="caret">▋</span>
+      </div>
+    </div>
+  </div>
 
+  <!-- Tech marquee -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee__track" id="marqueeTrack">
+      <span>Threat Hunting</span><i>•</i><span>CrowdStrike Falcon</span><i>•</i><span>Microsoft Sentinel</span><i>•</i><span>Splunk ES</span><i>•</i><span>Elastic SIEM</span><i>•</i><span>MITRE ATT&amp;CK</span><i>•</i><span>EDR Analysis</span><i>•</i><span>Incident Response</span><i>•</i><span>Qualys VMDR</span><i>•</i><span>QuickScan Pro</span><i>•</i><span>SOAR Automation</span><i>•</i><span>Python</span><i>•</i><span>PowerShell</span><i>•</i><span>OT / ICS Security</span><i>•</i><span>ISA/IEC 62443</span><i>•</i><span>Siemens S7 PLCs</span><i>•</i><span>MAVLink</span><i>•</i><span>TIA Portal</span><i>•</i><span>Detection Engineering</span><i>•</i><span>Wazuh</span><i>•</i><span>Sysmon</span><i>•</i><span>Alert Triage</span><i>•</i>
+    </div>
+  </div>
 
-
-
- 
-<nav class="nav">
-<a href="index.html">Home</a>
-<a href="projects.html">Projects</a>
-<a href="certifications.html">Certifications</a>
-<a href="docs/Resume_Yatish1.pdf" target="_blank">Resume</a>
-</nav>
-
-  
-  
-<div class="hero">
-
-<div class="hero-content">
-
-<div class="avatar-wrapper">
-  <img src="images/avatar.jpg" class="avatar">
-</div>
-
-<h1>Yatish W</h1>
-
-<h2 id="typing"></h2>
-
-<p>
-Cyber Security Analyst who hunts threats, not just alerts. Threat detection and SOC operations across enterprise and OT environments.
-<br>
-CrowdStrike Falcon, Splunk, Elastic SIEM, Qualys VMDR. Detonated malware in CrowdStrike QuickScan Pro. MITRE ATT&CK-mapped detection. I identify, analyse, respond, document real-world threats.
-</p>
-
-
-
-
-<section class="stack-marquee">
-
-<div class="stack-track">
-
-<span>Threat Hunting</span>
-<span>•</span>
-
-<span>CrowdStrike Falcon</span>
-<span>•</span>
-
-<span>Microsoft Sentinel</span>
-<span>•</span>
-
-<span>Splunk ES</span>
-<span>•</span>
-
-<span>MITRE ATT&CK</span>
-<span>•</span>
-
-<span>EDR Analysis</span>
-<span>•</span>
-
-<span>Incident Response</span>
-<span>•</span>
-
-<span>Qualys VMDR</span>
-<span>•</span>
-
-<span>QuickScan Pro</span>
-<span>•</span>
-
-<span>SOAR Automation</span>
-<span>•</span>
-
-<span>Python</span>
-<span>•</span>
-
-<span>PowerShell</span>
-<span>•</span>
-
-<span>OT / ICS Security</span>
-<span>•</span>
-
-<span>ISA/IEC 62443</span>
-<span>•</span>
-
-<span>Siemens S7 PLCs</span>
-<span>•</span>
-
-<span>Modbus</span>
-<span>•</span>
-
-<span>DNP3</span>
-<span>•</span>
-
-<span>TIA Portal</span>
-<span>•</span>
-
-<span>Detection Engineering</span>
-<span>•</span>
-
-<span>Wazuh</span>
-<span>•</span>
-
-<span>Sysmon</span>
-<span>•</span>
-
-<span>Alert Triage</span>
-
-<!-- duplicate for smooth infinite loop -->
-
-<span>•</span>
-
-<span>Threat Hunting</span>
-<span>•</span>
-
-<span>CrowdStrike Falcon</span>
-<span>•</span>
-
-<span>Microsoft Sentinel</span>
-<span>•</span>
-
-<span>Splunk ES</span>
-<span>•</span>
-
-<span>MITRE ATT&CK</span>
-
-</div>
-
+  <a class="scroll-cue" href="#about" aria-label="Scroll to about section">
+    <svg width="18" height="28" viewBox="0 0 18 28" fill="none" aria-hidden="true"><rect x="1" y="1" width="16" height="26" rx="8" stroke="currentColor" stroke-width="1.5"/><circle class="scroll-cue__dot" cx="9" cy="8" r="2.2" fill="currentColor"/></svg>
+  </a>
 </section>
-  
 
+<!-- ══════════ STATS ══════════ -->
+<section class="stats" aria-label="Key facts">
+  <div class="container stats__grid">
+    <div class="stat reveal"><span class="stat__num">2+</span><span class="stat__label">Years in SOC operations</span></div>
+    <div class="stat reveal"><span class="stat__num">100s</span><span class="stat__label">Alerts monitored &amp; investigated</span></div>
+    <div class="stat reveal"><span class="stat__num">13+</span><span class="stat__label">Certifications &amp; badges</span></div>
+    <div class="stat reveal"><span class="stat__num">MSc</span><span class="stat__label">Cyber Security (postgraduate, UK)</span></div>
+  </div>
+</section>
 
+<!-- ══════════ ABOUT ══════════ -->
+<section class="section" id="about">
+  <div class="container">
+    <div class="section__head reveal">
+      <p class="section__eyebrow mono">01 / PROFILE</p>
+      <h2>About me</h2>
+    </div>
+    <div class="about__grid">
+      <div class="about__text reveal">
+        <p>
+          I’m a Cyber Security Analyst specialising in <strong>Security Operations Center (SOC)</strong> work —
+          monitoring SIEM telemetry, investigating alerts, hunting threats, and reducing mean-time-to-respond
+          through disciplined triage, detection tuning, and root-cause analysis.
+        </p>
+        <p>
+          My day-to-day spans <strong>CrowdStrike Falcon</strong>, <strong>Splunk ES</strong>, <strong>Elastic SIEM</strong>,
+          <strong>Microsoft Sentinel</strong> and <strong>Qualys VMDR</strong> — building and refining detection content,
+          correlating events across endpoints, and mapping adversary behaviour to <strong>MITRE ATT&amp;CK</strong>.
+          I work across <strong>enterprise and OT/ICS</strong> environments (ISA/IEC 62443, Siemens S7 PLCs, Modbus, DNP3)
+          within <strong>NIST</strong> and <strong>ISO/IEC 27001</strong> frameworks.
+        </p>
+        <p>
+          Beyond the console, I build security tooling and labs. My postgraduate research produced a
+          <strong>penetration-testing framework for UAV networks</strong> (PX4 / Pixhawk 6C, MAVLink), and my
+          <strong>SentinelForge</strong> platform engineers the full detection-to-incident pipeline — Python, FastAPI,
+          Sysmon, Wazuh, and a versioned detection catalogue with analyst workflow built in.
+        </p>
+      </div>
+      <aside class="about__card reveal" aria-label="Quick facts">
+        <h3 class="mono">quick_facts.yml</h3>
+        <ul class="facts">
+          <li><span>role</span>SOC / Cyber Security Analyst · Threat Hunting</li>
+          <li><span>education</span>MSc Cyber Security (UK)</li>
+          <li><span>experience</span>2+ years · SOC &amp; IR · Enterprise &amp; OT</li>
+          <li><span>edr/siem</span>Falcon · Splunk ES · Elastic · Sentinel</li>
+          <li><span>vuln_mgmt</span>Qualys VMDR · risk-based prioritisation</li>
+          <li><span>frameworks</span>MITRE ATT&amp;CK · NIST · ISO/IEC 27001 · 62443</li>
+          <li><span>location</span>Bristol, UK · Right to work</li>
+          <li><span>status</span><span class="facts__open"><span class="status-dot"></span> Open to opportunities</span></li>
+        </ul>
+      </aside>
+    </div>
+  </div>
+</section>
 
-<div class="social">
-<a href="https://github.com/Yatishw"><i class="fab fa-github"></i></a>
-<a href="https://linkedin.com/in/yatish28"><i class="fab fa-linkedin"></i></a>
-<a href="mailto:yatish28.yw28@gmail.com"><i class="fas fa-envelope"></i></a>
-</div>
+<!-- ══════════ SKILLS ══════════ -->
+<section class="section section--alt" id="skills">
+  <div class="container">
+    <div class="section__head reveal">
+      <p class="section__eyebrow mono">02 / CAPABILITIES</p>
+      <h2>Skills &amp; tooling</h2>
+    </div>
+    <div class="skills__grid">
+      <div class="skill-card reveal">
+        <div class="skill-card__icon" aria-hidden="true">🦅</div>
+        <h3>EDR &amp; Threat Detection</h3>
+        <ul><li>CrowdStrike Falcon · QuickScan Pro</li><li>EDR analysis &amp; automated containment</li><li>Wazuh · Sysmon · behavioural telemetry</li><li>Malware detonation &amp; analysis</li></ul>
+      </div>
+      <div class="skill-card reveal">
+        <div class="skill-card__icon" aria-hidden="true">🛡️</div>
+        <h3>SIEM &amp; Monitoring</h3>
+        <ul><li>Splunk ES (SPL, dashboards, tuning)</li><li>Elastic SIEM · Microsoft Sentinel</li><li>Log correlation &amp; alert triage</li><li>Detection rule engineering</li></ul>
+      </div>
+      <div class="skill-card reveal">
+        <div class="skill-card__icon" aria-hidden="true">🚨</div>
+        <h3>Detection &amp; Response</h3>
+        <ul><li>Incident response &amp; triage</li><li>Detection tuning &amp; false-positive reduction</li><li>Root-cause analysis</li><li>Playbook &amp; case documentation</li></ul>
+      </div>
+      <div class="skill-card reveal">
+        <div class="skill-card__icon" aria-hidden="true">🎯</div>
+        <h3>Frameworks &amp; Intel</h3>
+        <ul><li>MITRE ATT&amp;CK mapping</li><li>NIST CSF · ISO/IEC 27001</li><li>Cyber Threat Intelligence</li><li>STRIDE · LINDDUN threat modelling</li></ul>
+      </div>
+      <div class="skill-card reveal">
+        <div class="skill-card__icon" aria-hidden="true">🏭</div>
+        <h3>OT / ICS Security</h3>
+        <ul><li>ISA/IEC 62443</li><li>Siemens S7 PLCs · TIA Portal</li><li>Modbus · DNP3 · SCADA/HMI</li><li>ICS pentesting &amp; threat modelling</li></ul>
+      </div>
+      <div class="skill-card reveal">
+        <div class="skill-card__icon" aria-hidden="true">🔎</div>
+        <h3>Vulnerability Management</h3>
+        <ul><li>Qualys VMDR · scanning &amp; prioritisation</li><li>Risk-based remediation tracking</li><li>Asset &amp; exposure review</li><li>Compliance reporting (27001)</li></ul>
+      </div>
+      <div class="skill-card reveal">
+        <div class="skill-card__icon" aria-hidden="true">⚙️</div>
+        <h3>Security Engineering</h3>
+        <ul><li>Python (automation, APIs, tooling)</li><li>FastAPI · SQLite · REST</li><li>PowerShell · Bash</li><li>SOAR / alert automation concepts</li></ul>
+      </div>
+      <div class="skill-card reveal">
+        <div class="skill-card__icon" aria-hidden="true">🌐</div>
+        <h3>Network &amp; Platforms</h3>
+        <ul><li>TCP/IP · DNS · HTTP/S</li><li>Firewalls · WAF (ModSecurity, OWASP CRS)</li><li>Linux &amp; Windows servers</li><li>Wireshark · packet analysis</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
 
-</div>
+<!-- ══════════ PROJECTS ══════════ -->
+<section class="section" id="projects">
+  <div class="container">
+    <div class="section__head reveal">
+      <p class="section__eyebrow mono">03 / HANDS-ON</p>
+      <h2>Featured projects</h2>
+      <p class="section__sub">Detection engineering · security labs · SOC simulations — each links to the full report.</p>
+    </div>
 
-</div>
+    <!-- Capstone -->
+    <a class="project-wide reveal" href="docs/YatishWaghmare_MScThesis.pdf" target="_blank" rel="noopener noreferrer">
+      <img src="images/UAV.jpg" alt="UAV penetration testing framework — PX4 Holybro X500 V2" loading="lazy" />
+      <div class="project-wide__body">
+        <span class="project-wide__badge">🎓 MSc Capstone</span>
+        <h3>Penetration Testing Framework for UAV Networks</h3>
+        <p>Designed and executed a reproducible UAV penetration-testing framework on a PX4 Holybro X500 V2 / Pixhawk 6C platform. Evaluated Wi-Fi deauthentication, GPS spoofing, MAVLink C2 hijacking, DoS flooding, and battery/resource exhaustion with unified metrics — disruption latency, recovery time, path deviation, CPU/MCU load. Delivered cross-attack benchmarks, CIA impact mapping, and hardening priorities for UAV operators.</p>
+        <div class="project-wide__metrics mono">
+          <span>5 attack vectors</span><span>3–4s deauth lockout</span><span>5–7s GPS diversion</span><span>~5s C2 takeover</span><span>~100% CPU under flood</span>
+        </div>
+        <div class="tags"><span>UAV Security</span><span>PX4</span><span>MAVLink</span><span>Penetration Testing</span><span>GPS Spoofing</span><span>Threat Modeling</span></div>
+        <span class="project-btn">Read the thesis →</span>
+      </div>
+    </a>
 
+    <!-- SentinelForge -->
+    <div class="project-wide project-wide--dark reveal">
+      <div class="project-wide__body">
+        <span class="project-wide__badge project-wide__badge--private">⚙️ Private R&amp;D Platform</span>
+        <h3>SentinelForge — Endpoint Telemetry &amp; Alerting</h3>
+        <p>A local-first SOC platform I designed and built end to end: a Python endpoint agent collects Sysmon telemetry, a FastAPI service correlates events in SQLite, and twelve versioned detections generate analyst-ready alerts — each with an auto-assembled investigation (asset, timeline, ATT&amp;CK mapping, explained triage score, recommended action). Optional Wazuh 4.14 integration with a gated lab-response workflow.</p>
+        <div class="tags tags--dark"><span>Python</span><span>FastAPI</span><span>Sysmon</span><span>SQLite</span><span>Wazuh</span><span>Detection Engineering</span></div>
+      </div>
+      <div class="project-wide__visual" aria-hidden="true">
+        <div class="terminal">
+          <div class="terminal__bar"><span></span><span></span><span></span><em>analyst-console</em></div>
+          <pre class="terminal__body"><code><span class="t-prompt">$</span> sentinelforge alerts list --sev high
+<span class="t-ok">✓</span> SF-DET-SVC-INSTALL-001 <span class="t-dim">WKSTN-07</span>
+<span class="t-ok">✓</span> SF-DET-PWRSH-ENC-002   <span class="t-dim">WKSTN-07</span>
+<span class="t-prompt">$</span> sentinelforge incident INC-0001
+<span class="t-key">ATT&amp;CK</span>  T1059.001 · T1543.003
+<span class="t-key">Score</span>   87/100 <span class="t-dim">(explained)</span>
+<span class="t-key">Action</span>  isolate → approve <span class="t-dim">(gated)</span></code></pre>
+        </div>
+      </div>
+    </div>
 
+    <div class="project-grid">
+      <a class="project-card reveal" href="docs/EDR_FALCON.pdf" target="_blank" rel="noopener noreferrer">
+        <img src="images/EDR.png" alt="Falcon-style EDR lab architecture" loading="lazy" />
+        <div class="project-card__body">
+          <h3>Falcon-Style EDR Detection &amp; Automated Containment Lab</h3>
+          <p>Falcon-style EDR lab using Wazuh and Sysmon to detect PowerShell abuse, reconnaissance, and multi-stage attacks with automated host isolation.</p>
+          <div class="tags"><span>Wazuh</span><span>Sysmon</span><span>EDR</span><span>MITRE ATT&amp;CK</span></div>
+        </div>
+      </a>
 
-  
+      <a class="project-card reveal" href="docs/WAF-HOME%20lab.pdf" target="_blank" rel="noopener noreferrer">
+        <img src="images/Firewall.jpg" alt="WAF security lab with ModSecurity and Splunk" loading="lazy" />
+        <div class="project-card__body">
+          <h3>Web Application Firewall (WAF) Security Lab</h3>
+          <p>Deployed ModSecurity with OWASP CRS to protect DVWA from SQLi, XSS, brute-force and command injection, with Splunk-based monitoring.</p>
+          <div class="tags"><span>ModSecurity</span><span>OWASP CRS</span><span>Splunk</span><span>DVWA</span></div>
+        </div>
+      </a>
 
-<script>
-const roles = [
-"I triage the noise.",
-"I hunt the adversary.",
-"I engineer the fix."
-];
+      <a class="project-card reveal" href="docs/RANSOMWARE_ATTACK__HOME_LAB.pdf" target="_blank" rel="noopener noreferrer">
+        <img src="images/ransomware.jpg" alt="Active Directory ransomware detection lab" loading="lazy" />
+        <div class="project-card__body">
+          <h3>Active Directory Ransomware Detection Lab</h3>
+          <p>Simulated ransomware in an AD lab — Kali, Impacket, Snort, Splunk — detecting lateral movement, PowerShell abuse and file encryption.</p>
+          <div class="tags"><span>Active Directory</span><span>Splunk</span><span>Snort IDS/IPS</span><span>PowerShell</span></div>
+        </div>
+      </a>
 
-let i = 0;
-let j = 0;
-let current = "";
-let deleting = false;
+      <a class="project-card reveal" href="docs/IOT-2451975.pdf" target="_blank" rel="noopener noreferrer">
+        <img src="images/IOT-camera.jpg" alt="IoT camera exploitation and MQTT security lab" loading="lazy" />
+        <div class="project-card__body">
+          <h3>IoT Network Exploitation &amp; MQTT Security Lab</h3>
+          <p>IoT host discovery, MQTT MiTM, Philips Hue API exploitation, APK reverse engineering, and Wireshark traffic analysis.</p>
+          <div class="tags"><span>IoT Security</span><span>MQTT</span><span>Wireshark</span><span>JADX</span></div>
+        </div>
+      </a>
 
-function type(){
-let el = document.getElementById("typing");
+      <a class="project-card reveal" href="docs/ICS%20final.pdf" target="_blank" rel="noopener noreferrer">
+        <img src="images/ICS-threat-model.jpg" alt="ICS and smart device threat modelling with STRIDE and LINDDUN" loading="lazy" />
+        <div class="project-card__body">
+          <h3>ICS &amp; Smart Device Threat Modeling Lab</h3>
+          <p>STRIDE and LINDDUN threat modelling on smart and industrial IoT systems — spoofing, tampering, privacy and DoS risks with mitigations.</p>
+          <div class="tags"><span>ICS Security</span><span>STRIDE</span><span>LINDDUN</span><span>Threat Modeling</span></div>
+        </div>
+      </a>
 
-if(!deleting && j < roles[i].length){
-  current += roles[i].charAt(j);
-  j++;
-}
-else if(deleting && j > 0){
-  current = current.slice(0, -1);
-  j--;
-}
+      <a class="project-card reveal" href="docs/IOT-2451975%20(2).pdf" target="_blank" rel="noopener noreferrer">
+        <img src="images/lindun.jpg" alt="IoT cloud security and privacy threat modelling" loading="lazy" />
+        <div class="project-card__body">
+          <h3>IoT Cloud Security &amp; Privacy Threat Modeling</h3>
+          <p>STRIDE and LINDDUN analysis of IoT cloud risks with mitigations for spoofing, tampering, DoS, and data exposure in smart homes.</p>
+          <div class="tags"><span>IoT Security</span><span>STRIDE</span><span>LINDDUN</span><span>Threat Modeling</span></div>
+        </div>
+      </a>
 
-el.innerHTML = current;
+      <a class="project-card reveal" href="docs/GroupWork.pdf" target="_blank" rel="noopener noreferrer">
+        <img src="images/ICS.jpg" alt="Full ICS exploitation from water plant to swimming pool" loading="lazy" />
+        <div class="project-card__body">
+          <h3>From Water Plant to Swimming Pool: Full ICS Exploitation</h3>
+          <p>Full ICS pentest: chained RDP, exposed CCTV and plaintext credentials to reach the engineering workstation. Modified PLC logic, disabled alarms.</p>
+          <div class="tags"><span>ICS Security</span><span>SCADA</span><span>RDP</span><span>TIA Portal</span><span>PLC</span><span>HMI</span></div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
 
-/* pause at full word */
-if(j === roles[i].length){
-  deleting = true;
-  setTimeout(type, 1200);
-  return;
-}
+<!-- ══════════ CERTIFICATIONS ══════════ -->
+<section class="section section--alt" id="certifications">
+  <div class="container">
+    <div class="section__head reveal">
+      <p class="section__eyebrow mono">04 / CREDENTIALS</p>
+      <h2>Certifications &amp; badges</h2>
+      <p class="section__sub">Verified credentials — click any card to verify.</p>
+    </div>
+    <div class="cert-grid">
+      <a class="cert-card reveal" href="docs/Homeland-Security.pdf" target="_blank" rel="noopener noreferrer">
+        <img class="cert-card__logo" src="images/Homeland-Security.png" alt="U.S. Department of Homeland Security logo" loading="lazy" />
+        <span class="cert-card__body"><strong>ICS Cybersecurity</strong><small>U.S. Department of Homeland Security · 2026</small></span>
+        <span class="cert-card__link" aria-hidden="true">↗</span>
+      </a>
+      <a class="cert-card reveal" href="docs/Bcs%20cismp.pdf" target="_blank" rel="noopener noreferrer">
+        <img class="cert-card__logo" src="images/bcs.png" alt="BCS logo" loading="lazy" />
+        <span class="cert-card__body"><strong>Certified Information Security Management Professional</strong><small>BCS — The Chartered Institute for IT · 2026</small></span>
+        <span class="cert-card__link" aria-hidden="true">↗</span>
+      </a>
+      <a class="cert-card reveal" href="docs/Qualys%20Certificate.pdf" target="_blank" rel="noopener noreferrer">
+        <img class="cert-card__logo" src="images/Qualys.png" alt="Qualys logo" loading="lazy" />
+        <span class="cert-card__body"><strong>Qualys Certified Specialist – VMDR</strong><small>Qualys · 2026</small></span>
+        <span class="cert-card__link" aria-hidden="true">↗</span>
+      </a>
+      <a class="cert-card reveal" href="https://www.credly.com/badges/bbd2a710-43c0-40e8-9e4b-80d437e04bd6/public_url" target="_blank" rel="noopener noreferrer">
+        <img class="cert-card__logo cert-card__logo--square" src="images/microsoft-logo.png" alt="Microsoft logo" loading="lazy" />
+        <span class="cert-card__body"><strong>Microsoft Security, Compliance, and Identity Fundamentals</strong><small>Microsoft · verified badge</small></span>
+        <span class="cert-card__link" aria-hidden="true">↗</span>
+      </a>
+      <a class="cert-card reveal" href="https://www.credly.com/badges/b06499f8-d69c-4414-a559-46ba6478917c/public_url" target="_blank" rel="noopener noreferrer">
+        <img class="cert-card__logo cert-card__logo--square" src="images/proofpoint-logo.png" alt="Proofpoint logo" loading="lazy" />
+        <span class="cert-card__body"><strong>Proofpoint AI Email Security Specialist</strong><small>Proofpoint · verified badge</small></span>
+        <span class="cert-card__link" aria-hidden="true">↗</span>
+      </a>
+      <a class="cert-card reveal" href="https://www.credly.com/badges/ff4d073c-ae84-4659-8900-928c54cfb451/public_url" target="_blank" rel="noopener noreferrer">
+        <span class="cert-card__mono">SP</span>
+        <span class="cert-card__body"><strong>SailPoint Identity Security Leader</strong><small>SailPoint · verified badge</small></span>
+        <span class="cert-card__link" aria-hidden="true">↗</span>
+      </a>
+      <a class="cert-card reveal" href="https://ondemand.defensityone.com/certificates/ri9jwr5vy1" target="_blank" rel="noopener noreferrer">
+        <span class="cert-card__mono">CN</span>
+        <span class="cert-card__body"><strong>Certified Network Security Specialist (CNSS)</strong><small>Defensity One · 2026</small></span>
+        <span class="cert-card__link" aria-hidden="true">↗</span>
+      </a>
+      <a class="cert-card reveal" href="https://www.skillfront.com/Badges/32497731755258" target="_blank" rel="noopener noreferrer">
+        <span class="cert-card__mono">ISO</span>
+        <span class="cert-card__body"><strong>ISO/IEC 27001 Information Security Associate</strong><small>SkillFront · verified badge</small></span>
+        <span class="cert-card__link" aria-hidden="true">↗</span>
+      </a>
+      <a class="cert-card reveal" href="https://arcx.io/verify-certificate?id=b89d507d616e42e2e4e985c7f6fbc791b1961804&amp;k=2d405b2c38d14100a7f5d690a34505da" target="_blank" rel="noopener noreferrer">
+        <span class="cert-card__mono">CTI</span>
+        <span class="cert-card__body"><strong>Cyber Threat Intelligence Analyst</strong><small>arcx.io · verified certificate</small></span>
+        <span class="cert-card__link" aria-hidden="true">↗</span>
+      </a>
+      <a class="cert-card reveal" href="https://www.theforage.com/completion-certificates/CA4pBqsy4b4PdyaBP/4KqDALSkyRNPXjQGa_CA4pBqsy4b4PdyaBP_fCichwQGFxbxasX4z_1770498147057_completion_certificate.pdf" target="_blank" rel="noopener noreferrer">
+        <span class="cert-card__mono">PwC</span>
+        <span class="cert-card__body"><strong>PwC Cyber Security Consulting Simulation</strong><small>Forage · job simulation</small></span>
+        <span class="cert-card__link" aria-hidden="true">↗</span>
+      </a>
+      <a class="cert-card reveal" href="https://www.credly.com/badges/56678c86-3297-44b3-81d3-ac345a11e1e8/public_url" target="_blank" rel="noopener noreferrer">
+        <span class="cert-card__mono">CS</span>
+        <span class="cert-card__body"><strong>Cisco Introduction to Cybersecurity</strong><small>Cisco · verified badge</small></span>
+        <span class="cert-card__link" aria-hidden="true">↗</span>
+      </a>
+      <a class="cert-card reveal" href="https://www.coursera.org/account/accomplishments/certificate/AM7U6J5WQQ78" target="_blank" rel="noopener noreferrer">
+        <span class="cert-card__mono">G</span>
+        <span class="cert-card__body"><strong>Google Data Analytics</strong><small>Google · Coursera certificate</small></span>
+        <span class="cert-card__link" aria-hidden="true">↗</span>
+      </a>
+      <a class="cert-card reveal" href="docs/View%20user%20certificate%20_%20UK%20Civil%20Aviation%20Authority.pdf" target="_blank" rel="noopener noreferrer">
+        <span class="cert-card__mono">CAA</span>
+        <span class="cert-card__body"><strong>UK Civil Aviation Authority Flyer ID</strong><small>UK CAA · official certificate</small></span>
+        <span class="cert-card__link" aria-hidden="true">↗</span>
+      </a>
+    </div>
+  </div>
+</section>
 
-/* move to next word */
-if(j === 0 && deleting){
-  deleting = false;
-  i = (i + 1) % roles.length;
-}
+<!-- ══════════ CONTACT ══════════ -->
+<section class="section contact" id="contact">
+  <div class="container contact__inner">
+    <div class="section__head reveal">
+      <p class="section__eyebrow mono">05 / CONTACT</p>
+      <h2>Let’s talk security</h2>
+    </div>
+    <p class="contact__lede reveal">
+      I’m open to SOC Analyst, Detection Engineering and Blue Team roles — full-time or available
+      for opportunities, hybrid or remote (UK). The fastest way to reach me:
+    </p>
+    <div class="contact__actions reveal">
+      <a class="btn btn--primary" href="mailto:yatiwaghmare@gmail.com">yatiwaghmare@gmail.com</a>
+      <a class="btn btn--ghost" href="tel:+447443208996">+44 7443 208996</a>
+    </div>
+    <ul class="contact__meta reveal">
+      <li>📍 Bristol, United Kingdom</li>
+      <li>🛂 Right to work in the UK</li>
+      <li><a href="https://github.com/Yatishw" target="_blank" rel="noopener noreferrer">github.com/Yatishw</a></li>
+      <li><a href="https://www.linkedin.com/in/yatish28" target="_blank" rel="noopener noreferrer">linkedin.com/in/yatish28</a></li>
+    </ul>
+  </div>
+</section>
 
-setTimeout(type, deleting ? 40 : 80);
-}
+</main>
 
-type();
+<!-- ══════════ FOOTER ══════════ -->
+<footer class="footer">
+  <div class="container footer__inner">
+    <p>© <span id="year"></span> Yatish Waghmare · Cyber Security Analyst</p>
+    <p class="mono footer__sig">HTML/CSS/JS · GitHub Pages · <a href="https://github.com/Yatishw/Yatishw.github.io" target="_blank" rel="noopener noreferrer">source</a></p>
+  </div>
+</footer>
+
+<button class="to-top" id="toTop" aria-label="Back to top">↑</button>
+
+<script src="js/main.js" defer></script>
+<script type="text/javascript">
+  (function(c,l,a,r,i,t,y){
+    c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+    t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+    y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+  })(window, document, "clarity", "script", "xq33eeve80");
 </script>
-
-
-
-
-
-
-
-
-
-
- 
-  
-</body>  
+</body>
 </html>

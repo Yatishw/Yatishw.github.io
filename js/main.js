@@ -53,8 +53,9 @@
   }
 
   // Duplicate marquee content for a seamless infinite loop
-  var track = document.getElementById('marqueeTrack');
-  if (track) track.innerHTML += track.innerHTML;
+  document.querySelectorAll('.marquee__track').forEach(function (track) {
+    track.innerHTML += track.innerHTML;
+  });
 
   // Reveal on scroll
   var revealEls = document.querySelectorAll('.reveal');

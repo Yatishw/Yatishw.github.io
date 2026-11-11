@@ -34,13 +34,13 @@
   sizeToHero();
   window.addEventListener('resize', sizeToHero, { passive: true });
 
-  /* ---------- Lights (for the shaded, extruded relief) ---------- */
-  scene.add(new THREE.AmbientLight(0x64748b, 1.5));
-  var key = new THREE.DirectionalLight(0xffffff, 1.35);
-  key.position.set(-9, 7, 10);
+  /* ---------- Lights: strong key + soft fill + cool rim → spherical read ---------- */
+  var key = new THREE.DirectionalLight(0xffffff, 1.65);
+  key.position.set(-9, 7, 10);          // lit from the upper-left-front
   scene.add(key);
-  var rim = new THREE.DirectionalLight(0x2dd4bf, 0.6);
-  rim.position.set(8, -4, -6);
+  scene.add(new THREE.AmbientLight(0x64748b, 1.05));   // low fill → terminator line stays visible
+  var rim = new THREE.DirectionalLight(0x7dd3fc, 0.85);
+  rim.position.set(7, 2, -9);           // cool edge-light from behind → round silhouette
   scene.add(rim);
 
   var R = 4.6; // globe radius
@@ -332,11 +332,11 @@
   function layout() {
     var compact = window.innerWidth <= 980;
     if (compact) {
-      globe.position.set(3.2, 3.4, -6.8);
-      globe.scale.setScalar(0.85);
+      globe.position.set(3.1, 3.6, -6.6);
+      globe.scale.setScalar(0.95);
     } else {
-      globe.position.set(8.6, 1.6, -3.2);
-      globe.scale.setScalar(1.25);
+      globe.position.set(5.1, 0.9, -3.4);  // centered behind the portrait
+      globe.scale.setScalar(1.38);         // a touch bigger
     }
   }
   layout();
@@ -394,8 +394,8 @@
       atk.tube.material.opacity = 0.26 + 0.34 * env;
     }
 
-    camera.position.x += (pointer.x * 1.4 - camera.position.x) * 0.03;
-    camera.position.y += (0.6 - pointer.y * 1.0 - camera.position.y) * 0.03;
+    camera.position.x += (pointer.x * 2.4 - camera.position.x) * 0.045;
+    camera.position.y += (0.6 - pointer.y * 1.6 - camera.position.y) * 0.045;
     camera.lookAt(0, 0, 0);
 
     stars.rotation.y = Math.sin(t * 0.05) * 0.02;

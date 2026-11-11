@@ -11,8 +11,8 @@
   --body: #33415c;
   --muted: #64748b;
   --line: #e2e8f0;
-  --bg: #ffffff;
-  --bg-alt: #f4f7fc;
+  --bg: #fbfaf7;
+  --bg-alt: #f2f0ea;
   --accent: #0ea5e9;
   --accent-bright: #38bdf8;
   --accent-strong: #0284c7;
@@ -32,7 +32,9 @@ body {
   margin: 0;
   font-family: var(--font-sans);
   color: var(--body);
-  background: var(--bg);
+  background:
+    radial-gradient(circle at 1px 1px, rgba(15, 23, 42, .045) 1px, transparent 0) 0 0 / 26px 26px,
+    var(--bg);
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
 }

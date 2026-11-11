@@ -852,3 +852,6 @@ a.project-wide:hover .project-btn { text-decoration: underline; }
 .console__body .cursor { display: inline-block; width: .55em; height: 1em; background: #4ade80; vertical-align: -.15em; animation: blink 1s steps(1) infinite; }
 @keyframes blink { 50% { opacity: 0; } }
 
+
+/* PwC logo flip: black wordmark -> white, keep the orange slashes */
+.pwc-dark { filter: invert(1) hue-rotate(180deg); }

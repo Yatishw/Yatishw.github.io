@@ -494,13 +494,13 @@ a.project-wide:hover .project-btn { text-decoration: underline; }
 .logo-cell--light .logo-img { filter: none; }
 .logo-marquee .logo-img { height: 46px; max-width: 64px; width: auto; }
 
-/* Bare logos pass — no boxes, slight presence boost on hover */
+/* Bare logos pass ï¿½ no boxes, slight presence boost on hover */
 .logo-marquee { padding: .9rem 0; }
 .logo-track { gap: 2.4rem; }
 .logo-cell--light { background: transparent; border: none; }
 
-/* Chunky fix — slimmer wall */
+/* Chunky fix ï¿½ slimmer wall */
 .logo-marquee { padding: .45rem 0; }
 .logo-track { gap: 1.7rem; }
-.logo-img { height: 31px !important; max-width: 66px !important; opacity: .92; }
+.logo-img { height: 37px !important; max-width: 79px !important; opacity: .92; }
 .logo-cell { padding: 0 .15rem; opacity: .9; }

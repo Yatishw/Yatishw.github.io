@@ -51,8 +51,9 @@
   );
   globe.add(inner);
 
-  // Real earth: NASA "black marble" night lights (public domain), with a
-  // graceful fallback to a dark silhouette if the CDN is unreachable.
+  // Real earth: NASA "blue marble" satellite imagery (public domain) — deep
+  // blue oceans with full continents, tuned for dark backgrounds. Graceful
+  // fallback to a dark silhouette if the CDN is unreachable.
   var hull = new THREE.Mesh(
     new THREE.SphereGeometry(R, 48, 32),
     new THREE.MeshBasicMaterial({ color: 0x0b1220, transparent: true, opacity: 0.78 })
@@ -60,7 +61,7 @@
   globe.add(hull);
 
   new THREE.TextureLoader().setCrossOrigin('anonymous').load(
-    'https://cdn.jsdelivr.net/npm/three-globe@2.31.0/example/img/earth-night.jpg',
+    'https://cdn.jsdelivr.net/npm/three-globe@2.31.0/example/img/earth-blue-marble.jpg',
     function (tex) {
       tex.encoding = THREE.sRGBEncoding;
       tex.anisotropy = renderer.capabilities.getMaxAnisotropy();

@@ -709,3 +709,43 @@ a.project-wide:hover .project-btn { text-decoration: underline; }
 .casefile__body { margin: 0; font-size: .78rem; color: #b9c8e4; line-height: 1.55; }
 .casefile__body strong { color: #f4f8ff; }
 @media (prefers-reduced-motion: reduce) { .bar i { transition: none; width: var(--w); } }
+
+/* ---------- Radar sweep emblem (About, BY THE NUMBERS) ---------- */
+.metrics { position: relative; }
+.radar {
+  position: absolute;
+  right: -58px; top: -38px;
+  width: 190px; height: 190px;
+  border-radius: 50%;
+  overflow: hidden;
+  pointer-events: none;
+  opacity: .85;
+  -webkit-mask: radial-gradient(circle, black 98%, transparent 100%);
+  mask: radial-gradient(circle, black 98%, transparent 100%);
+}
+.radar::before {
+  content: "";
+  position: absolute; inset: 0;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle, transparent 24%, rgba(125,211,252,.14) 25%, transparent 26%),
+    radial-gradient(circle, transparent 49%, rgba(125,211,252,.14) 50%, transparent 51%),
+    radial-gradient(circle, transparent 74%, rgba(125,211,252,.14) 75%, transparent 76%);
+}
+.radar::after {
+  content: "";
+  position: absolute; inset: 0;
+  border-radius: 50%;
+  background: conic-gradient(from 0deg, rgba(56,189,248,.55) 0deg, rgba(56,189,248,.06) 55deg, transparent 62deg);
+  animation: radarSpin 3.6s linear infinite;
+  mix-blend-mode: screen;
+}
+.radar__ring { position: absolute; border-radius: 50%; border: 1px solid rgba(125,211,252,.22); }
+.radar__ring--1 { inset: 14%; }
+.radar__ring--2 { inset: 36%; }
+.radar__ring--3 { inset: 44%; background: rgba(56,189,248,.6); box-shadow: 0 0 18px rgba(56,189,248,.8); }
+@keyframes radarSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) {
+  .radar::after { animation: none; }
+}
+@media (max-width: 980px) { .radar { display: none; } }

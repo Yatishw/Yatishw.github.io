@@ -53,6 +53,7 @@
 
 <!-- ══════════ HERO ══════════ -->
 <section class="hero" id="home">
+  <canvas id="scene3d" aria-hidden="true"></canvas>
   <div class="hero__grid" aria-hidden="true"></div>
   <div class="container hero__inner">
     <div class="hero__content">
@@ -440,7 +441,10 @@
 
 <button class="to-top" id="toTop" aria-label="Back to top">↑</button>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
+<script src="js/hero3d.js" defer></script>
 <script src="js/main.js" defer></script>
+<script src="js/tilt3d.js" defer></script>
 <script type="text/javascript">
   (function(c,l,a,r,i,t,y){
     c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};

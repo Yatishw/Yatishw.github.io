@@ -249,7 +249,7 @@
     var b = surfacePoint(bLat, bLon, R * 1.03);
     var mid = a.clone().add(b).multiplyScalar(0.5).normalize();
     var separation = a.distanceTo(b);
-    mid.multiplyScalar(R + separation * 0.55 + 1.15);
+    mid.multiplyScalar(R + separation * 0.3 + 0.7); // low, flat ballistic arcs hugging the curve
     return new THREE.QuadraticBezierCurve3(a, mid, b);
   }
 
@@ -276,16 +276,16 @@
     var curve = arcBetween(from.lat, from.lon, to.lat, to.lon);
 
     var tube = new THREE.Mesh(
-      new THREE.TubeGeometry(curve, 72, 0.022, 6, false),
-      new THREE.MeshBasicMaterial({ color: 0xec4899, transparent: true, opacity: 0.0, blending: THREE.AdditiveBlending, depthWrite: false })
+      new THREE.TubeGeometry(curve, 96, 0.012, 6, false), // hair-thin, like a real trajectory
+      new THREE.MeshBasicMaterial({ color: 0xff7a2f, transparent: true, opacity: 0.0, blending: THREE.AdditiveBlending, depthWrite: false })
     );
     globe.add(tube);
 
-    var packet = makeGlowSprite(0xff6ec7, 0.5);
+    var packet = makeGlowSprite(0xffd9a0, 0.32); // small hot round, not a candy ball
     globe.add(packet);
 
     // Aggressor flash at the launch site
-    var origin = makeGlowSprite(0xfb7185, 0.9);
+    var origin = makeGlowSprite(0xff5a1f, 0.55); // brief ember at launch
     origin.position.copy(surfacePoint(from.lat, from.lon, R * 1.04));
     globe.add(origin);
     impacts.push({ obj: origin, age: 0, maxAge: 1.1, grow: 0.5, baseOpacity: 0.95 });
@@ -296,7 +296,7 @@
       tube: tube,
       target: to,
       t: 0,
-      speed: 0.0034 + Math.random() * 0.0018
+      speed: 0.0042 + Math.random() * 0.002
     });
   }
 
@@ -350,9 +350,9 @@
     globe.rotation.y += 0.0042;              // the roll never stops
 
     // Spawn random strikes on a loose rhythm
-    if (t >= nextSpawn && attacks.length < 6) {
+    if (t >= nextSpawn && attacks.length < 8) {
       spawnAttack();
-      nextSpawn = t + 0.55 + Math.random() * 1.2;
+      nextSpawn = t + 0.35 + Math.random() * 0.9;
     }
 
     // Origin flashes + impact rings fade out
@@ -380,7 +380,7 @@
       var atk = attacks[j];
       atk.t += atk.speed;
       if (atk.t >= 1) {
-        addImpactRing(atk.curve.getPointAt(1), 0xc084fc); // violet bloom on the target
+        addImpactRing(atk.curve.getPointAt(1), 0xff6b2b); // ember bloom on the target
         disposeObject(atk.tube);
         disposeObject(atk.packet);
         attacks.splice(j, 1);
@@ -389,9 +389,9 @@
       var pos = atk.curve.getPointAt(atk.t);
       atk.packet.position.copy(pos);
       var env = Math.sin(Math.PI * atk.t);
-      var ps = 0.34 + 0.4 * env;
+      var ps = 0.2 + 0.24 * env;
       atk.packet.scale.set(ps, ps, 1);
-      atk.tube.material.opacity = 0.26 + 0.34 * env;
+      atk.tube.material.opacity = 0.14 + 0.38 * env;
     }
 
     camera.position.x += (pointer.x * 2.4 - camera.position.x) * 0.045;

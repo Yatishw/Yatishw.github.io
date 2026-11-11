@@ -419,3 +419,16 @@ a.project-wide:hover .project-btn { text-decoration: underline; }
 }
 
 .hero__inner, .marquee { position: relative; z-index: 2; }
+
+/* ---------- Headerless full-height hero ---------- */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.hero__inner {
+  flex: 1;
+  align-content: center;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}

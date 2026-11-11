@@ -35,10 +35,6 @@ body {
   font-family: var(--font-sans);
   color: var(--body);
   background:
-    radial-gradient(1000px 620px at 75% -10%, rgba(56, 189, 248, .12), transparent 55%),
-    radial-gradient(850px 550px at 92% 42%, rgba(14, 165, 233, .07), transparent 55%),
-    radial-gradient(900px 700px at -15% 22%, rgba(99, 102, 241, .08), transparent 60%),
-    radial-gradient(760px 620px at 48% 128%, rgba(34, 211, 238, .055), transparent 55%),
     radial-gradient(1.6px 1.6px at 22% 31%, rgba(255,255,255,.9), transparent),
     radial-gradient(1.3px 1.3px at 68% 12%, rgba(255,255,255,.8), transparent),
     radial-gradient(1.1px 1.1px at 41% 66%, rgba(255,255,255,.7), transparent),
@@ -47,8 +43,8 @@ body {
     radial-gradient(1.4px 1.4px at 92% 24%, rgba(255,255,255,.75), transparent),
     radial-gradient(1px 1px at 55% 47%, rgba(255,255,255,.6), transparent),
     var(--bg);
-  background-size: auto, auto, auto, auto, 300px 300px, 240px 240px, 380px 380px, 340px 340px, 280px 280px, 300px 300px, 200px 200px, auto;
-  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, repeat, repeat, repeat, repeat, repeat, repeat, repeat, no-repeat;
+  background-size: 300px 300px, 240px 240px, 380px 380px, 340px 340px, 280px 280px, 300px 300px, 200px 200px, auto;
+  background-repeat: repeat, repeat, repeat, repeat, repeat, repeat, repeat, no-repeat;
   animation: starDriftOuter 240s linear infinite;
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
@@ -113,9 +109,7 @@ body {
 /* â”€â”€â”€â”€â”€â”€â”€â”€â”€ Hero â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .hero {
   position: relative; overflow: hidden;
-  background: radial-gradient(1100px 600px at 85% -10%, rgba(14,165,233,.22), transparent 60%),
-              radial-gradient(900px 700px at -10% 110%, rgba(34,211,238,.12), transparent 55%),
-              var(--navy-900);
+  background: var(--navy-900);
   color: #dbe7ff;
 }
 .hero__inner {
@@ -687,6 +681,6 @@ a.project-wide:hover .project-btn { text-decoration: underline; }
 }
 
 @keyframes starDriftOuter {
-  from { background-position: 0 0, 0 0, 0 0, 0 0, 0 0, 0 0, 0 0, 0 0, 0 0, 0 0, 0 0, 0 0; }
-  to   { background-position: 0 0, 0 0, 0 0, 0 0, 300px 120px, 240px 96px, 380px 152px, 340px 136px, 280px 112px, 300px 120px, 200px 80px, 0 0; }
+  from { background-position: 0 0, 0 0, 0 0, 0 0, 0 0, 0 0, 0 0, 0 0; }
+  to   { background-position: 300px 120px, 240px 96px, 380px 152px, 340px 136px, 280px 112px, 300px 120px, 200px 80px, 0 0; }
 }

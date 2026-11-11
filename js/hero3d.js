@@ -40,8 +40,8 @@
 
   /* ---------- Globe body ---------- */
   var latLong = new THREE.Mesh(
-    new THREE.SphereGeometry(R, 40, 28),
-    new THREE.MeshBasicMaterial({ color: 0x155e75, wireframe: true, transparent: true, opacity: 0.5 })
+    new THREE.SphereGeometry(R * 1.002, 40, 28),
+    new THREE.MeshBasicMaterial({ color: 0x22d3ee, wireframe: true, transparent: true, opacity: 0.13 })
   );
   globe.add(latLong);
 
@@ -51,12 +51,28 @@
   );
   globe.add(inner);
 
-  // Occluder keeps the far side dark so arcs read correctly
+  // Real earth: NASA "black marble" night lights (public domain), with a
+  // graceful fallback to a dark silhouette if the CDN is unreachable.
   var hull = new THREE.Mesh(
-    new THREE.SphereGeometry(R * 0.985, 40, 28),
+    new THREE.SphereGeometry(R, 48, 32),
     new THREE.MeshBasicMaterial({ color: 0x0b1220, transparent: true, opacity: 0.78 })
   );
   globe.add(hull);
+
+  new THREE.TextureLoader().setCrossOrigin('anonymous').load(
+    'https://cdn.jsdelivr.net/npm/three-globe@2.31.0/example/img/earth-night.jpg',
+    function (tex) {
+      tex.encoding = THREE.sRGBEncoding;
+      tex.anisotropy = renderer.capabilities.getMaxAnisotropy();
+      hull.material.map = tex;
+      hull.material.color.setHex(0xffffff);
+      hull.material.opacity = 1;
+      hull.material.transparent = false;
+      hull.material.needsUpdate = true;
+    },
+    undefined,
+    function () { /* keep the dark fallback hull */ }
+  );
 
   var atmosphere = new THREE.Mesh(
     new THREE.SphereGeometry(R * 1.06, 32, 24),
@@ -113,14 +129,14 @@
     return dot;
   }
 
-  // ONE threat-actor origin (must read as red/hostile)
-  var ORIGIN = { lat: 46.2, lon: 29.8 }; // approx. Black Sea / Eastern Europe
+  // ONE threat-actor origin (reads as red/hostile) — USA launching at East Asia
+  var ORIGIN = { lat: 39.5, lon: -98.35 }; // continental US
   var TARGETS = [
-    { lat: 51.5,  lon: -0.1,  city: 'London' },
-    { lat: 40.7,  lon: -74.0, city: 'New York' },
-    { lat: 1.35,  lon: 103.8, city: 'Singapore' },
     { lat: 35.7,  lon: 139.7, city: 'Tokyo' },
-    { lat: 25.2,  lon: 55.3,  city: 'Dubai' },
+    { lat: 31.2,  lon: 121.5, city: 'Shanghai' },
+    { lat: 39.9,  lon: 116.4, city: 'Beijing' },
+    { lat: 37.5,  lon: 127.0, city: 'Seoul' },
+    { lat: 1.35,  lon: 103.8, city: 'Singapore' },
     { lat: -33.9, lon: 151.2, city: 'Sydney' }
   ];
 

@@ -476,13 +476,12 @@ a.project-wide:hover .project-btn { text-decoration: underline; }
 }
 .logo-cell {
   display: grid; place-items: center;
-  width: 76px; height: 76px; border-radius: 16px;
-  background: rgba(125, 211, 252, 0.05);
-  border: 1px solid rgba(125, 211, 252, 0.16);
-  transition: border-color .25s ease, background .25s ease, transform .25s ease;
+  padding: 0 .35rem;
+  transition: transform .25s ease, opacity .25s ease;
+  opacity: .88;
 }
-.logo-cell:hover { border-color: rgba(125,211,252,.45); background: rgba(125,211,252,.12); transform: translateY(-3px); }
-.logo-img { height: 44px; max-width: 60px; object-fit: contain; }
+.logo-cell:hover { transform: scale(1.18); opacity: 1; }
+.logo-img { height: 40px; max-width: 82px; width: auto; object-fit: contain; }
 .logo-img.invert { filter: brightness(0) invert(1); }
 .logo-img.invert-hue { filter: saturate(.3) brightness(1.35); }
 @media (prefers-reduced-motion: reduce) {
@@ -494,3 +493,8 @@ a.project-wide:hover .project-btn { text-decoration: underline; }
 .logo-cell--light { background: #eef2f7; border-color: rgba(255,255,255,.4); }
 .logo-cell--light .logo-img { filter: none; }
 .logo-marquee .logo-img { height: 46px; max-width: 64px; width: auto; }
+
+/* Bare logos pass — no boxes, slight presence boost on hover */
+.logo-marquee { padding: .9rem 0; }
+.logo-track { gap: 2.4rem; }
+.logo-cell--light { background: transparent; border: none; }

@@ -1,8 +1,8 @@
 /* ============================================================
-   hero3d.js — 3D "threat operations" scene (Three.js)
-   A rotating wireframe globe: one threat-actor origin launches
-   animated attack arcs to multiple targets. Glowing hotspots,
-   twin orbital defense rings, a radar sweep and ambient stars.
+   hero3d.js — 3D threat-map globe (Three.js)
+   Dark extruded landmasses under a sweeping roll, magenta strike
+   arcs from one aggressor to many targets, blinking intrusion
+   blips across real continents. Zero branding, all NASA imagery.
    ============================================================ */
 (function () {
   'use strict';
@@ -34,52 +34,140 @@
   sizeToHero();
   window.addEventListener('resize', sizeToHero, { passive: true });
 
+  /* ---------- Lights (for the shaded, extruded relief) ---------- */
+  scene.add(new THREE.AmbientLight(0x64748b, 1.5));
+  var key = new THREE.DirectionalLight(0xffffff, 1.35);
+  key.position.set(-9, 7, 10);
+  scene.add(key);
+  var rim = new THREE.DirectionalLight(0x2dd4bf, 0.6);
+  rim.position.set(8, -4, -6);
+  scene.add(rim);
+
   var R = 4.6; // globe radius
   var globe = new THREE.Group();
   scene.add(globe);
 
-  /* ---------- Globe body ---------- */
-  var latLong = new THREE.Mesh(
-    new THREE.SphereGeometry(R * 1.002, 40, 28),
-    new THREE.MeshBasicMaterial({ color: 0x22d3ee, wireframe: true, transparent: true, opacity: 0.13 })
-  );
-  globe.add(latLong);
+  var CDN = 'https://cdn.jsdelivr.net/npm/three-globe@2.31.0/example/img/';
 
-  var inner = new THREE.Mesh(
-    new THREE.IcosahedronGeometry(R * 0.86, 1),
-    new THREE.MeshBasicMaterial({ color: 0x0ea5e9, wireframe: true, transparent: true, opacity: 0.28 })
-  );
-  globe.add(inner);
+  function loadImage(url, ok, fail) {
+    var img = new Image();
+    img.crossOrigin = 'anonymous';
+    img.onload = function () { ok(img); };
+    img.onerror = function () { fail && fail(); };
+    img.src = url;
+  }
 
-  // Real earth: NASA "blue marble" satellite imagery (public domain) — deep
-  // blue oceans with full continents, tuned for dark backgrounds. Graceful
-  // fallback to a dark silhouette if the CDN is unreachable.
+  /* ---------- Placeholder body until textures arrive ---------- */
   var hull = new THREE.Mesh(
-    new THREE.SphereGeometry(R, 48, 32),
-    new THREE.MeshBasicMaterial({ color: 0x0b1220, transparent: true, opacity: 0.78 })
+    new THREE.SphereGeometry(R, 96, 64),
+    new THREE.MeshStandardMaterial({ color: 0x121a17, roughness: 0.95, metalness: 0.02, displacementScale: 0 })
   );
   globe.add(hull);
 
-  new THREE.TextureLoader().setCrossOrigin('anonymous').load(
-    'https://cdn.jsdelivr.net/npm/three-globe@2.31.0/example/img/earth-blue-marble.jpg',
-    function (tex) {
-      tex.encoding = THREE.sRGBEncoding;
-      tex.anisotropy = renderer.capabilities.getMaxAnisotropy();
-      hull.material.map = tex;
-      hull.material.color.setHex(0xffffff);
-      hull.material.opacity = 1;
-      hull.material.transparent = false;
-      hull.material.needsUpdate = true;
-    },
-    undefined,
-    function () { /* keep the dark fallback hull */ }
+  // Faint graticule over the relief
+  var latLong = new THREE.Mesh(
+    new THREE.SphereGeometry(R + 0.13, 40, 28),
+    new THREE.MeshBasicMaterial({ color: 0x2dd4bf, wireframe: true, transparent: true, opacity: 0.10 })
   );
+  globe.add(latLong);
 
+  // Atmosphere glow
   var atmosphere = new THREE.Mesh(
-    new THREE.SphereGeometry(R * 1.06, 32, 24),
-    new THREE.MeshBasicMaterial({ color: 0x38bdf8, transparent: true, opacity: 0.05, side: THREE.BackSide })
+    new THREE.SphereGeometry(R * 1.07, 32, 24),
+    new THREE.MeshBasicMaterial({ color: 0x34d399, transparent: true, opacity: 0.055, side: THREE.BackSide })
   );
   globe.add(atmosphere);
+
+  /* ---------- Build the dark "threat map" from NASA imagery ---------- */
+  function buildMapTexture(dayImg, topoImg) {
+    var W = 1600, H = 800;
+    var dc = document.createElement('canvas'); dc.width = W; dc.height = H;
+    var dctx = dc.getContext('2d');
+    dctx.drawImage(dayImg, 0, 0, W, H);
+
+    var tc = document.createElement('canvas'); tc.width = W; tc.height = H;
+    var tctx = tc.getContext('2d');
+    tctx.drawImage(topoImg, 0, 0, W, H);
+
+    var d = dctx.getImageData(0, 0, W, H);
+    var t = tctx.getImageData(0, 0, W, H);
+    var px = d.data, tp = t.data;
+    var landSamples = [];
+
+    for (var i = 0; i < px.length; i += 4) {
+      var r = px[i], g = px[i + 1], b = px[i + 2];
+      var height = tp[i]; // topology luminance (white = high)
+
+      // Ocean = strongly blue; everything else = land
+      var isOcean = (b > r + 14 && b > g + 6 && b > 55) || (r < 14 && g < 18 && b < 30);
+
+      if (isOcean) {
+        px[i] = 7; px[i + 1] = 11; px[i + 2] = 13;
+      } else {
+        // Dark slate-green landmasses with shaded relief
+        var shade = 0.55 + (height / 255) * 0.9;
+        px[i] = Math.min(255, 26 * shade + 8);
+        px[i + 1] = Math.min(255, 36 * shade + 10);
+        px[i + 2] = Math.min(255, 30 * shade + 9);
+        if ((i & 1023) === 0 && landSamples.length < 40000) {
+          var p = i / 4;
+          landSamples.push((p % W) / W, Math.floor(p / W) / H);
+        }
+      }
+    }
+    dctx.putImageData(d, 0, 0);
+
+    // Thin luminous coastline: redraw with a blurred rim of the land mask
+    dctx.save();
+    dctx.globalAlpha = 0.5;
+    dctx.filter = 'blur(2px)';
+    dctx.drawImage(dc, 0, 0);
+    dctx.restore();
+
+    var tex = new THREE.CanvasTexture(dc);
+    tex.encoding = THREE.sRGBEncoding;
+    tex.anisotropy = renderer.capabilities.getMaxAnisotropy();
+    return { tex: tex, landSamples: landSamples };
+  }
+
+  var landPoints = []; // filled by the builder; blips anchor to these
+
+  loadImage(CDN + 'earth-day.jpg', function (dayImg) {
+    loadImage(CDN + 'earth-topology.png', function (topoImg) {
+      var built = buildMapTexture(dayImg, topoImg);
+      hull.material.map = built.tex;
+      hull.material.displacementMap = new THREE.CanvasTexture(topoImg);
+      hull.material.displacementScale = 0.1;
+      hull.material.needsUpdate = true;
+      landPoints = built.landSamples;
+      seedBlips();
+    }, function () {
+      // Topology failed — flat dark land still looks right
+      var flat = buildMapTexture(dayImg, dayImg);
+      hull.material.map = flat.tex;
+      hull.material.needsUpdate = true;
+      landPoints = flat.landSamples;
+      seedBlips();
+    });
+  }, function () { /* CDN down — plain dark globe remains */ });
+
+  /* ---------- Helpers: lat/lon → surface point ---------- */
+  function surfacePoint(lat, lon, radius) {
+    var phi = (90 - lat) * Math.PI / 180;
+    var theta = (lon + 180) * Math.PI / 180;
+    var r = radius || R;
+    return new THREE.Vector3(
+      -r * Math.sin(phi) * Math.cos(theta),
+       r * Math.cos(phi),
+       r * Math.sin(phi) * Math.sin(theta)
+    );
+  }
+
+  function mapUVToSurface(u, v, radius) {
+    var lon = u * 360 - 180;
+    var lat = 90 - v * 180;
+    return surfacePoint(lat, lon, radius);
+  }
 
   /* ---------- Glow sprite texture ---------- */
   function makeGlowTexture() {
@@ -96,16 +184,22 @@
   }
   var glowTex = makeGlowTexture();
 
-  /* ---------- Helpers: lat/lon → surface point ---------- */
-  function surfacePoint(lat, lon, radius) {
-    var phi = (90 - lat) * Math.PI / 180;
-    var theta = (lon + 180) * Math.PI / 180;
-    var r = radius || R;
-    return new THREE.Vector3(
-      -r * Math.sin(phi) * Math.cos(theta),
-       r * Math.cos(phi),
-       r * Math.sin(phi) * Math.sin(theta)
-    );
+  /* ---------- Ambient intrusion blips (random real land points) ---------- */
+  var blips = [];
+  function seedBlips() {
+    if (!landPoints.length) return;
+    var count = 60;
+    for (var i = 0; i < count; i++) {
+      var k = (Math.floor(Math.random() * (landPoints.length / 2)) * 2);
+      var p = mapUVToSurface(landPoints[k], landPoints[k + 1], R * 1.06);
+      var color = Math.random() < 0.6 ? 0x60a5fa : 0xa78bfa;
+      var sprite = new THREE.Sprite(new THREE.SpriteMaterial({ map: glowTex, color: color, transparent: true, depthWrite: false, blending: THREE.AdditiveBlending, opacity: 0.9 }));
+      var s = 0.16 + Math.random() * 0.14;
+      sprite.scale.set(s, s, 1);
+      sprite.userData = { phase: Math.random() * Math.PI * 2, speed: 1.2 + Math.random() * 1.6, base: s };
+      globe.add(sprite);
+      blips.push(sprite);
+    }
   }
 
   /* ---------- Hotspots (origin + targets) ---------- */
@@ -113,7 +207,7 @@
 
   function addPulse(lat, lon, color, scale) {
     var dot = new THREE.Sprite(new THREE.SpriteMaterial({ map: glowTex, color: color, transparent: true, depthWrite: false, blending: THREE.AdditiveBlending }));
-    dot.position.copy(surfacePoint(lat, lon, R * 1.012));
+    dot.position.copy(surfacePoint(lat, lon, R * 1.03));
     dot.scale.set(scale, scale, 1);
     dot.userData.base = scale;
     globe.add(dot);
@@ -130,8 +224,8 @@
     return dot;
   }
 
-  // ONE threat-actor origin (reads as red/hostile) — USA launching at East Asia
-  var ORIGIN = { lat: 39.5, lon: -98.35 }; // continental US
+  // ONE aggressor origin — continental US
+  var ORIGIN = { lat: 39.5, lon: -98.35 };
   var TARGETS = [
     { lat: 35.7,  lon: 139.7, city: 'Tokyo' },
     { lat: 31.2,  lon: 121.5, city: 'Shanghai' },
@@ -141,44 +235,38 @@
     { lat: -33.9, lon: 151.2, city: 'Sydney' }
   ];
 
-  var originDot = addPulse(ORIGIN.lat, ORIGIN.lon, 0xf43f5e, 1.15);
-  originDot.material.color.setHex(0xfb7185);
-  TARGETS.forEach(function (t) { addPulse(t.lat, t.lon, 0xfbbf24, 0.62); }); // amber = targeted
+  var originDot = addPulse(ORIGIN.lat, ORIGIN.lon, 0xf43f5e, 1.3);
+  TARGETS.forEach(function (t) { addPulse(t.lat, t.lon, 0xc084fc, 0.62); }); // violet = under fire
 
-  /* ---------- Attack arcs: origin → targets ---------- */
+  /* ---------- Strike arcs (magenta) ---------- */
   var attacks = [];
 
   function arcBetween(aLat, aLon, bLat, bLon) {
-    var a = surfacePoint(aLat, aLon, R * 1.02);
-    var b = surfacePoint(bLat, bLon, R * 1.02);
-    // Control point: mid direction pushed far above the surface
+    var a = surfacePoint(aLat, aLon, R * 1.03);
+    var b = surfacePoint(bLat, bLon, R * 1.03);
     var mid = a.clone().add(b).multiplyScalar(0.5).normalize();
     var separation = a.distanceTo(b);
-    var lift = R + separation * 0.55 + 1.1;
-    mid.multiplyScalar(lift);
+    mid.multiplyScalar(R + separation * 0.55 + 1.15);
     return new THREE.QuadraticBezierCurve3(a, mid, b);
   }
 
-  function makeArc(target, index) {
+  TARGETS.forEach(function (target, index) {
     var curve = arcBetween(ORIGIN.lat, ORIGIN.lon, target.lat, target.lon);
 
     var tube = new THREE.Mesh(
-      new THREE.TubeGeometry(curve, 72, 0.022, 6, false),
-      new THREE.MeshBasicMaterial({ color: 0xf43f5e, transparent: true, opacity: 0.38, blending: THREE.AdditiveBlending, depthWrite: false })
+      new THREE.TubeGeometry(curve, 72, 0.024, 6, false),
+      new THREE.MeshBasicMaterial({ color: 0xec4899, transparent: true, opacity: 0.45, blending: THREE.AdditiveBlending, depthWrite: false })
     );
     globe.add(tube);
 
-    // Travelling attack packet
-    var packet = new THREE.Sprite(new THREE.SpriteMaterial({ map: glowTex, color: 0xff5c7a, transparent: true, depthWrite: false, blending: THREE.AdditiveBlending }));
+    var packet = new THREE.Sprite(new THREE.SpriteMaterial({ map: glowTex, color: 0xff6ec7, transparent: true, depthWrite: false, blending: THREE.AdditiveBlending }));
     packet.scale.set(0.55, 0.55, 1);
     globe.add(packet);
 
-    attacks.push({ curve: curve, packet: packet, t: index * 0.17, speed: 0.0032 + Math.random() * 0.0016, tube: tube });
-  }
+    attacks.push({ curve: curve, packet: packet, t: index * 0.16, speed: 0.0032 + Math.random() * 0.0016, tube: tube });
+  });
 
-  TARGETS.forEach(makeArc);
-
-  /* ---------- Twin orbital defense rings ---------- */
+  /* ---------- Twin orbital rings (teal, dimmed) ---------- */
   var ringGroup = new THREE.Group();
   scene.add(ringGroup);
 
@@ -191,18 +279,18 @@
     ringGroup.add(ring);
     return ring;
   }
-  var orbit1 = orbitRing(R * 1.42, 0.018, 0x38bdf8, 0.55, Math.PI / 2.6, 0.25);
-  var orbit2 = orbitRing(R * 1.78, 0.014, 0x0ea5e9, 0.35, Math.PI / 1.75, -0.35);
+  var orbit1 = orbitRing(R * 1.42, 0.016, 0x2dd4bf, 0.4, Math.PI / 2.6, 0.25);
+  var orbit2 = orbitRing(R * 1.78, 0.012, 0x0ea5e9, 0.28, Math.PI / 1.75, -0.35);
 
   var sweep = new THREE.Mesh(
     new THREE.TorusGeometry(R * 1.6, 0.05, 6, 40, Math.PI / 4.2),
-    new THREE.MeshBasicMaterial({ color: 0x7dd3fc, transparent: true, opacity: 0.9, blending: THREE.AdditiveBlending, depthWrite: false })
+    new THREE.MeshBasicMaterial({ color: 0x5eead4, transparent: true, opacity: 0.85, blending: THREE.AdditiveBlending, depthWrite: false })
   );
   sweep.rotation.x = Math.PI / 2.6;
   ringGroup.add(sweep);
 
   /* ---------- Ambient starfield ---------- */
-  var starCount = 150;
+  var starCount = 160;
   var starPos = new Float32Array(starCount * 3);
   for (var i = 0; i < starCount; i++) {
     starPos[i * 3] = (Math.random() - 0.5) * 60;
@@ -211,7 +299,7 @@
   }
   var starGeo = new THREE.BufferGeometry();
   starGeo.setAttribute('position', new THREE.BufferAttribute(starPos, 3));
-  var stars = new THREE.Points(starGeo, new THREE.PointsMaterial({ color: 0x9cc8ff, size: 0.07, transparent: true, opacity: 0.6, depthWrite: false }));
+  var stars = new THREE.Points(starGeo, new THREE.PointsMaterial({ color: 0xa7c4ff, size: 0.075, transparent: true, opacity: 0.6, depthWrite: false }));
   scene.add(stars);
 
   /* ---------- Pointer parallax ---------- */
@@ -223,14 +311,14 @@
   }, { passive: true });
   hero.addEventListener('pointerleave', function () { pointer.x = 0; pointer.y = 0; }, { passive: true });
 
-  /* ---------- Layout: keep globe visible, clear of the photo ---------- */
+  /* ---------- Layout ---------- */
   function layout() {
     var compact = window.innerWidth <= 980;
     if (compact) {
-      globe.position.set(3.2, 3.4, -6.8);   // high right, behind copy
+      globe.position.set(3.2, 3.4, -6.8);
       globe.scale.setScalar(0.85);
     } else {
-      globe.position.set(8.6, 1.6, -3.2);   // far right, raised — photo sits lower-left of it
+      globe.position.set(8.6, 1.6, -3.2);
       globe.scale.setScalar(1.25);
     }
     ringGroup.position.copy(globe.position);
@@ -244,16 +332,12 @@
   function tick() {
     t += 0.016;
 
-    globe.rotation.y += 0.0026;              // slower so attack arcs are trackable
-    inner.rotation.y -= 0.0021;
-    inner.rotation.x += 0.0013;
+    globe.rotation.y += 0.0042;              // the roll never stops
 
-    // Origin dot breathes harder (it's the aggressor)
     var ob = originDot.userData.base;
-    var breathe = ob * (1 + 0.28 * Math.sin(t * 3.4));
+    var breathe = ob * (1 + 0.3 * Math.sin(t * 3.4));
     originDot.scale.set(breathe, breathe, 1);
 
-    // Hotspot pulses + expanding rings
     for (var i = 0; i < pulses.length; i++) {
       var dot = pulses[i][0], ring = pulses[i][1];
       var phase = ring.userData.phase;
@@ -267,24 +351,31 @@
       ring.material.opacity = Math.max(0, 0.85 - wave * 0.5);
     }
 
-    // Attack packets fly origin → targets, looping with staggered offsets
+    // Intrusion blips blink on/off across continents
+    for (var b = 0; b < blips.length; b++) {
+      var bl = blips[b], u = bl.userData;
+      var blink = Math.max(0, Math.sin(t * u.speed + u.phase));
+      bl.material.opacity = blink * blink; // sharp strobe, not a fade
+      var bs = u.base * (0.7 + blink * 0.7);
+      bl.scale.set(bs, bs, 1);
+    }
+
+    // Strikes in flight
     for (var j = 0; j < attacks.length; j++) {
       var atk = attacks[j];
       atk.t = (atk.t + atk.speed) % 1;
       var pos = atk.curve.getPointAt(atk.t);
       atk.packet.position.copy(pos);
-      var env = Math.sin(Math.PI * atk.t);            // brighten mid-flight, dim at the ends
-      var ps = 0.32 + 0.38 * env;
+      var env = Math.sin(Math.PI * atk.t);
+      var ps = 0.34 + 0.4 * env;
       atk.packet.scale.set(ps, ps, 1);
-      atk.tube.material.opacity = 0.22 + 0.3 * env;
+      atk.tube.material.opacity = 0.28 + 0.32 * env;
     }
 
-    // Rings precess, sweep travels
     orbit1.rotation.z += 0.0035;
     orbit2.rotation.z -= 0.0026;
     sweep.rotation.y -= 0.03;
 
-    // Camera parallax
     camera.position.x += (pointer.x * 1.4 - camera.position.x) * 0.03;
     camera.position.y += (0.6 - pointer.y * 1.0 - camera.position.y) * 0.03;
     camera.lookAt(0, 0, 0);

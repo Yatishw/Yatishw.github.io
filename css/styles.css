@@ -171,9 +171,15 @@ body {
 .marquee__track i { color: var(--accent); font-style: normal; font-size: .7rem; }
 @keyframes marqueeScroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
-.scroll-cue { position: absolute; left: 50%; bottom: 4.6rem; transform: translateX(-50%); color: #5b6f96; }
-.scroll-cue__dot { animation: cue 1.8s ease-in-out infinite; }
-@keyframes cue { 0%,100% { cy: 8; opacity: 1; } 60% { cy: 15; opacity: .35; } }
+.scroll-cue { position: absolute; left: 50%; bottom: 4.4rem; transform: translateX(-50%); color: #7dd3fc; text-decoration: none; }
+.cuv { opacity: .12; animation: cuvPulse 1.6s ease-in-out infinite; }
+.cuv-2 { animation-delay: .22s; }
+.cuv-3 { animation-delay: .44s; }
+@keyframes cuvPulse {
+  0%   { opacity: .12; transform: translateY(0); }
+  45%  { opacity: 1;   transform: translateY(3px); }
+  100% { opacity: .12; transform: translateY(0); }
+}
 
 /* â”€â”€â”€â”€â”€â”€â”€â”€â”€ Stats â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .stats { background: transparent; border-bottom: 1px solid rgba(148, 197, 255, .07); }
@@ -416,7 +422,8 @@ a.project-wide:hover .project-btn { text-decoration: underline; }
 .terminal:hover { transform: perspective(800px) rotateY(0deg) rotateX(0); }
 
 @media (prefers-reduced-motion: reduce) {
-  .portrait-ring, .scroll-cue__dot { animation: none !important; }
+  .portrait-ring, .cuv { animation: none !important; }
+  .cuv { opacity: .55; }
   .terminal { transform: none; }
   .tilt { transition: none; }
 }

@@ -856,3 +856,6 @@ a.project-wide:hover .project-btn { text-decoration: underline; }
 
 /* PwC logo flip: black wordmark -> white, keep the orange slashes */
 .pwc-dark { filter: invert(1) hue-rotate(180deg); }
+
+/* Footer is one line, centered */
+.footer__inner { justify-content: center !important; text-align: center; }

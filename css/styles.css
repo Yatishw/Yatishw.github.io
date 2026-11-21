@@ -387,7 +387,7 @@ a.project-wide:hover .project-btn { text-decoration: underline; }
 }
 .earth-disc {
   position: absolute; inset: 0; border-radius: 50%; overflow: hidden;
-  background-image: url('images/earth.jpg');
+  background-image: url('../images/earth.jpg');
   background-size: 200% 100%; background-repeat: repeat-x;
   animation: earthSpin 90s linear infinite;
   border: 1px solid rgba(125,211,252,.22);

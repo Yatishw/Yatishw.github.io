@@ -210,7 +210,7 @@
       var sprite = new THREE.Sprite(new THREE.SpriteMaterial({ map: glowTex, color: color, transparent: true, depthWrite: false, blending: THREE.AdditiveBlending, opacity: 0.9 }));
       var s = 0.16 + Math.random() * 0.14;
       sprite.scale.set(s, s, 1);
-      sprite.userData = { phase: Math.random() * Math.PI * 2, speed: 1.8 + Math.random() * 2.0, base: s };
+      sprite.userData = { phase: Math.random() * Math.PI * 2, speed: 1.2 + Math.random() * 1.6, base: s };
       globe.add(sprite);
       blips.push(sprite);
     }
@@ -267,7 +267,7 @@
     ring.position.copy(position);
     ring.lookAt(0, 0, 0);
     globe.add(ring);
-    impacts.push({ obj: ring, age: 0, maxAge: 1.0, grow: 2.6, baseOpacity: 0.9 });
+    impacts.push({ obj: ring, age: 0, maxAge: 1.4, grow: 2.6, baseOpacity: 0.9 });
   }
 
   function spawnAttack() {
@@ -288,7 +288,7 @@
     var origin = makeGlowSprite(0xff5a1f, 0.55); // brief ember at launch
     origin.position.copy(surfacePoint(from.lat, from.lon, R * 1.04));
     globe.add(origin);
-    impacts.push({ obj: origin, age: 0, maxAge: 0.7, grow: 0.5, baseOpacity: 0.95 });
+    impacts.push({ obj: origin, age: 0, maxAge: 1.1, grow: 0.5, baseOpacity: 0.95 });
 
     attacks.push({
       curve: curve,
@@ -296,7 +296,7 @@
       tube: tube,
       target: to,
       t: 0,
-      speed: 0.0075 + Math.random() * 0.0035
+      speed: 0.0042 + Math.random() * 0.002
     });
   }
 
@@ -347,12 +347,12 @@
   function tick() {
     t += 0.016;
 
-    globe.rotation.y += 0.0075;              // the roll never stops
+    globe.rotation.y += 0.0042;              // the roll never stops
 
     // Spawn random strikes on a loose rhythm
-    if (t >= nextSpawn && attacks.length < 10) {
+    if (t >= nextSpawn && attacks.length < 8) {
       spawnAttack();
-      nextSpawn = t + 0.2 + Math.random() * 0.45;
+      nextSpawn = t + 0.35 + Math.random() * 0.9;
     }
 
     // Origin flashes + impact rings fade out
